@@ -1,0 +1,1 @@
+[![Versity Logo](https://www.versity.com/wp-content/themes/versity-theme/assets/img/svg/logo.svg)](https://www.versity.com)
