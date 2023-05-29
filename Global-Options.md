@@ -1,4 +1,3 @@
-# Global Options
 These are options that apply to the gateway itself independent of any backend type.  When available, the shorthand option can be used in place of the long option.
 ***
 ```
