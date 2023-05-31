@@ -1,6 +1,14 @@
-[![Versity Logo](https://www.versity.com/wp-content/themes/versity-theme/assets/img/svg/logo.svg)](https://www.versity.com)
+<div style="display:flex;">
+  <a to="https://www.versity.com" target="_blank">
+   <img src="https://www.versity.com/wp-content/themes/versity-theme/assets/img/svg/logo.svg" alt="Versity Logo" />
+  </a>
+  <p>
+  Versity gives you clarity and control over your archival storage, so you can allocate more resources to your core mission.
+  </p>
+</div>
 
-Versity gives you clarity and control over your archival storage, so you can allocate more resources to your core mission.
+
+
 
 Contact
 info@versity.com
