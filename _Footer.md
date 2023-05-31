@@ -7,7 +7,4 @@ info@versity.com
 +1 844 726 8826
 
 @versitysoftware
-![facebook](https://github.com/versity/versitygw/assets/50177554/aa928b8d-0992-4dcd-9ad6-c15fca8ff2d2){:height="100px" width="100px"}
-![instagram](https://github.com/versity/versitygw/assets/50177554/a5a10fa2-1ddc-48b7-828a-d7d847919df6){:height="100px" width="100px"}
-![linkedin](https://github.com/versity/versitygw/assets/50177554/b1188969-fd67-4b16-95a6-35a154b2657e){:height="100px" width="100px"}
-![twitter](https://github.com/versity/versitygw/assets/50177554/f1535153-d5f2-4764-b318-8aad76fe0a00){:height="100px" width="100px"}
+
