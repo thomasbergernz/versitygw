@@ -7,3 +7,4 @@ info@versity.com
 +1 844 726 8826
 
 @versitysoftware
+&#xf39e;
