@@ -1,10 +1,9 @@
-![Versity Logo](https://www.versity.com/wp-content/themes/versity-theme/assets/img/svg/logo.svg#gh-light-mode-only)
-![Versity Logo](https://www.versity.com/wp-content/themes/versity-theme/assets/img/svg/logo-white.svg#gh-dark-mode-only)
-
 <picture>
-  <source src="[light-mode-image.png](https://www.versity.com/wp-content/themes/versity-theme/assets/img/svg/logo.svg)" media="(prefers-color-scheme: light)">
-  <source src="[dark-mode-image.png](https://www.versity.com/wp-content/themes/versity-theme/assets/img/svg/logo-white.svg)" media="(prefers-color-scheme: dark)">
+  <source src="https://github.com/versity/versitygw/assets/50177554/4c7a3faa-0583-434d-b1c7-0cb714485266" media="(prefers-color-scheme: dark)">
+  <source src="https://github.com/versity/versitygw/assets/50177554/7c2f01a2-697b-47e7-8d49-18c1910cf3bf" media="(prefers-color-scheme: light)">
+<img src="https://github.com/versity/versitygw/assets/50177554/7c2f01a2-697b-47e7-8d49-18c1910cf3bf" alt="Image description" width="200px" height="80px">
 </picture>
+
 ***
 
 #### Versity gives you clarity and control over your archival storage, so you can allocate more resources to your core mission.
