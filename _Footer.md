@@ -1,11 +1,8 @@
-<div style="-webkit-column-count: 2; -moz-column-count: 2; column-count: 2; -webkit-column-rule: 1px dotted #e0e0e0; -moz-column-rule: 1px dotted #e0e0e0; column-rule: 1px dotted #e0e0e0;">
-  <a to="https://www.versity.com" target="_blank">
-   <img src="https://www.versity.com/wp-content/themes/versity-theme/assets/img/svg/logo.svg" alt="Versity Logo" />
-  </a>
-  <p>
-  Versity gives you clarity and control over your archival storage, so you can allocate more resources to your core mission.
-  </p>
-</div>
+[![Versity Logo](https://www.versity.com/wp-content/themes/versity-theme/assets/img/svg/logo.svg)](https://www.versity.com)
+
+***
+
+**Versity** gives you clarity and control over your archival storage, so you can allocate more resources to your core mission.
 
 ### Contact 
 info@versity.com <br />
