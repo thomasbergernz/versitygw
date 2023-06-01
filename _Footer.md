@@ -2,7 +2,7 @@
 
 ***
 
-**Versity** gives you clarity and control over your archival storage, so you can allocate more resources to your core mission.
+#### Versity gives you clarity and control over your archival storage, so you can allocate more resources to your core mission.
 
 ### Contact 
 info@versity.com <br />
