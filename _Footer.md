@@ -1,5 +1,10 @@
 ![Versity Logo](https://www.versity.com/wp-content/themes/versity-theme/assets/img/svg/logo.svg#gh-light-mode-only)
 ![Versity Logo](https://www.versity.com/wp-content/themes/versity-theme/assets/img/svg/logo-white.svg#gh-dark-mode-only)
+
+<picture>
+  <source src="[light-mode-image.png](https://www.versity.com/wp-content/themes/versity-theme/assets/img/svg/logo.svg)" media="(prefers-color-scheme: light)">
+  <source src="[dark-mode-image.png](https://www.versity.com/wp-content/themes/versity-theme/assets/img/svg/logo-white.svg)" media="(prefers-color-scheme: dark)">
+</picture>
 ***
 
 #### Versity gives you clarity and control over your archival storage, so you can allocate more resources to your core mission.
