@@ -10,4 +10,4 @@ S3 API Response: The Gateway Server then translates the result into an S3 API re
 
 Continuation of Requests: This sequence continues for every request from the S3 client until the entire workload is completed. As a result, the S3 client can effectively communicate with the backend storage system via the S3 Gateway Server, ensuring a seamless workflow.
 
-![Versity Gateway Workflow](https://www.versity.com/wp-content/uploads/2023/06/Gateway-image-3.png)
+![Versity Gateway Workflow](https://www.versity.com/wp-content/uploads/2023/06/Gateway-image.png)
