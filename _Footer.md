@@ -1,8 +1,7 @@
-<picture>
-  <source src="https://github.com/versity/versitygw/assets/50177554/4c7a3faa-0583-434d-b1c7-0cb714485266" media="(prefers-color-scheme: dark)">
-  <source src="https://github.com/versity/versitygw/assets/50177554/7c2f01a2-697b-47e7-8d49-18c1910cf3bf" media="(prefers-color-scheme: light)">
-<img src="https://github.com/versity/versitygw/assets/50177554/7c2f01a2-697b-47e7-8d49-18c1910cf3bf" alt="Image description" width="200px" height="80px">
-</picture>
+
+
+[![Versity Logo](https://github.com/versity/versitygw/assets/50177554/f7087ac9-df9f-412d-92bd-05235b6cb299)](https://versity.com)
+
 
 ***
 
