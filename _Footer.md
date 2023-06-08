@@ -1,7 +1,6 @@
 
 
-[![Versity Logo](https://github.com/versity/versitygw/assets/50177554/f7087ac9-df9f-412d-92bd-05235b6cb299)](https://versity.com)
-
+[![Versity Logo](https://github.com/versity/versitygw/assets/50177554/e1f74c2f-c6a2-4c01-b205-aa65a280538d)](https://versity.com)
 
 ***
 
