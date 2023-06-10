@@ -19,17 +19,22 @@ The port option will specify the listening port for the S3 server.  This option 
 This option will determine the S3 client endpoint to use.  For example `--port 192.168.0.1:6000` would require the S3 client to configure `http://192.168.0.1:6000` as the server endpoint.
 ***
 ```
-   --access value          admin access account [$ADMIN_ACCESS_KEY_ID, $ADMIN_ACCESS_KEY]
-   --secret value          admin secret access key [$ADMIN_SECRET_ACCESS_KEY, $ADMIN_SECRET_KEY]
+   --access value          root user access key [$ROOT_ACCESS_KEY_ID, $ROOT_ACCESS_KEY]
+   --secret value          root user secret access key [$ROOT_SECRET_ACCESS_KEY, $ROOT_SECRET_KEY]
    --region value          s3 region string (default: "us-east-1")
 ```
-The `access` and `secret` options will specify the admin account credentials. The admin account is granted full authorization to all API requests after authentication. This is generally useful for creating user level buckets and assigning ACL grants. The `access` and `secret` options can be specified through environment variables (access: ADMIN_ACCESS_KEY_ID or ADMIN_ACCESS_KEY) (secret: ADMIN_SECRET_ACCESS_KEY or ADMIN_SECRET_KEY) or with the command line options. The environment variables can help to hide the credentials from process listings. The region is an optional argument, and will default to `us-east-1` if not specified.
+The `access` and `secret` options will specify the root account credentials. The root account is granted full authorization to all API requests after authentication. This is generally useful for creating user level buckets and assigning ACL grants. The `access` and `secret` options can be specified through environment variables (access: ROOT_ACCESS_KEY_ID or ROOT_ACCESS_KEY) (secret: ROOT_SECRET_ACCESS_KEY or ROOT_SECRET_KEY) or with the command line options. The environment variables can help to hide the credentials from process listings. The region is an optional argument, and will default to `us-east-1` if not specified.
 ***
 ```
    --cert value            TLS cert file
    --key value             TLS key file
 ```
 The `cert` and `key` values are optional. When not specified, the server will not use TLS. To enable TLS connections, both `cert` and `key` must be provided. The value for these options are the filenames for the respective options.
+***
+```
+   --debug                   enable debug output (default: false)
+```
+The debug option will print debug output like request signing information.
 ***
 ```
    --help, -h              show help
