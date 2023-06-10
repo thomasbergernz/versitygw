@@ -1,6 +1,5 @@
 The Versity Gateway uses a stateless, distributed architecture that can enhance data throughput and overall system performance. 
 
-# Key Features
 ## Scalability
 Multiple Versity Gateway instances may be deployed in a cluster to increase aggregate throughput. The Versity Gateway’s stateless architecture allows any request to be serviced by any gateway thereby distributing workloads and enhancing performance. Load balancers may be used to evenly distribute requests across the cluster of gateways for optimal performance. 
 
