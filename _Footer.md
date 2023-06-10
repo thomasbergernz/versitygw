@@ -1,9 +1,5 @@
 
-![Versity Logo](https://www.versity.com/wp-content/themes/versity-theme/assets/img/svg/logo.svg#gh-light-mode-only)
-![Versity Logo](https://www.versity.com/wp-content/themes/versity-theme/assets/img/svg/logo-white.svg#gh-dark-mode-only)
-
-
-[![Versity Logo](https://github.com/versity/versitygw/assets/50177554/e1f74c2f-c6a2-4c01-b205-aa65a280538d)](https://versity.com)
+[![Versity Logo](https://www.versity.com/wp-content/themes/versity-theme/assets/img/svg/logo.svg#gh-light-mode-only)](https://versity.com)
 
 ***
 
