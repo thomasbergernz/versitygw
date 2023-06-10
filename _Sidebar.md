@@ -7,4 +7,5 @@
     * [POSIX Backend](./POSIX-Backend)
     * [ScoutAM Optimizations](./ScoutAM-Optimizations)
   * Developer:
+    * [Contributing Changes](./Contributing-Changes)
     * [Adding A New Backend](./Adding-A-New-Backend)
