@@ -1,5 +1,9 @@
 
-[![Versity Logo](https://www.versity.com/wp-content/themes/versity-theme/assets/img/svg/logo.svg#gh-light-mode-only)](https://versity.com)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/versity/versitygw/blob/assets/assets/logo-white.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/versity/versitygw/blob/assets/assets/logo.svg">
+  <img alt="Versity Software logo image." src="https://github.com/versity/versitygw/blob/assets/assets/logo.svg">
+</picture>
 
 ***
 
@@ -10,7 +14,7 @@ info@versity.com <br />
 +1 844 726 8826
 
 ### @versitysoftware 
-[![linkedin](https://github.com/versity/versitygw/assets/50177554/591c109f-3206-45c9-9b7f-8882be8577c2)](https://www.linkedin.com/company/versity/) &nbsp; 
-[![twitter](https://github.com/versity/versitygw/assets/50177554/670fc912-87c8-43f1-a4e0-377f5acc479d)](https://twitter.com/VersitySoftware) &nbsp;
-[![facebook](https://github.com/versity/versitygw/assets/50177554/6734c42f-5581-45e8-ab0e-f099ff0fb469)](https://www.facebook.com/versitysoftware) &nbsp;
-[![instagram](https://github.com/versity/versitygw/assets/50177554/d1951172-6455-4d4b-8779-12979b397dcd)](https://www.instagram.com/versitysoftware/) &nbsp;
+[![linkedin](https://github.com/versity/versitygw/blob/assets/assets/linkedin.jpg)](https://www.linkedin.com/company/versity/) &nbsp; 
+[![twitter](https://github.com/versity/versitygw/blob/assets/assets/twitter.jpg)](https://twitter.com/VersitySoftware) &nbsp;
+[![facebook](https://github.com/versity/versitygw/blob/assets/assets/facebook.jpg)](https://www.facebook.com/versitysoftware) &nbsp;
+[![instagram](https://github.com/versity/versitygw/blob/assets/assets/instagram.jpg)](https://www.instagram.com/versitysoftware/) &nbsp;
