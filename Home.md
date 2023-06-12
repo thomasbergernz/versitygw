@@ -10,7 +10,7 @@ The Versity Gateway serves as a bridge between file-based storage systems and ap
 
 * The Versity Gateway is designed to meet the community's need for a reliable open source, high-performance object to file translation tool
 
-* It provide storage translations for S3-based applications, enabling compatibility with file based storage systems and offering scalability for demanding workloads
+* The Versity Gateway provides storage translations for S3-based applications, enabling compatibility with file based storage systems and offering scalability for demanding workloads
 
 * The open source Versity Gateway is an Apache 2.0 open source project
 
