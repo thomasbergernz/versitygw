@@ -29,6 +29,7 @@ The POSIX backend stores S3 objects within a filesystem.
 - [x] List Multipart Upload Parts
 - [x] Put Object Part
 - [ ] Copy Object Part
+- [ ] Upload Part Copy
 
 # Filesystem compatibility
 The filesystem must have the ability to store extended attributes.
