@@ -1,5 +1,35 @@
 The POSIX backend stores S3 objects within a filesystem.
 
+# Functional Operations
+### Bucket:
+- [x] Create Bucket
+- [x] Delete Bucket
+- [x] Get Bucket Headers
+- [x] List Buckets
+- [ ] Set Bucket ACL
+- [ ] Get Bucket ACL
+- [ ] Get Bucket Tags
+- [ ] Set Bucket Tags
+### Object:
+- [x] Put Object
+- [x] Delete Object
+- [x] Delete Objects
+- [x] Get Object
+- [x] Get Object Headers
+- [x] List Objects
+- [x] List Objects (v2)
+- [ ] Copy Object
+- [ ] Get Object Tags
+- [ ] Set Object Tags
+### Multipart Uploads:
+- [x] Create Multipart Upload
+- [x] Complete Multipart Upload
+- [x] Abort Multipart Upload
+- [x] List Multipart Uploads
+- [x] List Multipart Upload Parts
+- [x] Put Object Part
+- [ ] Copy Object Part
+
 # Filesystem compatibility
 The filesystem must have the ability to store extended attributes.
 
