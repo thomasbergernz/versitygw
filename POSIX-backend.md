@@ -8,8 +8,8 @@ The POSIX backend stores S3 objects within a filesystem.
 - [x] List Buckets
 - [ ] Set Bucket ACL
 - [ ] Get Bucket ACL
-- [ ] Get Bucket Tags
 - [ ] Set Bucket Tags
+- [ ] Get Bucket Tags
 ### Object:
 - [x] Put Object
 - [x] Delete Object
@@ -19,8 +19,10 @@ The POSIX backend stores S3 objects within a filesystem.
 - [x] List Objects
 - [x] List Objects (v2)
 - [ ] Copy Object
-- [ ] Get Object Tags
+- [ ] Set Object ACL
+- [ ] Get Object ACL
 - [ ] Set Object Tags
+- [ ] Get Object Tags
 ### Multipart Uploads:
 - [x] Create Multipart Upload
 - [x] Complete Multipart Upload
