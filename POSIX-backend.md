@@ -62,7 +62,7 @@ If the gateway is run as root, the only access permissions enforced are from the
 
 If the gateway is run as a user, then the gateway will only be able to access/write files based on that user's permissions.
 
-Multi-part upload parts are written as individual files within the filesystem temporary directory (see advanced topic) for upload-part API, and then read and copied to the final object file for the complete-multipart-upload API. This means that multipart upload objects are effectively written twice to the filesystem.
+Multi-part upload parts are written as individual files within the filesystem temporary directory (see advanced topic) for upload-part API, and then copied to the final object file for the complete-multipart-upload API. The copy will try to use optimized filesystem clone extents calls when possible, but this means that multipart upload objects might be effectively written twice to the filesystem with fallback behavior.
 
 # Advanced details
 ## Temporary files
@@ -83,7 +83,7 @@ The multipart uploads can be removed by the s3 client with the abort-multipart-u
 ## Atomic actions
 Since creating and writing to a file is not atomic, the posix backend uses temporary files to uphold the atomic semantics of an object PUT. The expected behavior of a client uploading two objects with the same name simultaneously is that the last object to complete uploading will be the resulting object in entirety.  Meaning that the object will not be some combination of writes from one and the other with the file. The file will be only the complete object uploaded by one of these sessions, whichever happened to be the last one to complete uploading. This is true for both object PUTs and multipart part PUTs. Since parts can be overwritten in the same way that objects can.
 
-This is achieved one one of two ways. If the filesystem supports O_TMPFILE, then the object or part is written to the open file handle while the upload is in progress.  This allows simultaneous uploads of the same files because the gateway is writing to different file handles. Once the request is completely uploaded and successful so far, the open file handle is linked into the filesystem namespace as the appropriate name.  This linking is atomic and upholds the atomic upload semantics. If the request is not successful or if the gateway crashes, the filesystem automatically reclaims the storage space when the file handle is closed.
+This is achieved in one of two ways. If the filesystem supports O_TMPFILE, then the object or part is written to the open file handle while the upload is in progress.  This allows simultaneous uploads of the same files because the gateway is writing to different file handles. Once the request is completely uploaded and successful so far, the open file handle is linked into the filesystem namespace as the appropriate name.  This linking is atomic and upholds the atomic upload semantics. If the request is not successful or if the gateway crashes, the filesystem automatically reclaims the storage space when the file handle is closed.
 
 If O_TMPFILE is not available within the filesystem, then the gateway will create a temporary unique filename within the temp directory.  For example with object PUT:
 ```
