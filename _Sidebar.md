@@ -5,7 +5,7 @@
     * [Global Options](./Global-Options)
     * [TLS](./TLS)
     * [POSIX Backend](./POSIX-Backend)
-    * [ScoutFS Backend](./ScoutFS-Backed)
+    * [ScoutFS Backend](./ScoutFS-Backend)
     * [ScoutAM Enhancements](./ScoutAM-Enhancements)
   * Developer:
     * [Contributing Changes](./Contributing-Changes)
