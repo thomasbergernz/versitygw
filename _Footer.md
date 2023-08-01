@@ -7,12 +7,6 @@
 
 ***
 
-#### Versity gives you clarity and control over your archival storage, so you can allocate more resources to your core mission.
-
-### Contact 
-info@versity.com <br />
-+1 844 726 8826
-
 ### @versitysoftware 
 [![linkedin](https://github.com/versity/versitygw/blob/assets/assets/linkedin.jpg)](https://www.linkedin.com/company/versity/) &nbsp; 
 [![twitter](https://github.com/versity/versitygw/blob/assets/assets/twitter.jpg)](https://twitter.com/VersitySoftware) &nbsp;
