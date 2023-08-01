@@ -1,8 +1,14 @@
 Welcome to the versitygw wiki!
 
-This guide is intended to help both users and developers getting started with versitygw.  Please open an issue if you find any bugs in the gateway or documentation.  An issue can also be opened for any feature requests.
+_This guide is intended to help both users and developers getting started with versitygw.<br>Please open an issue if you find any bugs in the gateway or documentation or to request a new feature._
 
 The Versity Gateway: A High-Performance Open Source S3 to Storage System Translation Tool
+
+Goals:
+
+A simple to deploy S3 gateway service that scales to meet any workload demands. From a simple local S3 dev server to a high throughput enterprise cluster service, the versitygw gateway should meet all workload needs.
+
+Flexible licensing to encourage community adoption and contributions.
 
 Background:
 
