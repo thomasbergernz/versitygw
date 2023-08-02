@@ -34,12 +34,25 @@ The `cert` and `key` values are optional. When not specified, the server will no
 ```
    --access-log value                      enable server access logging to specified file [$LOGFILE]
 ```
-The access-log value is optional. When defined, the server will write s3 server access log output to the specified file. It is suggested to use absolute paths for the server log file because the server may chdir into the backend root directory and change locations for relative paths. This option can only be set if log-webhook-url is not set. 
+The access-log value is optional. When defined, the server will write s3 server access log output to the specified file. It is suggested to use absolute paths for the server log file because the server may chdir into the backend root directory and change locations for relative paths. This option can also be set through LOGFILE env var. This option can only be set if log-webhook-url is not set. 
 ***
 ```
    --log-webhook-url value                 webhook url to send the audit logs [$WEBHOOK]
 ```
-The log-webhook-url is optional.  When defined, the server will send s3 server access log entries to the provided webhook URL formatted as json. This option can only be set if access-log is not set.
+The log-webhook-url is optional.  When defined, the server will send s3 server access log entries to the provided webhook URL formatted as json. This option can also be set through WEBHOOK env var . This option can only be set if access-log is not set.
+***
+```
+   --event-kafka-url value, --eku value    kafka server url to send the bucket notifications.
+   --event-kafka-topic value, --ekt value  kafka server pub-sub topic to send the bucket notifications to
+   --event-kafka-key value, --ekk value    kafka server put-sub topic key to send the bucket notifications to
+```
+Bucket events can be sent to a kafka message bus. When event-kafka-url, event-kafka-topic, and optionally event-kafka-key are specified, all bucket events will be sent to the kafka service.
+***
+```
+   --event-nats-url value, --enu value     nats server url to send the bucket notifications
+   --event-nats-topic value, --ent value   nats server pub-sub topic to send the bucket notifications to
+```
+Bucket events can be sent to a NATS messaging service. When event-nats-url and event-nats-topic are specified, all bucket events will be sent to the the NATS messaging service.
 ***
 ```
    --debug                   enable debug output (default: false)
