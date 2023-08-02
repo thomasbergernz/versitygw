@@ -9,7 +9,8 @@
       * [ScoutFS](./ScoutFS-Backend)
       * [ScoutAM Enhancements](./ScoutAM-Enhancements)
     * Logging:
-      * [logfile](./S3-server-access-log)
+      * [Logfile](./S3-server-access-log)
+      * [Webhook](./Webhook-log-entries)
   * Developer:
     * [Contributing Changes](./Contributing-Changes)
     * [Adding A New Backend](./Adding-A-New-Backend)
