@@ -4,6 +4,7 @@
     * [Workflow](./Workflow)
     * [Global Options](./Global-Options)
     * [TLS](./TLS)
+    * [Event Notifications](./Events-Notifications)
     * Backends:
       * [POSIX](./POSIX-Backend)
       * [ScoutFS](./ScoutFS-Backend)
