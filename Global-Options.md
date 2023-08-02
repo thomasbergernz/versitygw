@@ -32,6 +32,16 @@ The `access` and `secret` options will specify the root account credentials. The
 The `cert` and `key` values are optional. When not specified, the server will not use TLS. To enable TLS connections, both `cert` and `key` must be provided. The value for these options are the filenames for the respective options.
 ***
 ```
+   --access-log value                      enable server access logging to specified file [$LOGFILE]
+```
+The access-log value is optional. When defined, the server will write s3 server access log output to the specified file. It is suggested to use absolute paths for the server log file because the server may chdir into the backend root directory and change locations for relative paths. This option can only be set if log-webhook-url is not set. 
+***
+```
+   --log-webhook-url value                 webhook url to send the audit logs [$WEBHOOK]
+```
+The log-webhook-url is optional.  When defined, the server will send s3 server access log entries to the provided webhook URL formatted as json. This option can only be set if access-log is not set.
+***
+```
    --debug                   enable debug output (default: false)
 ```
 The debug option will print debug output like request signing information.
