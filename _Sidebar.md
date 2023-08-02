@@ -8,6 +8,8 @@
       * [POSIX](./POSIX-Backend)
       * [ScoutFS](./ScoutFS-Backend)
       * [ScoutAM Enhancements](./ScoutAM-Enhancements)
+    * Logging:
+      * [logfile] (./S3-server-access-log)
   * Developer:
     * [Contributing Changes](./Contributing-Changes)
     * [Adding A New Backend](./Adding-A-New-Backend)
