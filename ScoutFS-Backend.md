@@ -21,7 +21,7 @@ The ScoutFS backend stores S3 objects within a scoutfs filesystem.
 - [x] Restore Object
 - [x] Set Object Tags
 - [x] Get Object Tags
-- [ ] Copy Object
+- [x] Copy Object
 - [ ] Set Object ACL
 - [ ] Get Object ACL
 ### Multipart Uploads:
@@ -31,8 +31,7 @@ The ScoutFS backend stores S3 objects within a scoutfs filesystem.
 - [x] List Multipart Uploads
 - [x] List Multipart Upload Parts
 - [x] Put Object Part
-- [ ] Copy Object Part
-- [ ] Upload Part Copy
+- [x] Upload Part Copy
 
 # Args
 The gateway root directory must be specified with the scoutfs subcommand. The gateway root tells the gateway what directory to host as the S3 service.  This can be a filesystem mount point directory, but more commonly would be a sub-directory within the filesystem to store data associated with the S3 service.  For example, if there is a filesystem mounted at `/mnt/datastore`, the gateway could host the entire filesystem by specifying `/mnt/datastore` or a subdirectory such as `/mnt/datastore/gateway1`. Note that the directory must exist before starting the gateway. The specified directory arg is now considered the "gateway root".
