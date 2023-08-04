@@ -20,7 +20,7 @@ The POSIX backend stores S3 objects within a filesystem.
 - [x] List Objects (v2)
 - [x] Set Object Tags
 - [x] Get Object Tags
-- [ ] Copy Object
+- [x] Copy Object
 - [ ] Set Object ACL
 - [ ] Get Object ACL
 ### Multipart Uploads:
@@ -30,8 +30,7 @@ The POSIX backend stores S3 objects within a filesystem.
 - [x] List Multipart Uploads
 - [x] List Multipart Upload Parts
 - [x] Put Object Part
-- [ ] Copy Object Part
-- [ ] Upload Part Copy
+- [x] Upload Part Copy
 
 # Filesystem compatibility
 The filesystem must have the ability to store extended attributes.
