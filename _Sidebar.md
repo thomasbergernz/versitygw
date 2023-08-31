@@ -12,6 +12,7 @@
     * Logging:
       * [Logfile](./S3-server-access-log)
       * [Webhook](./Webhook-log-entries)
+    * [Example Client Configs](./S3-Client-Configuration)
   * Developer:
     * [Contributing Changes](./Contributing-Changes)
     * [Adding A New Backend](./Adding-A-New-Backend)
