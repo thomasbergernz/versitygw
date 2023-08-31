@@ -1,4 +1,4 @@
-The following examples assume a localhost gateway running on port 7070 with a self-signed cert using the following credentials: <br>
+The following examples assume a localhost gateway running on port 7070 with a self-signed cert using the following credentials, adjust these options in the examples for your use: <br>
 ```
 access key: myaccess
 secret key: mysecret
