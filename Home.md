@@ -2,7 +2,7 @@ Welcome to the versitygw wiki!
 
 _This guide is intended to help both users and developers getting started with versitygw.<br>Please open an issue if you find any bugs in the gateway or documentation or to request a new feature._
 
-The Versity S3 Gateway: A High-Performance Open Source S3 to Storage System Translation
+The Versity S3 Gateway: A High-Performance Open Source S3 to Storage System Translator
 
 Goals:
 
