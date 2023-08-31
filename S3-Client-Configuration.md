@@ -7,7 +7,7 @@ endpoint: https://127.0.0.1:7070
 
 for example:
 ```
-ROOT_ACCESS_KEY=myaccess ROOT_SECRET_KEY=mysecret ./versitygw --cert $PWD/certpem --key $PWD/cert.key posix /tmp/gw
+ROOT_ACCESS_KEY=myaccess ROOT_SECRET_KEY=mysecret ./versitygw --cert $PWD/cert.pem --key $PWD/cert.key posix /tmp/gw
 ```
 
 # aws cli
