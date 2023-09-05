@@ -5,7 +5,7 @@ secret key: mysecret
 endpoint: https://127.0.0.1:7070
 ```
 
-for example:
+example:
 ```
 ROOT_ACCESS_KEY=myaccess ROOT_SECRET_KEY=mysecret ./versitygw --cert $PWD/cert.pem --key $PWD/cert.key posix /tmp/gw
 ```
@@ -75,7 +75,7 @@ Add new service bookmark by selecting the "+" at the bottom left of the main pag
 Select type as "Amazon S3"<br>
 Fill out Server, Port, Access Key ID, Secret Access Key<br>
 
-for example:<br>
+example:<br>
 ![cyberduck_config](https://github.com/versity/versitygw/assets/2184287/6557e405-cac7-404a-9ff1-1123ebd9518f)
 
 accept server certificate when asked
