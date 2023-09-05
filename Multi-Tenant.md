@@ -8,7 +8,7 @@ The admin and user accounts are managed through the versitygw admin API.  The ea
 
 To create a new admin account with access key `myadmin` and secret key `mysecret`:
 ```
-versitygw admin --access myaccess --secret mysecret --endpoint-url http://127.0.0.1:7070 create-user --access myadmin --secret mysecret -r admin
+versitygw admin --access myaccess --secret mysecret --endpoint-url http://127.0.0.1:7070 create-user --access myadmin --secret mysecret --role admin
 ```
 
 To create a new user account with access key `myuser` and secret key `mysecret`:
