@@ -8,14 +8,22 @@ The admin and user accounts are managed through the versitygw admin API.  The ea
 
 To create a new admin account with access key `myadmin` and secret key `mysecret`:
 ```
-versitygw admin -a myaccess -s mysecret create-user -a myadmin -s mysecret -r admin
+versitygw admin -a myaccess -s mysecret --endpoint-url http://127.0.0.1:7070 create-user -a myadmin -s mysecret -r admin
 ```
 
 To create a new user account with access key `myuser` and secret key `mysecret`:
 ```
-versitygw admin -a myaccess -s mysecret create-user -a myuser -s mysecret -r user
+versitygw admin -a myaccess -s mysecret --endpoint-url http://127.0.0.1:7070 create-user -a myuser -s mysecret -r user
 ```
 
-You can similarly delete accounts with the `create-user` cli option.
+To list accounts:
+```
+versitygw admin -a myaccess -s mysecret --endpoint-url http://127.0.0.1:7070 list-users
+```
+
+You can similarly delete accounts with the `delete-user` cli option.
+```
+versitygw admin -a myaccess -s mysecret --endpoint-url http://127.0.0.1:7070 delete-user -a myuser
+```
 
 [Known Issues](https://github.com/versity/versitygw/labels/IAM)
