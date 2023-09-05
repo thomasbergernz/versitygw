@@ -1,3 +1,4 @@
+# IAM
 The gateway can support multi-tenant mode using an IAM service. Currently the only functional IAM service is the internal service that stores the accounts info in a local file. The gateway allows for 3 different classes of users: root, admin, user. The root account is the primary management account specified on the cli when running the versitygw command. The admin and user accounts are stored in the IAM service.
 
 The root account can create/delete admin/user accounts, create buckets, see all buckets. The admin accounts are able to create/delete admin/user accounts and create buckets. The user accounts can only access buckets that have been created for them.
@@ -27,3 +28,6 @@ versitygw admin --access myaccess -s mysecret --endpoint-url http://127.0.0.1:70
 ```
 
 [Known Issues](https://github.com/versity/versitygw/labels/IAM)
+
+# ACLs
+The gateway currently only supports bucket level ACLs defined with the same format as [AWS ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html).
