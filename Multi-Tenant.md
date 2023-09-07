@@ -1,9 +1,13 @@
 # IAM
 The gateway can support multi-tenant mode using an IAM service. Currently the only functional IAM service is the internal service that stores the accounts info in a local file. The gateway allows for 3 different classes of users: root, admin, user. The root account is the primary management account specified on the cli when running the versitygw command. The admin and user accounts are stored in the IAM service.
 
-The root account can create/delete admin/user accounts, create buckets, see all buckets. The admin accounts are able to create/delete admin/user accounts and create buckets. The user accounts can only access buckets that have been created for them.
+The root and admin accounts can create/delete admin/user accounts, create buckets, see all buckets. The user accounts can only access buckets that have been created for them.
 
-![Screenshot 2023-08-31 at 1 47 28 PM](https://github.com/versity/versitygw/assets/2184287/728bb913-6e9f-460e-9c1c-fa249356b5e0)
+| Role | See All Buckets | Create New Buckets | Create New Users | Assign Bucket Ownership | See Only Owned Buckets |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| root | X | X | X | X | |
+| admin | X | X | X | X | |
+| user | | | | | X |
 
 The admin and user accounts are managed through the versitygw admin API.  The easiest way to access this is with the versitygw command itself. The following commands assume the root or admin access key is `myaccess` and secret key is `mysecret`.  Adjust these and account details as needed.
 
