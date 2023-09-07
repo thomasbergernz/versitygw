@@ -28,10 +28,30 @@ versitygw admin --access myaccess --secret mysecret --endpoint-url http://127.0.
 
 You can similarly delete accounts with the `delete-user` cli option.
 ```
-versitygw admin --access myaccess -s mysecret --endpoint-url http://127.0.0.1:7070 delete-user --access myuser
+versitygw admin --access myaccess --secret mysecret --endpoint-url http://127.0.0.1:7070 delete-user --access myuser
 ```
 
-[Known Issues](https://github.com/versity/versitygw/labels/IAM)
+# Bucket Management
+A user is only allowed access to bucket assigned to them. But they are unable to create new buckets. To create a bucket for a user account, an admin or root must create the bucket and assign ownership to the user.
+
+This example extends the example above where the "myadmin" and "myuser" accounts were previously created.
+
+Example of creating a bucket and assigning to "myuser" (Note: aws cli running with admin credentials):
+```
+AWS_ACCESS_KEY_ID=myadmin
+AWS_SECRET_ACCESS_KEY=mysecret
+AWS_ENDPOINT_URL=http://127.0.0.1:7070
+aws s3 mb s3://bucket1
+
+versitygw admin --access myaccess --secret mysecret --endpoint-url http://127.0.0.1:7070 change-bucket-owner --bucket bucket1 --owner myuser
+```
+And now the user can list and access the bucket:
+```
+AWS_ACCESS_KEY_ID=myuser
+AWS_SECRET_ACCESS_KEY=mysecret
+AWS_ENDPOINT_URL=http://127.0.0.1:7070
+aws s3 ls s3://
+```
 
 # ACLs
 The gateway currently only supports bucket level ACLs defined with the same format as [AWS ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html).
