@@ -5,9 +5,9 @@ The root and admin accounts can create/delete admin/user accounts, create bucket
 
 | Role | See All Buckets | Create New Buckets | Create New Users | Assign Bucket Ownership | See Only Owned Buckets |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| root | X | X | X | X | |
-| admin | X | X | X | X | |
-| user | | | | | X |
+| root | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | |
+| admin | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | |
+| user | | | | | :white_check_mark: |
 
 The admin and user accounts are managed through the versitygw admin API.  The easiest way to access this is with the versitygw command itself. The following commands assume the root or admin access key is `myaccess` and secret key is `mysecret`.  Adjust these and account details as needed. You can alternatively set `ADMIN_ACCESS_KEY`, `ADMIN_SECRET_KEY`, and `ADMIN_ENDPOINT_URL` environment variables instead of having to specify `--access`, `--secret`, and `--endpoint-url` respectively each time.
 
