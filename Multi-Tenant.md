@@ -38,18 +38,18 @@ This example extends the example above where the "myadmin" and "myuser" accounts
 
 Example of creating a bucket and assigning to "myuser" (Note: aws cli running with admin credentials):
 ```
-AWS_ACCESS_KEY_ID=myadmin
-AWS_SECRET_ACCESS_KEY=mysecret
-AWS_ENDPOINT_URL=http://127.0.0.1:7070
+export AWS_ACCESS_KEY_ID=myadmin
+export AWS_SECRET_ACCESS_KEY=mysecret
+export AWS_ENDPOINT_URL=http://127.0.0.1:7070
 aws s3 mb s3://bucket1
 
 versitygw admin --access myaccess --secret mysecret --endpoint-url http://127.0.0.1:7070 change-bucket-owner --bucket bucket1 --owner myuser
 ```
 And now the user can list and access the bucket:
 ```
-AWS_ACCESS_KEY_ID=myuser
-AWS_SECRET_ACCESS_KEY=mysecret
-AWS_ENDPOINT_URL=http://127.0.0.1:7070
+export AWS_ACCESS_KEY_ID=myuser
+export AWS_SECRET_ACCESS_KEY=mysecret
+export AWS_ENDPOINT_URL=http://127.0.0.1:7070
 aws s3 ls s3://
 ```
 
