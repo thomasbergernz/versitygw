@@ -53,5 +53,15 @@ export AWS_ENDPOINT_URL=http://127.0.0.1:7070
 aws s3 ls s3://
 ```
 
+The admin API allows for listing all buckets and their current owners. This is a special API call since this is not directly supported in the S3 API.  For example:
+```
+versitygw admin --access myaccess --secret mysecret --endpoint-url http://127.0.0.1:7070 list-buckets
+Bucket   Owner
+-------  ----
+abucket  myaccess
+bbucket  myadmin
+cbucket  myuser
+```
+
 # ACLs
 The gateway currently only supports bucket level ACLs defined with the same format as [AWS ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html).
