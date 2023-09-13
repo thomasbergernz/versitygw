@@ -56,6 +56,8 @@ aws s3 ls s3://
 The admin API allows for listing all buckets and their current owners. This is a special API call since this is not directly supported in the S3 API.  For example:
 ```
 versitygw admin --access myaccess --secret mysecret --endpoint-url http://127.0.0.1:7070 list-buckets
+```
+```
 Bucket   Owner
 -------  ----
 abucket  myaccess
