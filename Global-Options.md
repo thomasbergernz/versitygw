@@ -32,6 +32,14 @@ The `access` and `secret` options will specify the root account credentials. The
 The `cert` and `key` values are optional. When not specified, the server will not use TLS. To enable TLS connections, both `cert` and `key` must be provided. The value for these options are the filenames for the respective options.
 ***
 ```
+   --admin-port value, --ap value          gateway admin server listen address <ip>:<port> or :<port>
+   --admin-cert value                      TLS cert file for admin server
+   --admin-cert-key value                  TLS key file for admin server
+```
+The admin server endpoint can optionally be set to listen on a different interface or port than the S3 service. This allows for better control of firewall restrictions to the admin endpoint. The certs for this can be different certs than specified for the S3 service.
+The default when these are not specified is to have the admin server listen on the same endpoint and the S3 service. 
+***
+```
    --access-log value                      enable server access logging to specified file [$LOGFILE]
 ```
 The access-log value is optional. When defined, the server will write s3 server access log output to the specified file. It is suggested to use absolute paths for the server log file because the server may chdir into the backend root directory and change locations for relative paths. This option can also be set through LOGFILE env var. This option can only be set if log-webhook-url is not set. See [LogFile](./S3-server-access-log) for more details and log format.
