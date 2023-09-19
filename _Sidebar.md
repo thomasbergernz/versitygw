@@ -17,4 +17,5 @@
   * Developer:
     * [Contributing Changes](./Contributing-Changes)
     * [Adding A New Backend](./Adding-A-New-Backend)
+    * [Running Tests](./Running-Test-Suite)
     * [S3 API reference](./S3-API-reference)
