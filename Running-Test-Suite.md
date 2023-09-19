@@ -1,3 +1,6 @@
+The versitygw project has both unit tests (primarily for testing the api handlers) and integration tests (primarily for testing backends).
+
+# Client
 The versitygw command has a built in client test suite. This can be invoked against any running S3 service to check for S3 compatibility. This is useful when developing new backends to verify implementation. Run the gateway with whatever backend desired for testing.
 
 For example, running with posix:
@@ -38,3 +41,38 @@ OPTIONS:
    --checksumDis        Disable server checksum (default: false)
    --help, -h           show help
 ```
+
+# Unit
+Invoke unit tests with the following:
+```
+go test ./...
+```
+
+If the [backend.Backend](https://github.com/versity/versitygw/blob/main/backend/backend.go#L28) interface definition changes, then the moq test definitions need to be re-generated:
+
+Install moq if not done already:
+```
+go install github.com/matryer/moq@latest
+```
+Regenerate moq test definitions:
+```
+cd backend
+go generate
+```
+This will regenerate this file:
+```
+/s3api/controllers/backend_moq_test.go
+```
+The tests in /s3api may need to be updated for any interface changes.
+
+If the [auth.IAMService](https://github.com/versity/versitygw/blob/main/auth/iam.go#L31) interface definition changes, then the moq test definitions need to be re-generated:
+```
+cd auth
+go generate
+```
+This will regenerate this file:
+```
+/s3api/controllers/iam_moq_test.go
+```
+The tests in /s3api may need to be updated for any interface changes.
+
