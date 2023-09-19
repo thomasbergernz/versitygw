@@ -25,8 +25,15 @@ To list accounts:
 ```
 versitygw admin --access myaccess --secret mysecret --endpoint-url http://127.0.0.1:7070 list-users
 ```
+```
+Account  Role
+-------  ----
+myuser   user
+myadmin  admin
+```
+note: The root account is not a permanently recorded int he IAM service, so not listed.  This account is always defined at gateway runtime.
 
-You can similarly delete accounts with the `delete-user` cli option.
+Accounts can be deleted with the `delete-user` cli option.
 ```
 versitygw admin --access myaccess --secret mysecret --endpoint-url http://127.0.0.1:7070 delete-user --access myuser
 ```
