@@ -1,4 +1,4 @@
-The versitygw project has both unit tests (primarily for testing the api handlers) and integration tests (primarily for testing backends).
+The versitygw project has both client based integration tests (primarily for testing backends) and unit tests (primarily for testing the api handlers).
 
 # Client
 The versitygw command has a built in client test suite. This can be invoked against any running S3 service to check for S3 compatibility. This is useful when developing new backends to verify implementation. Run the gateway with whatever backend desired for testing.
