@@ -10,6 +10,15 @@ example:
 ROOT_ACCESS_KEY=myaccess ROOT_SECRET_KEY=mysecret ./versitygw --cert $PWD/cert.pem --key $PWD/cert.key posix /tmp/gw
 ```
 
+***
+
+* [aws-cli](./S3-Client-Configuration#aws-cli)
+* [s3cmd](./S3-Client-Configuration#s3cmd)
+* [mc](./S3-Client-Configuration#mc)
+* [Cyberduck](./S3-Client-Configuration#Cyberduck)
+
+***
+
 # aws cli
 link to docs: [https://aws.amazon.com/cli/](https://aws.amazon.com/cli/)
 
