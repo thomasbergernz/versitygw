@@ -63,6 +63,23 @@ Bucket events can be sent to a kafka message bus. When event-kafka-url, event-ka
 Bucket events can be sent to a NATS messaging service. When event-nats-url and event-nats-topic are specified, all bucket events will be sent to the the NATS messaging service.
 ***
 ```
+   --iam-dir value                         if defined, run internal iam service within this directory
+```
+The iam-dir option will enable the internal IAM service with accounts stored in a file under the specified directory. This is provided to minimize dependencies on outside services for basic functionality. The local account files are plain text and only protected with file permissions.
+***
+```
+   --iam-ldap-url value                    ldap server url to store iam data
+   --iam-ldap-bind-dn value                ldap server binding dn, example: 'cn=admin,dc=example,dc=com'
+   --iam-ldap-bind-pass value              ldap server user password
+   --iam-ldap-query-base value             ldap server destination query, example: 'ou=iam,dc=example,dc=com'
+   --iam-ldap-object-classes value         ldap server object classes used to store the data. provide it as comma separated string, example: 'top,person'
+   --iam-ldap-access-atr value             ldap server user access key id attribute name
+   --iam-ldap-secret-atr value             ldap server user secret access key attribute name
+   --iam-ldap-role-atr value               ldap server user role attribute name
+```
+The ldap options will enable the LDAP IAM service with accounts stored in an external LDAP service. The iam-ldap-access-atr, iam-ldap-secret-atr, and iam-ldap-role-atr define the LDAP attributes that map to access, secret credentials and role respectively.
+***
+```
    --debug                   enable debug output (default: false)
 ```
 The debug option will print debug output like request signing information.
