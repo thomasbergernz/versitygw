@@ -10,7 +10,12 @@ The root and admin accounts can create/delete admin/user accounts, create bucket
 | user | | | | | :white_check_mark: |
 
 ## IAM Internal
-The Internal IAM stores tenant accounts in a file below the specified directory with the `--iam-dir` option. If the gateway is running within a cluster for load balancing, this directory must be accessible on all hosts (such as NFS) so that the accounts are consistent across all gateways.
+The Internal IAM stores tenant accounts in a file below the specified directory with the following option:
+```
+   --iam-dir value                         if defined, run internal iam service within this directory
+```
+
+If the gateway is running within a cluster for load balancing, this directory must be accessible on all hosts (such as NFS) so that the accounts are consistent across all gateways.
 
 Note: The file is plan text JSON encoded fields and access is only protected with basic file permissions.
 
