@@ -1,5 +1,5 @@
 # IAM
-The gateway can support multi-tenant mode using an IAM service. Currently the only functional IAM service is the internal service that stores the accounts info in a local file. The gateway allows for 3 different classes of users: root, admin, user. The root account is the primary management account specified on the cli when running the versitygw command. The admin and user accounts are stored in the IAM service.
+The gateway can support multi-tenant mode using an IAM service. The default is to operate in single tenant mode (root account only). To enable multi-tenant, one of the IAM services must be selected. The gateway allows for 3 different classes of users: root, admin, user. The root account is the primary management account specified on the cli when running the versitygw command. The admin and user accounts are stored in the IAM service.
 
 The root and admin accounts can create/delete admin/user accounts, create buckets, see all buckets. The user accounts can only access buckets that have been created for them.
 
@@ -9,6 +9,31 @@ The root and admin accounts can create/delete admin/user accounts, create bucket
 | admin | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | |
 | user | | | | | :white_check_mark: |
 
+## IAM Internal
+The Internal IAM stores tenant accounts in a file below the specified directory with the `--iam-dir` option. If the gateway is running within a cluster for load balancing, this directory must be accessible on all hosts (such as NFS) so that the accounts are consistent across all gateways.
+
+Note: The file is plan text JSON encoded fields and access is only protected with basic file permissions.
+
+## IAM LDAP
+The LDAP IAM stores tenant accounts in an LDAP directory service. The following options are needed in order to access the LDAP service:
+```
+   --iam-ldap-url value                    ldap server url to store iam data
+   --iam-ldap-bind-dn value                ldap server binding dn, example: 'cn=admin,dc=example,dc=com'
+   --iam-ldap-bind-pass value              ldap server user password
+   --iam-ldap-query-base value             ldap server destination query, example: 'ou=iam,dc=example,dc=com'
+   --iam-ldap-object-classes value         ldap server object classes used to store the data. provide it as comma separated string, example: 'top,person'
+```
+
+The tenant access key, secret key, and role are mapped to LDAP attributes. These attributes are specified with the following options:
+```
+   --iam-ldap-access-atr value             ldap server user access key id attribute name
+   --iam-ldap-secret-atr value             ldap server user secret access key attribute name
+   --iam-ldap-role-atr value               ldap server user role attribute name
+```
+
+Using the admin API to manage accounts is optional in the LDAP case. It is fine to manage users directly in LDAP, and only allow the gateway to have read permissions to the directory service. If the admin API is used for user management, then the gateway must have permissions to modify, add, and remove accounts within the directory service. 
+
+# User Management
 The admin and user accounts are managed through the versitygw admin API.  The easiest way to access this is with the versitygw command itself. The following commands assume the root or admin access key is `myaccess` and secret key is `mysecret`.  Adjust these and account details as needed. You can alternatively set `ADMIN_ACCESS_KEY`, `ADMIN_SECRET_KEY`, and `ADMIN_ENDPOINT_URL` environment variables instead of having to specify `--access`, `--secret`, and `--endpoint-url` respectively each time.
 
 To create a new admin account with access key `myadmin` and secret key `mysecret`:
