@@ -61,11 +61,13 @@ If the gateway is run as root, the only access permissions enforced are from the
 
 If the gateway is run as a user, then the gateway will only be able to access/write files based on that user's permissions.
 
-Multi-part upload parts are written as individual files within the filesystem temporary directory (see advanced topic) for upload-part API, and then copied to the final object file for the complete-multipart-upload API. The copy will try to use optimized filesystem clone extents calls when possible, but this means that multipart upload objects might be effectively written twice to the filesystem with fallback behavior.
+Multi-part upload parts are written as individual files within the filesystem temporary directory (see advanced topic) for upload-part API, and then copied to the final object file for the complete-multipart-upload API. The copy will try to use optimized filesystem copy_file_range calls when possible, but this means that multipart upload objects might be effectively written twice to the filesystem with fallback behavior.
 
 Object PUTs will overwrite files but not directories. If a directory already exists with the same name as the object, the PUT will fail with ExistingObjectIsDirectory.
 
 Object names are translated into directory components by splitting on "/" separator. If a directory within the object name already exists as a file instead of a directory, then the PUT will fail with ObjectParentIsFile.
+
+An object with a trailing "/" is interpreted as a directory.  So put object with trailing "/" will create a directory in the filesystem.  This means that the content length must be 0 for all directory type objects since there is no data payload for directories in the filesystem. It is also and error to create a multipart upload with a trailing "/" in the key. The create multipart upload with trailing "/" or put object with a trailing "/" and non-0 content length the error DirectoryObjectContainsData will be returned.
 
 # Advanced details
 ## Temporary files
