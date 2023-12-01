@@ -1,5 +1,5 @@
 # Identity and Access Management (IAM)
-The gateway can support multi-tenant mode using an IAM service. The default is to operate in single tenant mode (root account only). To enable multi-tenant, one of the IAM services must be selected. The gateway allows for 3 different classes of users: root, admin, user. The root account is the primary management account specified on the cli when running the versitygw command. The admin and user accounts are stored in the IAM service.
+The gateway can support multi-tenant mode using an IAM service. The default is to operate in single tenant mode (root account only). To enable multi-tenant, one of the IAM services must be selected. The gateway allows for three different classes of users: root, admin, user. The root account is the primary management account specified on the cli when running the versitygw command. The admin and user accounts are stored in the IAM service.
 
 The root and admin accounts can create/delete admin/user accounts, create buckets, see all buckets. The user accounts can only access buckets that have been created for them.
 
