@@ -9,6 +9,7 @@
       * [POSIX](./POSIX-Backend)
       * [ScoutFS](./ScoutFS-Backend)
       * [ScoutAM Enhancements](./ScoutAM-Enhancements)
+      * [S3](./S3-Backend)
     * Logging:
       * [Logfile](./S3-server-access-log)
       * [Webhook](./Webhook-log-entries)
