@@ -8,7 +8,6 @@
     * Backends:
       * [POSIX](./POSIX-Backend)
       * [ScoutFS](./ScoutFS-Backend)
-      * [ScoutAM Enhancements](./ScoutAM-Enhancements)
       * [S3](./S3-Backend)
     * Logging:
       * [Logfile](./S3-server-access-log)
@@ -20,3 +19,6 @@
     * [Adding A New Backend](./Adding-A-New-Backend)
     * [Running Tests](./Running-Test-Suite)
     * [S3 API reference](./S3-API-reference)
+  * Articles:
+    * [Performance](./Performance)
+    * [ScoutAM Enhancements](./ScoutAM-Enhancements)
