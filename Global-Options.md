@@ -40,6 +40,11 @@ The admin server endpoint can optionally be set to listen on a different interfa
 The default when these are not specified is to have the admin server listen on the same endpoint and the S3 service. 
 ***
 ```
+   --quiet, -q                             silence stdout request logging output (default: false)
+```
+The quiet option will silence the request info output enabled by default to stdout.
+***
+```
    --access-log value                      enable server access logging to specified file [$LOGFILE]
 ```
 The access-log value is optional. When defined, the server will write s3 server access log output to the specified file. It is suggested to use absolute paths for the server log file because the server may chdir into the backend root directory and change locations for relative paths. This option can also be set through LOGFILE env var. This option can only be set if log-webhook-url is not set. See [LogFile](./S3-server-access-log) for more details and log format.
@@ -65,7 +70,7 @@ Bucket events can be sent to a NATS messaging service. When event-nats-url and e
 ```
    --iam-dir value                         if defined, run internal iam service within this directory
 ```
-The iam-dir option will enable the internal IAM service with accounts stored in a file under the specified directory. This is provided to minimize dependencies on outside services for basic functionality. The local account files are plain text and only protected with file permissions.
+The iam-dir option will enable the internal IAM service with accounts stored in a file under the specified directory. This is provided to minimize dependencies on outside services for basic functionality. The local account files are plain text and only protected with file permissions. This IAM service is added for convenience, but is not considered as secure or scalable as a dedicated IAM service.
 ***
 ```
    --iam-ldap-url value                    ldap server url to store iam data
@@ -78,6 +83,24 @@ The iam-dir option will enable the internal IAM service with accounts stored in 
    --iam-ldap-role-atr value               ldap server user role attribute name
 ```
 The ldap options will enable the LDAP IAM service with accounts stored in an external LDAP service. The iam-ldap-access-atr, iam-ldap-secret-atr, and iam-ldap-role-atr define the LDAP attributes that map to access, secret credentials and role respectively.
+***
+```
+   --s3-iam-access value                   s3 IAM access key
+   --s3-iam-secret value                   s3 IAM secret key
+   --s3-iam-region value                   s3 IAM region (default: "us-east-1")
+   --s3-iam-bucket value                   s3 IAM bucket
+   --s3-iam-endpoint value                 s3 IAM endpoint
+   --s3-iam-noverify                       s3 IAM disable ssl verification (default: false)
+   --s3-iam-debug                          s3 IAM debug output (default: false)
+```
+The S3 IAM service is similar to the internal IAM service, but instead stores the account information JSON encoded in an S3 object. This should use a bucket that is not accessible to general users when using s3 backend to prevent access to account credentials. This IAM service is added for convenience, but is not considered as secure or scalable as a dedicated IAM service.
+***
+```
+   --iam-cache-disable                     disable local iam cache (default: false)
+   --iam-cache-ttl value                   local iam cache entry ttl (seconds) (default: 120)
+   --iam-cache-prune value                 local iam cache cleanup interval (seconds) (default: 3600)
+```
+The IAM cache is intended to ease the load on the IAM service and increase the Gateway performance by caching accounts and credentials for the TTL time interval. Disabling this will cause a request to the configured IAM service for each incoming request to retrieve the corresponding account credentials. The cache is enabled by default. The TTL specifies how long to cache credentials, and the prune value determines the interval for expired entries to be removed from the cache. Increasing the TTL may lessen the load on the IAM service backend, but may have out of date account info until the next interval. Increasing the prune value may reduce memory use at the cost of added CPU to check cache expirations.
 ***
 ```
    --debug                   enable debug output (default: false)
