@@ -1,4 +1,4 @@
-This is cross hosted on the [Versity Blog](https://www.versity.com/versity-s3-gateway-performance/) as well.
+This is cross posted on the [Versity Blog](https://www.versity.com/versity-s3-gateway-performance/) as well.
 
 # Testing Goals
 The Versity S3 Gateway stateless architecture allows linear scaling of multiple instances across a cluster for increased aggregate performance. Additionally, load balancers can ensure even distribution of requests across the Gateway instances. This investigation focused on a single Gateway's performance to get a better understanding of the building block capability. The frontend performance is achieved with the use of [Fiber](https://github.com/gofiber/fiber#-benchmarks), an Express inspired web framework built on top of Fasthttp, the fastest HTTP engine for Go.
