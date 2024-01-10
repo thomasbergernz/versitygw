@@ -28,7 +28,7 @@ func (m *MyStorage) Shutdown() {
 **Implement the backend.Backend methods based on desired API functionality.**<br>
 Implementing the backend.Backend methods will translate how you want your storage service to handle the corresponding frontend requests.
 
-# Add backend to versitygw
+# Add backend to versitygw app
 Create a new file: `cmd/versitygw/mystorage.go` with the appropriate name for the new backend type.
 
 Create a new function that takes no args and returns a *cli.Command, and fill out appropriate fields for the new backend:
