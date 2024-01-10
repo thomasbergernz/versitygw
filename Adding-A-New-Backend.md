@@ -1,4 +1,4 @@
-# Create new backend package
+# Create new backend
 To add a new backend, create a new folder in `backend/` with the name of the backend.  The package name should be a new package name related to the new storage type.
 
 If you embed the `backend.BackendUnsupported` type with the new storage struct, then any interface functions that are not implemented will automatically return the s3err.ErrNotImplemented error.  For example:
