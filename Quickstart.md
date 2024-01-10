@@ -1,14 +1,14 @@
 # Download Gateway
-## Download release binary
+### Download release binary
 Download a release binary from [Releases](https://github.com/versity/versitygw/releases)
 
-## Build from source
+### Build from source
 This assumes you have a [Go](https://go.dev) compiler installed
-### Clone repo
+* Clone repo
 ```
 git clone https://github.com/versity/versitygw.git
 ```
-### Build project
+* Build project
 ```
 cd versitygw
 make
