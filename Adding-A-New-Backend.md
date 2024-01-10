@@ -50,11 +50,24 @@ func runMyStorage(ctx *cli.Context) error {
 
 	be, err := mystorage.New()
 	if err != nil {
-		return fmt.Errorf("init mystorage: %v", err)
+		return fmt.Errorf("init mystorage: %w", err)
 	}
 
-	return runGateway(be)
+	return runGateway(ctx.Context, be)
 }
+```
+
+Add the storage subcommand to the main app in main() in `cmd/versitygw/main.go`:
+```go
+	app.Commands = []*cli.Command{
+		posixCommand(),
+		scoutfsCommand(),
+		s3Command(),
+		azureCommand(),
+		mystorageCommand(),
+		adminCommand(),
+		testCommand(),
+	}
 ```
 
 Include documentation for the wiki if this will be added with a pull request.
