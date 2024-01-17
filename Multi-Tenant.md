@@ -38,6 +38,14 @@ The tenant access key, secret key, and role are mapped to LDAP attributes. These
 
 Using the admin API to manage accounts is optional in the LDAP case. It is fine to manage users directly in LDAP, and only allow the gateway to have read permissions to the directory service. If the admin API is used for user management, then the gateway must have permissions to modify, add, and remove accounts within the directory service. 
 
+## IAM cache
+```
+   --iam-cache-disable                     disable local iam cache (default: false)
+   --iam-cache-ttl value                   local iam cache entry ttl (seconds) (default: 120)
+   --iam-cache-prune value                 local iam cache cleanup interval (seconds) (default: 3600)
+```
+The IAM cache is intended to ease the load on the IAM service and increase the Gateway performance by caching accounts and credentials for the TTL time interval. Disabling this will cause a request to the configured IAM service for each incoming request in order to retrieve the corresponding account credentials. The cache is enabled by default. The TTL specifies how long to cache credentials, and the prune value determines the interval for expired entries to be removed from the cache. Increasing the TTL may lessen the load on the IAM service backend, but will increase the time the gateway will have out of date account info until the next interval. Increasing the prune value may reduce memory use at the cost of added CPU to check cache expirations.
+
 # User Management
 The admin and user accounts are managed through the versitygw admin API.  The easiest way to access this is with the versitygw command itself. The following commands assume the root or admin access key is `myaccess` and secret key is `mysecret`.  Adjust these and account details as needed. You can alternatively set `ADMIN_ACCESS_KEY`, `ADMIN_SECRET_KEY`, and `ADMIN_ENDPOINT_URL` environment variables instead of having to specify `--access`, `--secret`, and `--endpoint-url` respectively each time.
 
