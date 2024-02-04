@@ -5,6 +5,7 @@
     * [Global Options](./Global-Options)
     * [TLS](./TLS)
     * [Event Notifications](./Events-Notifications)
+    * [Docker](./Docker)
     * Backends:
       * [POSIX](./POSIX-Backend)
       * [ScoutFS](./ScoutFS-Backend)
