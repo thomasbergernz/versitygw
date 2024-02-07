@@ -8,8 +8,8 @@ The ScoutFS backend stores S3 objects within a scoutfs filesystem.
 - [x] List Buckets
 - [x] Set Bucket ACL
 - [x] Get Bucket ACL
-- [ ] Set Bucket Tags
-- [ ] Get Bucket Tags
+- [x] Set Bucket Tags
+- [x] Get Bucket Tags
 ### Object:
 - [x] Put Object
 - [x] Delete Object
