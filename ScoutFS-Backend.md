@@ -17,6 +17,7 @@ The ScoutFS backend stores S3 objects within a scoutfs filesystem.
 - [x] Get Bucket ACL
 - [x] Set Bucket Tags
 - [x] Get Bucket Tags
+- [ ] Versioning
 
 </td>
 <td valign="top">
