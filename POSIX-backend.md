@@ -1,6 +1,8 @@
 The POSIX backend stores S3 objects within a filesystem.
 
 # Functional Operations
+- [x] - working
+- [ ] - not supported
 
 <table>
 <tr>
