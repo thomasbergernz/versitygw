@@ -1,6 +1,8 @@
 The ScoutFS backend stores S3 objects within a scoutfs filesystem.
 
 # Functional Operations
+- [x] - working
+- [ ] - not supported
 
 <table>
 <tr>
