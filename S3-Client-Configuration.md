@@ -87,4 +87,6 @@ Fill out Server, Port, Access Key ID, Secret Access Key<br>
 example:<br>
 ![cyberduck_config](https://github.com/versity/versitygw/assets/2184287/6557e405-cac7-404a-9ff1-1123ebd9518f)
 
+For http (non SSL) endpoint, use this profile: [S3-(HTTP)](https://profiles.cyberduck.io/S3%20(HTTP).cyberduckprofile)
+
 accept server certificate when asked
