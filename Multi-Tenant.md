@@ -8,6 +8,7 @@ The root and admin accounts can create/delete admin/user accounts, create bucket
 | root | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | |
 | admin | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | |
 | user | | | | | :white_check_mark: |
+| userplus | | :white_check_mark: | | | :white_check_mark: |
 
 ## IAM Internal
 The Internal IAM stores tenant accounts in a file below the specified directory with the following option:
