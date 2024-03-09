@@ -4,6 +4,7 @@
     * [Workflow](./Workflow)
     * [Global Options](./Global-Options)
     * [TLS](./TLS)
+    * [HealthCheck](./HealthCheck)
     * [Event Notifications](./Events-Notifications)
     * [Docker](./Docker)
     * Backends:
