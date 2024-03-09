@@ -7,6 +7,7 @@
     * [HealthCheck](./HealthCheck)
     * [Event Notifications](./Events-Notifications)
     * [Docker](./Docker)
+    * [PreSignedURL](./PreSignedURL)
     * Backends:
       * [POSIX](./POSIX-Backend)
       * [ScoutFS](./ScoutFS-Backend)
