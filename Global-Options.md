@@ -1,4 +1,4 @@
-These are options that apply to the gateway itself independent of any backend type.  When available, the shorthand option can be used in place of the long option.
+These are options that apply to the gateway itself independent of any backend type.  When available, the shorthand option can be used in place of the long option. Alternatively, the optional environment variable setting is specified in []s. Setting this env var has the same effect as using the command line option. For boolean options set env var value to "true", for example `VGW_QUIET=true`.
 ***
 ```
    --version, -v           list versitygw version (default: false)
