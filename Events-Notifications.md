@@ -1,6 +1,6 @@
 Event notifications can be sent to a messaging service. The currently implemented services are Kafka and NATS.
 
-The gateway events work similar to AWS S3 events as described in https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html and the event structure is documented in https://docs.aws.amazon.com/AmazonS3/latest/userguide/notification-content-structure.html. The gateway event schema can be found in https://github.com/versity/versitygw/blob/main/s3event/event.go defined as EventSchema.
+The gateway events work similar to AWS S3 events as described in https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html and the event structure is documented in https://docs.aws.amazon.com/AmazonS3/latest/userguide/notification-content-structure.html. The gateway event schema can be found in https://github.com/versity/versitygw/blob/main/s3event/event.go defined as EventSchema. The events are globally enabled for all buckets when set.
 
 Kafka is configured with the following options:
 ```
