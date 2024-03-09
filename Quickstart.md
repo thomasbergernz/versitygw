@@ -21,8 +21,12 @@ mkdir /tmp/gw
 ```
 ### Start Gateway
 Set the root account credentials with the ROOT_ACCESS_KEY and ROOT_SECRET_KEY environment variables. These can alternatively be set with `--access` and `--secret` cli options.
+Examples:
 ```
 ROOT_ACCESS_KEY=myaccess ROOT_SECRET_KEY=mysecret ./versitygw posix /tmp/gw
+```
+```
+versitygw --access myaccess --secret mysecret posix /tmp/gw
 ```
 
 # Test client interactions
