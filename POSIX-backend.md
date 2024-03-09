@@ -19,6 +19,8 @@ The POSIX backend stores S3 objects within a filesystem.
 - [x] Get Bucket ACL
 - [x] Set Bucket Tags
 - [x] Get Bucket Tags
+- [ ] Get Bucket Policy
+- [ ] Put Bucket Policy
 - [ ] Versioning
 
 </td>
