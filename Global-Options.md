@@ -99,7 +99,7 @@ The ldap options will enable the LDAP IAM service with accounts stored in an ext
    --s3-iam-noverify                       s3 IAM disable ssl verification (default: false) [$VGW_S3_IAM_NO_VERIFY]
    --s3-iam-debug                          s3 IAM debug output (default: false) [$VGW_S3_IAM_DEBUG]
 ```
-The S3 IAM service is similar to the internal IAM service, but instead stores the account information JSON encoded in an S3 object. This should use a bucket that is not accessible to general users when using s3 backend to prevent access to account credentials. This IAM service is added for convenience, but is not considered as secure or scalable as a dedicated IAM service. See [Multi-Tenant](./Multi-Tenant) for more details.
+The S3 IAM service is similar to the internal IAM service, but instead stores the account information JSON encoded in an S3 object. This should use a bucket that is not accessible to general users when using s3 backend to prevent access to account credentials. This IAM service is added for convenience, but is not considered as secure or scalable as a dedicated IAM service. See [Multi-Tenant](./Multi-Tenant#iam-s3) for more details.
 ***
 ```
    --iam-cache-disable                     disable local iam cache (default: false) [$VGW_IAM_CACHE_DISABLE]
