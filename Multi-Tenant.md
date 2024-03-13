@@ -20,6 +20,19 @@ If the gateway is running within a cluster for load balancing, this directory mu
 
 Note: The file is plan text JSON encoded fields and access is only protected with basic file permissions.
 
+```
+   --s3-iam-access value                   s3 IAM access key [$VGW_S3_IAM_ACCESS_KEY]
+   --s3-iam-secret value                   s3 IAM secret key [$VGW_S3_IAM_SECRET_KEY]
+   --s3-iam-region value                   s3 IAM region (default: "us-east-1") [$VGW_S3_IAM_REGION]
+   --s3-iam-bucket value                   s3 IAM bucket [$VGW_S3_IAM_BUCKET]
+   --s3-iam-endpoint value                 s3 IAM endpoint [$VGW_S3_IAM_ENDPOINT]
+   --s3-iam-noverify                       s3 IAM disable ssl verification (default: false) [$VGW_S3_IAM_NO_VERIFY]
+   --s3-iam-debug                          s3 IAM debug output (default: false) [$VGW_S3_IAM_DEBUG]
+```
+
+## IAM S3
+The S3 IAM service is similar to the internal IAM service, but instead stores the account information JSON encoded in an S3 object. This should use a bucket that is not accessible to general users when using s3 backend to prevent access to account credentials. This IAM service is added for convenience, but is not considered as secure or scalable as a dedicated IAM service. This is generally useful when using s3proxy backend to not have other filesystem dependencies for the internal IAM service.
+
 ## IAM LDAP
 The LDAP IAM stores tenant accounts in an LDAP directory service. The following options are needed in order to access the LDAP service:
 ```
