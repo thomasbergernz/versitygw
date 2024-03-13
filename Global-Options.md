@@ -76,7 +76,7 @@ Bucket events can be sent to a NATS messaging service. When event-nats-url and e
 ```
    --iam-dir value                         if defined, run internal iam service within this directory [$VGW_IAM_DIR]
 ```
-The iam-dir option will enable the internal IAM service with accounts stored in a file under the specified directory. This is provided to minimize dependencies on outside services for basic functionality. The local account files are plain text and only protected with file permissions. This IAM service is added for convenience, but is not considered as secure or scalable as a dedicated IAM service. See [Multi-Tenant](./Multi-Tenant) for more details.
+The iam-dir option will enable the internal IAM service with accounts stored in a file under the specified directory. This is provided to minimize dependencies on outside services for basic functionality. The local account files are plain text and only protected with file permissions. This IAM service is added for convenience, but is not considered as secure or scalable as a dedicated IAM service. See [Multi-Tenant](./Multi-Tenant#iam-internal) for more details.
 ***
 ```
    --iam-ldap-url value                    ldap server url to store iam data [$VGW_IAM_LDAP_URL]
@@ -88,7 +88,7 @@ The iam-dir option will enable the internal IAM service with accounts stored in 
    --iam-ldap-secret-atr value             ldap server user secret access key attribute name [$VGW_IAM_LDAP_SECRET_ATR]
    --iam-ldap-role-atr value               ldap server user role attribute name [$VGW_IAM_LDAP_ROLE_ATR]
 ```
-The ldap options will enable the LDAP IAM service with accounts stored in an external LDAP service. The iam-ldap-access-atr, iam-ldap-secret-atr, and iam-ldap-role-atr define the LDAP attributes that map to access, secret credentials and role respectively. See [Multi-Tenant](./Multi-Tenant) for more details.
+The ldap options will enable the LDAP IAM service with accounts stored in an external LDAP service. The iam-ldap-access-atr, iam-ldap-secret-atr, and iam-ldap-role-atr define the LDAP attributes that map to access, secret credentials and role respectively. See [Multi-Tenant](./Multi-Tenant#iam-ldap) for more details.
 ***
 ```
    --s3-iam-access value                   s3 IAM access key [$VGW_S3_IAM_ACCESS_KEY]
