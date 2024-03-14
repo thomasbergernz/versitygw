@@ -37,7 +37,7 @@ The `cert` and `key` values are optional. When not specified, the server will no
    --admin-cert-key value                  TLS key file for admin server [$VGW_ADMIN_CERT_KEY]
 ```
 The admin server endpoint can optionally be set to listen on a different interface or port than the S3 service. This allows for better control of firewall restrictions to the admin endpoint. The certs for this can be different certs than specified for the S3 service.
-The default when these are not specified is to have the admin server listen on the same endpoint and the S3 service. 
+The default when these are not specified is to have the admin server listen on the same endpoint as the S3 service. 
 ***
 ```
    --quiet, -q                             silence stdout request logging output (default: false) [$VGW_QUIET]
