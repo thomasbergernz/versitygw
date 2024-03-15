@@ -50,15 +50,15 @@ The quiet option will silence the request info output enabled by default to stdo
 The access-log value is optional. When defined, the server will write s3 server access log output to the specified file. It is suggested to use absolute paths for the server log file because the server may chdir into the backend root directory and change locations for relative paths. This option can also be set through LOGFILE env var. This option can only be set if log-webhook-url is not set. See [LogFile](./S3-server-access-log) for more details and log format.
 ***
 ```
+   --log-webhook-url value                 webhook url to send the audit logs [$WEBHOOK]
+```
+The log-webhook-url is optional.  When defined, the server will send s3 server access log entries to the provided webhook URL formatted as json. This option can also be set through WEBHOOK env var . This option can only be set if access-log is not set. See [LogFile](./S3-server-access-log) for more details and log format.
+***
+```
    --health value                          health check endpoint path. Health endpoint will be configured on GET http method: GET <health>
                                                    NOTICE: the path has to be specified with '/'. e.g /health [$VGW_HEALTH]
 ```
 The health options specifies a health check endpoint often used for load balancers to verify gateway is alive. The health endpoint masks any bucket with this setting. For example, if the health endpoint is set to `/health`, the gateway will not allow creating or listing contents of a bucket called `health`. The health endpoint is unauthenticated, and returns a 200 status for GET.
-***
-```
-   --log-webhook-url value                 webhook url to send the audit logs [$WEBHOOK]
-```
-The log-webhook-url is optional.  When defined, the server will send s3 server access log entries to the provided webhook URL formatted as json. This option can also be set through WEBHOOK env var . This option can only be set if access-log is not set. See [LogFile](./S3-server-access-log) for more details and log format.
 ***
 ```
    --event-kafka-url value, --eku value    kafka server url to send the bucket notifications. [$VGW_EVENT_KAFKA_URL]
