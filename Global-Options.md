@@ -52,7 +52,7 @@ The access-log value is optional. When defined, the server will write s3 server 
 ```
    --log-webhook-url value                 webhook url to send the audit logs [$WEBHOOK]
 ```
-The log-webhook-url is optional.  When defined, the server will send s3 server access log entries to the provided webhook URL formatted as json. This option can also be set through WEBHOOK env var . This option can only be set if access-log is not set. See [LogFile](./S3-server-access-log) for more details and log format.
+The log-webhook-url is optional.  When defined, the server will send s3 server access log entries to the provided webhook URL formatted as json. This option can also be set through WEBHOOK env var . This option can only be set if access-log is not set. See [Webhook](./Webhook-log-entries) for more details and log format.
 ***
 ```
    --health value                          health check endpoint path. Health endpoint will be configured on GET http method: GET <health>
