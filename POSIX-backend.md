@@ -78,13 +78,15 @@ Would translate to the following file within the filesystem:
 Object names ending in `/` will create a directory within the filesystem instead of a file.
 
 # Limitations
+FS extended attribute support: The gateway uses file/directory xattrs to store metadata. The gateway will attempt to run a validation check on startup for xattr support.
+
 The object listings will not traverse symlinks. An object GET on a symlink will get the file the symlink references, and an object DELETE will delete the symlink.
 
 If the gateway is run as root, the only access permissions enforced are from the bucket and object ACLs.  The gateway user accounts are **not** mapped to local unix accounts.
 
 If the gateway is run as a user, then the gateway will only be able to access/write files based on that user's permissions.
 
-Multi-part upload parts are written as individual files within the filesystem temporary directory (see advanced topic) for upload-part API, and then copied to the final object file for the complete-multipart-upload API. The copy will try to use optimized filesystem copy_file_range calls when possible, but this means that multipart upload objects might be effectively written twice to the filesystem with fallback behavior.
+FS/Kernel copy_file_range() support: Multi-part upload parts are written as individual files within the filesystem temporary directory  for upload-part API (see advanced topic), and then copied to the final object file for the complete-multipart-upload API. The copy will try to use the optimized filesystem copy_file_range() calls when possible, but will fallback to standard data copy when not available. The optimizations are filesystem dependent, and ideally would just be a metadata update utilizing internal copy on write behavior. Some filesystems may optimize this with still copying the data, but with a single system call. The fallback behavior is just a standard userspace data copy, meaning that multipart uploads will effectively be written twice to storage. Once with the original put part, and a second time with the complete upload copy into place. Choosing an optimized filesystem filesystem can possibly double performance for these cases.
 
 Object PUTs will overwrite files but not directories. If a directory already exists with the same name as the object, the PUT will fail with ExistingObjectIsDirectory.
 
