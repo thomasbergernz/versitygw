@@ -10,6 +10,8 @@ A simple to deploy S3 gateway service that scales to meet any workload demands. 
 
 Flexible licensing to encourage community adoption and contributions.
 
+A nice backend storage abstraction layer to allow for adding S3 functionality to any storage system.
+
 ### Mailing List
 Keep up to date with latest gateway announcements by signing up to the [versitygw mailing list](https://www.versity.com/products/versitygw#signup).
 
