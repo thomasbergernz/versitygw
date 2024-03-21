@@ -4,13 +4,23 @@ _This guide is intended to help both users and developers getting started with v
 
 The Versity S3 Gateway: A High-Performance Open Source S3 to Storage System Translator
 
-Goals:
+### Goals
 
 A simple to deploy S3 gateway service that scales to meet any workload demands. From a simple local S3 dev server to a high throughput enterprise cluster service, the versitygw gateway should meet all workload needs.
 
 Flexible licensing to encourage community adoption and contributions.
 
-Background:
+### Mailing List
+Keep up to date with latest gateway announcements by signing up to the [versitygw mailing list](https://www.versity.com/products/versitygw#signup).
+
+### Need help?
+Ask questions in the [community discussions](https://github.com/versity/versitygw/discussions).
+<br>
+Open a bug report or feature request on [versitygw Issues](https://github.com/versity/versitygw/issues/new/choose).
+<br>
+Contact [Versity Sales](https://www.versity.com/contact/) to discuss enterprise support.
+
+### Background
 
 The Versity Gateway serves as a bridge between S3 clients and general storage systems. It enables applications to interact with file based and other storage using familiar S3 operations, allowing for easy integration and compatibility. Built from scratch in Go, a highly efficient programming language known for its performance and scalability, the Versity Gateway leverages Go's benefits to deliver exceptional speed and efficiency.
 
