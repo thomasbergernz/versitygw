@@ -10,4 +10,19 @@ Optimized writes leverage a ScoutFS specific interface when using the Versity [S
 ## S3 Glacier Mode 
 The Versity Gateway supports "Glacier Mode" which is a cold storage feature for data archiving and long-term data retention. In Glacier Mode, data may be stored on a separate tier (such as local tape systems) using Versity’s [ScoutAM](https://www.versity.com/products/scoutam/) platform. This capability allows organizations to manage their storage costs more effectively by moving the majority of the archive data capacity to lower cost storage. The Versity Gateway's support for Glacier Mode ensures that organizations can seamlessly integrate their existing data lifecycle client workflows with ScoutAM’s powerful file storage and management capabilities.
 
+The following behavior is enabled with Glacier Mode:
+```
+GET object:  if file offline, return invalid object state
+
+HEAD object: if file offline, set obj storage class to GLACIER
+             if file offline and staging, x-amz-restore: ongoing-request="true"
+             if file offline and not staging, x-amz-restore: ongoing-request="false"
+             if file online, x-amz-restore: ongoing-request="false", expiry-date="Fri, 2 Dec 2050 00:00:00 GMT"
+             note: this expiry-date is not used but provided for client glacier compatibility
+
+ListObjects: if file offline, set obj storage class to GLACIER
+
+RestoreObject: add batch stage request to file
+```
+
 ![Versity Gateway and ScoutAM Diagram](https://github.com/versity/versitygw/blob/assets/assets/scoutam_gateway.png)
