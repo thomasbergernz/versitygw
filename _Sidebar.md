@@ -8,6 +8,8 @@
     * [Event Notifications](./Events-Notifications)
     * [Docker](./Docker)
     * [PreSignedURL](./PreSignedURL)
+    * [Multi-Tenant/IAM](./Multi-Tenant)
+    * [Example Client Configs](./S3-Client-Configuration)
     * Backends:
       * [POSIX](./POSIX-Backend)
       * [ScoutFS](./ScoutFS-Backend)
@@ -15,8 +17,6 @@
     * Logging:
       * [Logfile](./S3-server-access-log)
       * [Webhook](./Webhook-log-entries)
-    * [Multi-Tenant/IAM](./Multi-Tenant)
-    * [Example Client Configs](./S3-Client-Configuration)
   * Developer:
     * [Contributing Changes](./Contributing-Changes)
     * [Adding A New Backend](./Adding-A-New-Backend)
