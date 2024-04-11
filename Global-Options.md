@@ -114,6 +114,11 @@ The IAM cache is intended to ease the load on the IAM service and increase the G
 The debug option will print debug output like request signing information.
 ***
 ```
+   --pprof value             enable pprof debug on specified port [$VGW_PPROF]
+```
+The pprof option enables the pprof HTTP server for profiling the gateway while the process is running. See [Profiling](https://github.com/versity/versitygw/wiki/Debugging#profiling) for more information.
+***
+```
    --help, -h              show help
 ```
 The help option prints the command usage and exits.
