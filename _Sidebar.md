@@ -25,4 +25,5 @@
     * [Debugging/Profiling](./Debugging)
   * Articles:
     * [Performance](./Performance)
+    * [Performance Part 2](./Performance-Part-2)
     * [ScoutAM Enhancements](./ScoutAM-Enhancements)
