@@ -1,3 +1,6 @@
+
+This is cross posted on the [Versity Blog](https://www.versity.com/unlocking-the-power-of-scalability-analyzing-versity-gateways-scale-out-performance/) as well.
+
 # Testing Goals
 The Versity S3 Gateway stateless architecture allows linear scaling of multiple instances across a cluster for increased aggregate performance. Additionally, load balancers can ensure even distribution of requests across the Gateway instances. The previous [Performance](./Performance) investigation focused on a single Gateway's performance to get a better understanding of the building block capability. Now this set of tests will explore the scale out capability of the gateway.
 
