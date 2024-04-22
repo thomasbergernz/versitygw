@@ -17,11 +17,12 @@ The tests can be run directly if all of the dependencies are available, or can c
 | ✅ | tested and passing |
 | ❌ | tested and failing |
 | ⚪ | not tested |
+| ∅ | not applicable | 
 
 ### supported operations
 | API | aws-cli | s3cmd | mc |
 | --- | ------- | ----- | -- |
-| abort-multipart-upload | ✅ | ✅ | ✅ |
+| abort-multipart-upload | ✅ | ∅ | ∅ |
 | complete-multipart-upload | ✅ | ✅ | ✅ |
 | copy-object | ✅ | ✅ | ✅ |
 | create-bucket | ✅ | ✅ | ✅ |
