@@ -17,7 +17,8 @@ The tests can be run directly if all of the dependencies are available, or can c
 | ✅ | tested and passing |
 | ❌ | tested and failing |
 | ⚪ | not tested |
-| ∅ | not applicable | 
+| ∅ | not applicable |
+| ❓ | needs to be verified |
 
 ### supported operations
 | API | aws-cli s3 | aws-cli s3api | s3cmd | mc | Notes |
@@ -26,47 +27,47 @@ The tests can be run directly if all of the dependencies are available, or can c
 | complete-multipart-upload | ⚪ | ✅ | ✅ | ✅ | No way to manually trigger multipart upload in **aws-cli s3**, **s3cmd**, **mc**, will automatically do so if file is above certain size |
 | copy-object | ✅ | ✅ | ✅ | ✅ | Includes **aws cli** and **mc** '**cp**' command, mc '**put**' command |
 | create-bucket | ✅ | ⚪ | ✅ | ✅ |
-| create-multipart-upload || ✅ | ✅ | ✅ |
-| delete-bucket || ✅ | ✅ | ✅ |
-| delete-bucket-policy ||  ⚪ |  ⚪ |  ⚪ |
-| delete-bucket-tagging ||  ⚪ |  ⚪ |  ⚪ |
-| delete-object || ✅ | ✅ | ✅ |
-| delete-object-tagging ||  ⚪ |  ⚪ |  ⚪ |
-| delete-objects || ✅ | ✅ | ✅ |
-| get-bucket-acl || ✅ | ✅ | ✅ |
-| get-bucket-location ||  ⚪ |  ⚪ |  ⚪ |
-| get-bucket-policy ||  ⚪ |  ⚪ |  ⚪ |
-| get-bucket-tagging || ✅ | ✅ | ✅ |
-| get-bucket-versioning ||  ⚪ |  ⚪ |  ⚪ |
-| get-object || ✅ | ✅ | ✅ |
-| get-object-acl ||  ⚪ |  ⚪ |  ⚪ |
-| get-object-attributes ||  ⚪ |  ⚪ |  ⚪ |
-| get-object-legal-hold ||  ⚪ |  ⚪ |  ⚪ |
-| get-object-lock-configuration ||  ⚪ |  ⚪ |  ⚪ |
-| get-object-retention ||  ⚪ |  ⚪ |  ⚪ |
-| get-object-tagging || ✅ | ✅ | ✅ |
-| head-bucket || ✅ | ✅ | ✅ |
-| head-object || ✅ | ✅ | ✅ |
-| list-buckets || ✅ | ✅ | ✅ |
-| list-multipart-uploads || ✅ | ✅ | ✅ |
-| list-object-versions ||  ⚪ |  ⚪ |  ⚪ |
-| list-objects || ✅ | ✅ | ✅ |
-| list-objects-v2 || ✅ | ✅ | ✅ |
-| list-parts || ✅ | ✅ | ✅ |
-| put-bucket-acl ||  ⚪ |  ⚪ |  ⚪ |
-| put-bucket-policy ||  ⚪ |  ⚪ |  ⚪ |
-| put-bucket-tagging || ✅ | ✅ | ✅ |
-| put-bucket-versioning ||  ⚪ |  ⚪ |  ⚪ |
-| put-object || ✅ | ✅ | ✅ |
-| put-object-acl ||  ⚪ |  ⚪ |  ⚪ |
-| put-object-legal-hold ||  ⚪ |  ⚪ |  ⚪ |
-| put-object-lock-configuration ||  ⚪ |  ⚪ |  ⚪ |
-| put-object-retention ||  ⚪ |  ⚪ |  ⚪ |
-| put-object-tagging || ✅ | ✅ | ✅ |
-| restore-object ||  ⚪ |  ⚪ |  ⚪ |
-| select-object-content ||  ⚪ |  ⚪ |  ⚪ |
-| upload-part ||  ⚪ |  ⚪ |  ⚪ |
-| upload-part-copy ||  ⚪ |  ⚪ |  ⚪ |
+| create-multipart-upload | ❓ | ✅ | ✅ | ✅ |
+| delete-bucket | ❓ | ✅ | ✅ | ✅ |
+| delete-bucket-policy | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| delete-bucket-tagging | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| delete-object | ❓ | ✅ | ✅ | ✅ |
+| delete-object-tagging | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| delete-objects | ❓ | ✅ | ✅ | ✅ |
+| get-bucket-acl | ❓ | ✅ | ✅ | ✅ |
+| get-bucket-location | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| get-bucket-policy | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| get-bucket-tagging | ❓ | ✅ | ✅ | ✅ |
+| get-bucket-versioning | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| get-object | ❓ | ✅ | ✅ | ✅ |
+| get-object-acl | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| get-object-attributes | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| get-object-legal-hold | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| get-object-lock-configuration | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| get-object-retention | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| get-object-tagging | ❓ | ✅ | ✅ | ✅ |
+| head-bucket | ❓ | ✅ | ✅ | ✅ |
+| head-object | ❓ | ✅ | ✅ | ✅ |
+| list-buckets | ❓ | ✅ | ✅ | ✅ |
+| list-multipart-uploads | ❓ | ✅ | ✅ | ✅ |
+| list-object-versions | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| list-objects | ❓ | ✅ | ✅ | ✅ |
+| list-objects-v2 | ❓ | ✅ | ✅ | ✅ |
+| list-parts | ❓ | ✅ | ✅ | ✅ |
+| put-bucket-acl | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| put-bucket-policy | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| put-bucket-tagging | ❓ | ✅ | ✅ | ✅ |
+| put-bucket-versioning | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| put-object | ❓ | ✅ | ✅ | ✅ |
+| put-object-acl | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| put-object-legal-hold | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| put-object-lock-configuration | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| put-object-retention | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| put-object-tagging | ❓ | ✅ | ✅ | ✅ |
+| restore-object | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| select-object-content | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| upload-part | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| upload-part-copy | ❓ |  ⚪ |  ⚪ |  ⚪ |
 
 | commands | aws-cli | s3cmd | mc |
 | -------- | ------- | ----- | -- |
