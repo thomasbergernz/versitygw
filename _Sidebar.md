@@ -21,6 +21,7 @@
     * [Contributing Changes](./Contributing-Changes)
     * [Adding A New Backend](./Adding-A-New-Backend)
     * [Running Tests](./Running-Test-Suite)
+    * [Integration Tests](./Integration-Tests)
     * [S3 API reference](./S3-API-reference)
     * [Debugging/Profiling](./Debugging)
   * Articles:
