@@ -24,7 +24,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | --- | ------- | ----- | -- | ----- |
 | abort-multipart-upload | ✅ | ∅ | ∅ ||
 | complete-multipart-upload | ✅ | ✅ | ✅ | No way to manually trigger multipart upload in s3cmd, mc, will automatically do so if file is above 15MB |
-| copy-object | ✅ | ✅ | ✅ |
+| copy-object | ✅ | ✅ | ✅ | Includes **aws cli** and **mc** '**cp**' command, mc '**put**' command |
 | create-bucket | ✅ | ✅ | ✅ |
 | create-multipart-upload | ✅ | ✅ | ✅ |
 | delete-bucket | ✅ | ✅ | ✅ |
