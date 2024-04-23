@@ -17,6 +17,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | ✅ | tested and passing |
 | ❌ | tested and failing |
 | ⚪ | not tested |
+| □ | partially tested |
 | ∅ | not applicable |
 | ❓ | needs to be verified |
 
@@ -27,21 +28,21 @@ The tests can be run directly if all of the dependencies are available, or can c
 | complete-multipart-upload | ⚪ | ✅ | ✅ | ✅ | No way to manually trigger multipart upload in **aws-cli s3**, **s3cmd**, **mc**, will automatically do so if file is above certain size |
 | copy-object | ✅ | ✅ | ✅ | ✅ | Includes **aws cli** and **mc** '**cp**' command, mc '**put**' command |
 | create-bucket | ✅ | ⚪ | ✅ | ✅ |
-| create-multipart-upload | ❓ | ✅ | ✅ | ✅ |
-| delete-bucket | ❓ | ✅ | ✅ | ✅ |
-| delete-bucket-policy | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| delete-bucket-tagging | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| delete-object | ❓ | ✅ | ✅ | ✅ |
-| delete-object-tagging | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| delete-objects | ❓ | ✅ | ✅ | ✅ |
-| get-bucket-acl | ❓ | ✅ | ✅ | ✅ |
-| get-bucket-location | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| get-bucket-policy | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| get-bucket-tagging | ❓ | ✅ | ✅ | ✅ |
-| get-bucket-versioning | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| get-object | ❓ | ✅ | ✅ | ✅ |
-| get-object-acl | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| get-object-attributes | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| create-multipart-upload | ∅ | ✅ | ∅ | ∅ |
+| delete-bucket | ✅ | ⚪ | ✅ | ✅ |
+| delete-bucket-policy | ⚪ |  ⚪ |  ⚪ |  ⚪ |
+| delete-bucket-tagging | ∅ |  ✅ |  ⚪ |  ✅ |
+| delete-object | ✅ | ⚪ | ✅ | ✅ |
+| delete-object-tagging | ⚪ |  ⚪ |  ⚪ |  ⚪ |
+| delete-objects | ✅ | ⚪ | ✅ | ✅ | Refers to recursive deletion for **aws-cli s3**, **s3cmd**, and **mc** |
+| get-bucket-acl | ∅ | ✅ | □ | □ | Data successfully retrieved in **s3cmd** and **mc**, but needs to be parsed and verified |
+| get-bucket-location | ∅ |  ⚪ |  ⚪ |  ⚪ |
+| get-bucket-policy | ∅ |  ⚪ |  ⚪ |  ⚪ |
+| get-bucket-tagging | ∅ | ✅ | □ | ✅ | Data returned by **s3cmd** needs to be checked |
+| get-bucket-versioning | ∅ |  ⚪ |  □ |  □ | Data returned by **s3cmd**, **mc** needs to be checked |
+| get-object | ⚪ | ⚪ | ⚪ | ⚪ | Copy commands have been tested, move commands haven't |
+| get-object-acl | ∅ |  ⚪ |  □ |  □ |
+| get-object-attributes | ∅ |  ⚪ |  ∅ |  ∅ |
 | get-object-legal-hold | ❓ |  ⚪ |  ⚪ |  ⚪ |
 | get-object-lock-configuration | ❓ |  ⚪ |  ⚪ |  ⚪ |
 | get-object-retention | ❓ |  ⚪ |  ⚪ |  ⚪ |
