@@ -43,32 +43,32 @@ The tests can be run directly if all of the dependencies are available, or can c
 | get-object | ⚪ | ⚪ | ⚪ | ⚪ | Copy commands have been tested, move commands haven't |
 | get-object-acl | ∅ |  ⚪ |  □ |  □ |
 | get-object-attributes | ∅ |  ⚪ |  ∅ |  ∅ |
-| get-object-legal-hold | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| get-object-lock-configuration | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| get-object-retention | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| get-object-tagging | ❓ | ✅ | ✅ | ✅ |
-| head-bucket | ❓ | ✅ | ✅ | ✅ |
-| head-object | ❓ | ✅ | ✅ | ✅ |
-| list-buckets | ❓ | ✅ | ✅ | ✅ |
-| list-multipart-uploads | ❓ | ✅ | ✅ | ✅ |
-| list-object-versions | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| list-objects | ❓ | ✅ | ✅ | ✅ |
-| list-objects-v2 | ❓ | ✅ | ✅ | ✅ |
-| list-parts | ❓ | ✅ | ✅ | ✅ |
-| put-bucket-acl | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| put-bucket-policy | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| put-bucket-tagging | ❓ | ✅ | ✅ | ✅ |
-| put-bucket-versioning | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| put-object | ❓ | ✅ | ✅ | ✅ |
-| put-object-acl | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| put-object-legal-hold | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| put-object-lock-configuration | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| put-object-retention | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| put-object-tagging | ❓ | ✅ | ✅ | ✅ |
-| restore-object | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| select-object-content | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| upload-part | ❓ |  ⚪ |  ⚪ |  ⚪ |
-| upload-part-copy | ❓ |  ⚪ |  ⚪ |  ⚪ |
+| get-object-legal-hold | ⚪ |  ⚪ |  ⚪ |  ⚪ |
+| get-object-lock-configuration | ⚪ |  ⚪ |  ⚪ |  ⚪ |
+| get-object-retention | ⚪ |  ⚪ |  ⚪ |  ⚪ |
+| get-object-tagging | ∅ | ✅ | ⚪ | ✅ |
+| head-bucket | ∅ | ✅ | ✅ | ✅ |
+| head-object | ∅ | ✅ | ❓ | ❓ |
+| list-buckets | ✅ | ⚪ | ✅ | ✅ |
+| list-multipart-uploads | ∅ | ✅ | ∅ | ∅ |
+| list-object-versions | ∅ |  ⚪ |  ⚪ |  ⚪ |
+| list-objects | ✅ | ✅ | ✅ | ✅ |
+| list-objects-v2 | ∅ | ✅ | ∅ | ∅ |
+| list-parts | ∅ | ✅ | ∅ | ∅ |
+| put-bucket-acl | ∅ |  ⚪ |  ⚪ |  ⚪ |
+| put-bucket-policy | ∅ |  ⚪ |  ⚪ |  ⚪ |
+| put-bucket-tagging | ∅ | ✅ | ∅ | ✅ |
+| put-bucket-versioning | ∅ |  ⚪ |  ⚪ |  ⚪ |
+| put-object | ⚪ | ✅ | ⚪ | ⚪ |
+| put-object-acl | ⚪ |  ⚪ |  ⚪ |  ⚪ |
+| put-object-legal-hold | ⚪ |  ⚪ |  ⚪ |  ⚪ |
+| put-object-lock-configuration | ⚪ |  ⚪ |  ⚪ |  ⚪ |
+| put-object-retention | ⚪ |  ⚪ |  ⚪ |  ⚪ |
+| put-object-tagging | ∅ | ✅ | ∅ | ✅ |
+| restore-object | ∅ |  ⚪ |  ⚪ |  ⚪ |
+| select-object-content | ∅ |  ⚪ |  ⚪ |  ⚪ |
+| upload-part | ∅ |  ✅ |  ∅ |  ∅ |
+| upload-part-copy | ∅ |  ✅ |  ∅ |  ∅ |
 
 | commands | aws-cli | s3cmd | mc |
 | -------- | ------- | ----- | -- |
@@ -77,7 +77,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 ### s3 api ops not expected to be used by gateway
 (open an issue to request functionality)
 
-| API | aws-cli | s3cmd | mc |
+| API | aws-cli s3api | s3cmd | mc |
 | --- | ------- | ----- | -- |
 | delete-bucket-analytics-configuration |  ⚪ |  ⚪ |  ⚪ |
 | delete-bucket-cors |  ⚪ |  ⚪ |  ⚪ |
