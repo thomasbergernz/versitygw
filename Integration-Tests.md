@@ -13,7 +13,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 ## Test Matrix
 
 | symbol | meaning |
-| ------ | ------- |
+| :------: | ------- |
 | ✅ | tested and passing |
 | ❌ | tested and failing |
 | ⚪ | not tested |
@@ -23,7 +23,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 
 ### supported operations
 | API | aws-cli s3 | aws-cli s3api | s3cmd | mc | Notes |
-| --- | ------ | ------- | ----- | -- | ----- |
+| :---: | :------: | :-------: | :-----: | :--: | ----- |
 | abort-multipart-upload | ❎ | ✅ | ❎ | ❎ ||
 | complete-multipart-upload | ⚪ | ✅ | ✅ | ✅ | No way to manually trigger multipart upload in **aws-cli s3**, **s3cmd**, **mc**, will automatically do so if file is above certain size |
 | copy-object | ✅ | ✅ | ✅ | ✅ | Includes **aws cli** and **mc** '**cp**' command, mc '**put**' command |
@@ -71,14 +71,14 @@ The tests can be run directly if all of the dependencies are available, or can c
 | upload-part-copy | ❎ |  ✅ |  ❎ |  ❎ |
 
 | commands | aws-cli | s3cmd | mc |
-| -------- | ------- | ----- | -- |
+| :--------: | :-------: | :-----: | :--: |
 | generate presign URL |  ✅ |  ❌ |  ✅ |
 
 ### s3 api ops not expected to be used by gateway
 (open an issue to request functionality)
 
 | API | aws-cli s3api | s3cmd | mc |
-| --- | ------- | ----- | -- |
+| :---: | :-------: | :-----: | :--: |
 | delete-bucket-analytics-configuration |  ⚪ |  ⚪ |  ⚪ |
 | delete-bucket-cors |  ⚪ |  ⚪ |  ⚪ |
 | delete-bucket-encryption |  ⚪ |  ⚪ |  ⚪ |
