@@ -31,7 +31,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | create-multipart-upload | ❎ | ✅ | ❎ | ❎ |
 | delete-bucket | ✅ | ⚪ | ✅ | ✅ |
 | delete-bucket-policy | ⚪ |  ⚪ |  ⚪ |  ⚪ |
-| delete-bucket-tagging | ❎ |  ✅ |  ⚪ |  ✅ |
+| delete-bucket-tagging | ❎ |  ✅ |  ❎ |  ✅ |
 | delete-object | ✅ | ⚪ | ✅ | ✅ |
 | delete-object-tagging | ❎ | ✅  |  ❎ |  ✅ |
 | delete-objects | ✅ | ⚪ | ✅ | ✅ | Refers to recursive deletion for **aws-cli s3**, **s3cmd**, and **mc** |
