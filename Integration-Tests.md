@@ -38,7 +38,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | get-bucket-acl | ❎ | ✅ | ❗ | ❗ | Data successfully retrieved in **s3cmd** and **mc**, but needs to be parsed and verified |
 | get-bucket-location | ❎ |  ⚪ |  ⚪ |  ⚪ |
 | get-bucket-policy | ❎ |  ⚪ |  ⚪ |  ⚪ |
-| get-bucket-tagging | ❎ | ✅ | ❗ | ✅ | Data returned by **s3cmd** needs to be checked |
+| get-bucket-tagging | ❎ | ✅ | ❎ | ✅ | |
 | get-bucket-versioning | ❎ |  ⚪ |  ❗ |  ❗ | Data returned by **s3cmd**, **mc** needs to be checked |
 | get-object | ⚪ | ⚪ | ⚪ | ⚪ | Copy commands have been tested, move commands haven't |
 | get-object-acl | ❎ |  ⚪ |  ❗ |  ❗ |
