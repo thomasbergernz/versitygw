@@ -74,6 +74,14 @@ The tests can be run directly if all of the dependencies are available, or can c
 | :--------: | :-------: | :-----: | :--: |
 | generate presign URL |  ✅ |  ❌ |  ✅ |
 
+### User tests
+
+| User type | aws | s3cmd | mc |
+|:---------:|:---:|:-----:|:--:|
+| admin | ✅ | ✅ | ⚪ |
+| userplus | ✅ | ✅ | ⚪ |
+| user | ✅ | ✅ | ⚪ |
+
 ### s3 api ops not expected to be used by gateway
 (open an issue to request functionality)
 
