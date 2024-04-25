@@ -36,7 +36,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | delete-object-tagging | ❎ | ✅  |  ❎ |  ✅ |
 | delete-objects | ✅ | ⚪ | ✅ | ✅ | Refers to recursive deletion for **aws-cli s3**, **s3cmd**, and **mc** |
 | get-bucket-acl | ❎ | ✅ | ❗ | ❗ | Data successfully retrieved in **s3cmd** and **mc**, but needs to be parsed and verified |
-| get-bucket-location | ❎ |  ⚪ |  ⚪ |  ⚪ |
+| get-bucket-location | ❎ |  ✅ |  ✅ |  ✅ |
 | get-bucket-policy | ❎ |  ⚪ |  ⚪ |  ⚪ |
 | get-bucket-tagging | ❎ | ✅ | ❎ | ✅ | |
 | get-bucket-versioning | ❎ |  ⚪ |  ❗ |  ❗ | Data returned by **s3cmd**, **mc** needs to be checked |
