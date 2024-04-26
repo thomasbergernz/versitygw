@@ -28,3 +28,4 @@
     * [Performance](./Performance)
     * [Performance Part 2](./Performance-Part-2)
     * [ScoutAM Enhancements](./ScoutAM-Enhancements)
+    * [ZFS Use Case](./ZFS-Use-Case)
