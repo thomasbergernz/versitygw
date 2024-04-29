@@ -30,14 +30,14 @@ The tests can be run directly if all of the dependencies are available, or can c
 | create-bucket | ✅ | ⚪ | ✅ | ✅ |
 | create-multipart-upload | ❎ | ✅ | ❎ | ❎ | **versitygw** has no multipart upload size minimum |
 | delete-bucket | ✅ | ⚪ | ✅ | ✅ |
-| delete-bucket-policy | ⚪ |  ⚪ |  ⚪ |  ⚪ |
+| delete-bucket-policy | ❎ | ✅ | ✅ | ✅ |
 | delete-bucket-tagging | ❎ |  ✅ |  ❎ |  ✅ |
 | delete-object | ✅ | ⚪ | ✅ | ✅ |
 | delete-object-tagging | ❎ | ✅  |  ❎ |  ✅ |
 | delete-objects | ✅ | ⚪ | ✅ | ✅ | Refers to recursive deletion for **aws-cli s3**, **s3cmd**, and **mc** |
 | get-bucket-acl | ❎ | ✅ | ❗ | ❗ | Data successfully retrieved in **s3cmd** and **mc**, but needs to be parsed and verified |
 | get-bucket-location | ❎ |  ✅ |  ✅ |  ✅ |
-| get-bucket-policy | ❎ |  ⚪ |  ⚪ |  ⚪ |
+| get-bucket-policy | ❎ | ✅ | ✅ | ✅ |
 | get-bucket-tagging | ❎ | ✅ | ❎ | ✅ | |
 | get-bucket-versioning | ❎ |  ⚪ |  ❗ |  ❗ | Data returned by **s3cmd**, **mc** needs to be checked |
 | get-object | ⚪ | ⚪ | ⚪ | ⚪ | Copy commands have been tested, move commands haven't |
@@ -56,7 +56,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | list-objects-v2 | ❎ | ✅ | ❎ | ❎ |
 | list-parts | ❎ | ✅ | ❎ | ❎ |
 | put-bucket-acl | ❎ |  ⚪ |  ⚪ |  ⚪ |
-| put-bucket-policy | ❎ |  ⚪ |  ⚪ |  ⚪ |
+| put-bucket-policy | ❎ | ✅ | ✅ | ✅ |
 | put-bucket-tagging | ❎ | ✅ | ❎ | ✅ |
 | put-bucket-versioning | ❎ |  ⚪ |  ⚪ |  ⚪ |
 | put-object | ⚪ | ✅ | ⚪ | ⚪ |
