@@ -70,9 +70,9 @@ The tests can be run directly if all of the dependencies are available, or can c
 | upload-part | ❎ |  ✅ |  ❎ |  ❎ |
 | upload-part-copy | ❎ |  ✅ |  ❎ |  ❎ |
 
-| commands | aws-cli | s3cmd | mc |
+| commands | s3 | s3api | s3cmd | mc |
 | :--------: | :-------: | :-----: | :--: |
-| generate presign URL |  ✅ |  ❌ |  ✅ |
+| generate presign URL |  ✅ | ❎ |  ❌ |  ✅ |
 
 ### User tests
 
