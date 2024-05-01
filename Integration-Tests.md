@@ -26,7 +26,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | :---: | :------: | :-------: | :-----: | :--: | ----- |
 | abort-multipart-upload | ❎ | ✅ | ❎ | ❎ ||
 | complete-multipart-upload | ⚪ | ✅ | ✅ | ✅ | No way to manually trigger multipart upload in **aws-cli s3**, **s3cmd**, **mc**, will automatically do so if file is above certain size |
-| copy-object | ✅ | ✅ | ⚪ | ✅ | Includes **aws cli** and **mc** '**cp**' command.  s3cmd is using '**put**' right now, needs to be changed |
+| copy-object | ✅ | ✅ | ✅ | ✅ | Includes **aws cli**, **s3cmd**, and **mc** '**cp**' command |
 | create-bucket | ✅ | ⚪ | ✅ | ✅ |
 | create-multipart-upload | ❎ | ✅ | ❎ | ❎ | **versitygw** has no multipart upload size minimum |
 | delete-bucket | ✅ | ⚪ | ✅ | ✅ |
@@ -40,7 +40,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | get-bucket-policy | ❎ | ✅ | ✅ | ✅ |
 | get-bucket-tagging | ❎ | ✅ | ❎ | ✅ | |
 | get-bucket-versioning | ❎ |  ⚪ |  ❗ |  ❗ | Data returned by **s3cmd**, **mc** needs to be checked |
-| get-object | ⚪ | ⚪ | ⚪ | ⚪ | Copy commands have been tested, move commands haven't |
+| get-object | ⚪ | ✅ | ⚪ | ⚪ | Copy commands have been tested, move commands haven't |
 | get-object-acl | ❎ |  ⚪ |  ❗ |  ❗ |
 | get-object-attributes | ❎ |  ⚪ |  ❎ |  ❎ |
 | get-object-legal-hold | ⚪ |  ⚪ |  ⚪ |  ⚪ |
@@ -59,7 +59,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | put-bucket-policy | ❎ | ✅ | ✅ | ✅ |
 | put-bucket-tagging | ❎ | ✅ | ❎ | ✅ |
 | put-bucket-versioning | ❎ |  ⚪ |  ⚪ |  ⚪ |
-| put-object | ⚪ | ✅ | ✅ | ⚪ |
+| put-object | ⚪ | ✅ | ✅ | ✅ |
 | put-object-acl | ⚪ |  ⚪ |  ⚪ |  ⚪ |
 | put-object-legal-hold | ⚪ |  ⚪ |  ⚪ |  ⚪ |
 | put-object-lock-configuration | ⚪ |  ⚪ |  ⚪ |  ⚪ |
