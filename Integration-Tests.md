@@ -25,7 +25,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | API | aws-cli s3 | aws-cli s3api | s3cmd | mc | Notes |
 | :---: | :------: | :-------: | :-----: | :--: | ----- |
 | abort-multipart-upload | ❎ | ✅ | ❎ | ❎ ||
-| complete-multipart-upload | ⚪ | ✅ | ✅ | ✅ | No way to manually trigger multipart upload in **aws-cli s3**, **s3cmd**, **mc**, will automatically do so if file is above certain size |
+| complete-multipart-upload | ✅ | ✅ | ✅ | ✅ | No way to manually trigger multipart upload in **aws-cli s3**, **s3cmd**, **mc**, will automatically do so if file is above certain size |
 | copy-object | ✅ | ✅ | ✅ | ✅ | Includes **aws cli**, **s3cmd**, and **mc** '**cp**' command |
 | create-bucket | ✅ | ✅ | ✅ | ✅ |
 | create-multipart-upload | ❎ | ✅ | ❎ | ❎ | **versitygw** has no multipart upload size minimum |
