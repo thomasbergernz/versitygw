@@ -27,20 +27,20 @@ The tests can be run directly if all of the dependencies are available, or can c
 | abort-multipart-upload | ❎ | ✅ | ❎ | ❎ ||
 | complete-multipart-upload | ⚪ | ✅ | ✅ | ✅ | No way to manually trigger multipart upload in **aws-cli s3**, **s3cmd**, **mc**, will automatically do so if file is above certain size |
 | copy-object | ✅ | ✅ | ✅ | ✅ | Includes **aws cli**, **s3cmd**, and **mc** '**cp**' command |
-| create-bucket | ✅ | ⚪ | ✅ | ✅ |
+| create-bucket | ✅ | ✅ | ✅ | ✅ |
 | create-multipart-upload | ❎ | ✅ | ❎ | ❎ | **versitygw** has no multipart upload size minimum |
-| delete-bucket | ✅ | ⚪ | ✅ | ✅ |
+| delete-bucket | ✅ | ✅ | ✅ | ✅ |
 | delete-bucket-policy | ❎ | ✅ | ✅ | ✅ |
 | delete-bucket-tagging | ❎ |  ✅ |  ❎ |  ✅ |
-| delete-object | ✅ | ⚪ | ✅ | ✅ |
+| delete-object | ✅ | ✅ | ✅ | ✅ |
 | delete-object-tagging | ❎ | ✅  |  ❎ |  ✅ |
-| delete-objects | ✅ | ⚪ | ✅ | ✅ | Refers to recursive deletion for **aws-cli s3**, **s3cmd**, and **mc** |
+| delete-objects | ✅ | ✅ | ✅ | ✅ | Refers to recursive deletion for **aws-cli s3**, **s3cmd**, and **mc** |
 | get-bucket-acl | ❎ | ✅ | ❗ | ❗ | Data successfully retrieved in **s3cmd** and **mc**, but needs to be parsed and verified |
 | get-bucket-location | ❎ |  ✅ |  ✅ |  ✅ |
 | get-bucket-policy | ❎ | ✅ | ✅ | ✅ |
 | get-bucket-tagging | ❎ | ✅ | ❎ | ✅ | |
 | get-bucket-versioning | ❎ |  ⚪ |  ❗ |  ❗ | Data returned by **s3cmd**, **mc** needs to be checked |
-| get-object | ⚪ | ✅ | ⚪ | ⚪ | Copy commands have been tested, move commands haven't |
+| get-object | ⚪ | ✅ | ✅ | ✅ | Copy commands have been tested, move commands haven't |
 | get-object-acl | ❎ |  ⚪ |  ❗ |  ❗ |
 | get-object-attributes | ❎ |  ⚪ |  ❎ |  ❎ |
 | get-object-legal-hold | ⚪ |  ⚪ |  ⚪ |  ⚪ |
@@ -49,7 +49,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | get-object-tagging | ❎ | ✅ | ⚪ | ✅ |
 | head-bucket | ❎ | ✅ | ✅ | ✅ |
 | head-object | ❎ | ✅ | ❓ | ❓ |
-| list-buckets | ✅ | ⚪ | ✅ | ✅ |
+| list-buckets | ✅ | ✅ | ✅ | ✅ |
 | list-multipart-uploads | ❎ | ✅ | ❎ | ❎ |
 | list-object-versions | ❎ |  ⚪ |  ⚪ |  ⚪ |
 | list-objects | ✅ | ✅ | ✅ | ✅ |
