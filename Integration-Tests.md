@@ -71,7 +71,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | upload-part-copy | ❎ |  ✅ |  ❎ |  ❎ |
 
 | commands | s3 | s3api | s3cmd | mc |
-| :--------: | :-------: | :-----: | :--: |
+| :------: | :-: | :---: | :---: | :-: |
 | generate presign URL |  ✅ | ❎ |  ❌ |  ✅ |
 
 ### User tests
