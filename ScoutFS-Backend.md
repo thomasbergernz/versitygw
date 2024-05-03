@@ -43,7 +43,7 @@ The ScoutFS backend stores S3 objects within a scoutfs filesystem.
 - [x] GetObjectLegalHold
 - [x] PutObjectRetention
 - [x] GetObjectRetention
-- [ ] Restore Object
+- [x] Restore Object
 - [ ] Set Object ACL
 - [ ] Get Object ACL
 
