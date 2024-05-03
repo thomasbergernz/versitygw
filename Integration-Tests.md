@@ -39,7 +39,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | get-bucket-location | ❎ |  ✅ |  ✅ |  ✅ |
 | get-bucket-policy | ❎ | ✅ | ✅ | ✅ |
 | get-bucket-tagging | ❎ | ✅ | ❎ | ✅ | |
-| get-bucket-versioning | ❎ |  ⚪ |  ❗ |  ❗ | Data returned by **s3cmd**, **mc** needs to be checked |
+| get-bucket-versioning | ❎ |  ⚪ |  ⚪ |  ⚪ | **As of May 3, 2024, not implemented** |
 | get-object | ✅ | ✅ | ✅ | ✅ | Copy commands have been tested, move commands haven't |
 | get-object-acl | ❎ |  ⚪ |  ❗ |  ❗ |
 | get-object-attributes | ❎ |  ⚪ |  ❎ |  ❎ |
