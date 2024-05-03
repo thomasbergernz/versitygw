@@ -3,6 +3,7 @@ Event notifications can be sent to a messaging service. The currently implemente
 The gateway events work similar to AWS S3 events as described in:<br>
 https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html and the event structure is documented in https://docs.aws.amazon.com/AmazonS3/latest/userguide/notification-content-structure.html. The gateway event schema can be found in https://github.com/versity/versitygw/blob/main/s3event/event.go defined as EventSchema. The events are globally enabled for all buckets when set.  See below for filter configuration on what events get notification sent.
 
+## Event Services
 ### Kafka is configured with the following options:
 ```
    --event-kafka-url value, --eku value    kafka server url to send the bucket notifications.
@@ -51,3 +52,6 @@ Modify the file to only set the desired event notifications to true, and all oth
 ```
    --event-filter value, --ef value        bucket event notifications filters configuration file path [$VGW_EVENT_FILTER]
 ```
+
+## Non-standard behavior
+For the case of DeleteObjects, an individual delete event will be sent for each object in the list.
