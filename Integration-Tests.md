@@ -59,7 +59,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | put-bucket-policy | ❎ | ✅ | ✅ | ✅ |
 | put-bucket-tagging | ❎ | ✅ | ❎ | ✅ |
 | put-bucket-versioning | ❎ |  ⚪ |  ⚪ |  ⚪ |
-| put-object | ⚪ | ✅ | ✅ | ✅ |
+| put-object | ✅ | ✅ | ✅ | ✅ |
 | put-object-acl | ⚪ |  ⚪ |  ⚪ |  ⚪ |
 | put-object-legal-hold | ⚪ |  ⚪ |  ⚪ |  ⚪ |
 | put-object-lock-configuration | ⚪ |  ⚪ |  ⚪ |  ⚪ |
