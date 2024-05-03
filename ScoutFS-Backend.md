@@ -19,8 +19,8 @@ The ScoutFS backend stores S3 objects within a scoutfs filesystem.
 - [x] Get Bucket ACL
 - [x] Set Bucket Tags
 - [x] Get Bucket Tags
-- [ ] Get Bucket Policy
-- [ ] Put Bucket Policy
+- [x] Get Bucket Policy
+- [x] Put Bucket Policy
 - [ ] Versioning
 
 </td>
@@ -33,10 +33,17 @@ The ScoutFS backend stores S3 objects within a scoutfs filesystem.
 - [x] Get Object Headers
 - [x] List Objects
 - [x] List Objects (v2)
-- [x] Restore Object
 - [x] Set Object Tags
 - [x] Get Object Tags
+- [x] Delete Object Tags
 - [x] Copy Object
+- [x] PutObjectLockConfiguration
+- [x] GetObjectLockConfiguration
+- [x] PutObjectLegalHold
+- [x] GetObjectLegalHold
+- [x] PutObjectRetention
+- [x] GetObjectRetention
+- [ ] Restore Object
 - [ ] Set Object ACL
 - [ ] Get Object ACL
 
