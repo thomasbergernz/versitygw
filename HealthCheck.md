@@ -3,8 +3,8 @@ The Health Check endpoint can be optionally enabled for load balancer backend he
 
 The health endpoint is configured with the option:
 ```
-   --health value                          health check endpoint path. Health endpoint will be configured on GET http method: GET <health>
-                                                   NOTICE: the path has to be specified with '/'. e.g /health [$VGW_HEALTH]
+   --health value             health check endpoint path. Health endpoint will be configured on GET http method: GET <health>
+                              NOTICE: the path has to be specified with '/'. e.g /health [$VGW_HEALTH]
 ```
 
 When set, the configured endpoint will return 200 status (OK) for **unauthenticated http GET**. This will mask bucket actions at that endpoint. For example, if `--health` is set to `/health` then a bucket called "health" cannot be created or contents listed (if already created).
