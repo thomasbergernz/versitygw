@@ -1,8 +1,8 @@
 The ScoutFS backend stores S3 objects within a scoutfs filesystem.
 
 # Functional Operations
-- [x] - working
-- [ ] - not supported
+✅ - working<br>
+❌ - not supported
 
 <table>
 <tr>
@@ -11,52 +11,53 @@ The ScoutFS backend stores S3 objects within a scoutfs filesystem.
 <tr>
 <td valign="top">
 
-- [x] Create Bucket
-- [x] Delete Bucket
-- [x] Get Bucket Headers
-- [x] List Buckets
-- [x] Set Bucket ACL
-- [x] Get Bucket ACL
-- [x] Set Bucket Tags
-- [x] Get Bucket Tags
-- [x] Get Bucket Policy
-- [x] Put Bucket Policy
-- [ ] Versioning
+✅ Create Bucket<br>
+✅ Delete Bucket<br>
+✅ Get Bucket Headers<br>
+✅ List Buckets<br>
+✅ Set Bucket ACL<br>
+✅ Get Bucket ACL<br>
+✅ Set Bucket Tags<br>
+✅ Get Bucket Tags<br>
+✅ Delete Bucket Tags<br>
+✅ Get Bucket Policy<br>
+✅ Put Bucket Policy<br>
+❌ Versioning
 
 </td>
 <td valign="top">
 
-- [x] Put Object
-- [x] Delete Object
-- [x] Delete Objects
-- [x] Get Object
-- [x] Get Object Headers
-- [x] List Objects
-- [x] List Objects (v2)
-- [x] Set Object Tags
-- [x] Get Object Tags
-- [x] Delete Object Tags
-- [x] Copy Object
-- [x] PutObjectLockConfiguration
-- [x] GetObjectLockConfiguration
-- [x] PutObjectLegalHold
-- [x] GetObjectLegalHold
-- [x] PutObjectRetention
-- [x] GetObjectRetention
-- [x] Restore Object
-- [ ] Set Object ACL
-- [ ] Get Object ACL
+✅ Put Object<br>
+✅ Delete Object<br>
+✅ Delete Objects<br>
+✅ Get Object<br>
+✅ Get Object Headers<br>
+✅ List Objects<br>
+✅ List Objects (v2)<br>
+✅ Set Object Tags<br>
+✅ Get Object Tags<br>
+✅ Delete Object Tags<br>
+✅ Copy Object<br>
+✅ PutObjectLockConfiguration<br>
+✅ GetObjectLockConfiguration<br>
+✅ PutObjectLegalHold<br>
+✅ GetObjectLegalHold<br>
+✅ PutObjectRetention<br>
+✅ GetObjectRetention<br>
+✅ Restore Object<br>
+❌ Set Object ACL<br>
+❌ Get Object ACL
 
 </td>
 <td valign="top">
 
-- [x] Create Multipart Upload
-- [x] Complete Multipart Upload
-- [x] Abort Multipart Upload
-- [x] List Multipart Uploads
-- [x] List Multipart Upload Parts
-- [x] Put Object Part
-- [x] Upload Part Copy
+✅ Create Multipart Upload<br>
+✅ Complete Multipart Upload<br>
+✅ Abort Multipart Upload<br>
+✅ List Multipart Uploads<br>
+✅ List Multipart Upload Parts<br>
+✅ Put Object Part<br>
+✅ Upload Part Copy
 
 </td>
 </tr>
