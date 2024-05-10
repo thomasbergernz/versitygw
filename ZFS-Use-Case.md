@@ -20,6 +20,7 @@ modprobe zfs
 zpool create mypool raidz /dev/vdb /dev/vdc /dev/vdd /dev/vde
 zpool status
 mkdir /mnt/zfs
+zfs create mypool/myfilesystem 
 zfs set mountpoint=/mnt/zfs mypool/myfilesystem
 ```
 
