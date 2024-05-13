@@ -35,7 +35,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | delete-object | ✅ | ✅ | ✅ | ✅ |
 | delete-object-tagging | ❎ | ✅  |  ❎ |  ✅ |
 | delete-objects | ✅ | ✅ | ✅ | ✅ | Refers to recursive deletion for **aws-cli s3**, **s3cmd**, and **mc** |
-| get-bucket-acl | ❎ | ✅ | ❗ | ❗ | Data successfully retrieved in **s3cmd** and **mc**, but needs to be parsed and verified |
+| get-bucket-acl | ❎ | ✅ | ❗ | ❎ | Data successfully retrieved in **s3cmd**, but needs to be parsed and verified |
 | get-bucket-location | ❎ |  ✅ |  ✅ |  ✅ |
 | get-bucket-policy | ❎ | ✅ | ✅ | ✅ |
 | get-bucket-tagging | ❎ | ✅ | ❎ | ✅ | |
@@ -55,7 +55,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | list-objects | ✅ | ✅ | ✅ | ✅ |
 | list-objects-v2 | ❎ | ✅ | ❎ | ❎ |
 | list-parts | ❎ | ✅ | ❎ | ❎ |
-| put-bucket-acl | ❎ |  ❌ |  ✅ |  ⚪ | https://github.com/versity/versitygw/issues/561 |
+| put-bucket-acl | ❎ |  ❌ |  ✅ |  ❎ | https://github.com/versity/versitygw/issues/561 |
 | put-bucket-policy | ❎ | ✅ | ✅ | ✅ |
 | put-bucket-tagging | ❎ | ✅ | ❎ | ✅ |
 | put-bucket-versioning | ❎ |  ⚪ |  ⚪ |  ⚪ | **As of May 3, 2024, not implemented** |
