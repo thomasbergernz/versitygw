@@ -55,7 +55,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | list-objects | ✅ | ✅ | ✅ | ✅ |
 | list-objects-v2 | ❎ | ✅ | ❎ | ❎ |
 | list-parts | ❎ | ✅ | ❎ | ❎ |
-| put-bucket-acl | ❎ |  ⚪ |  ⚪ |  ⚪ |
+| put-bucket-acl | ❎ |  ❌ |  ⚪ |  ⚪ |
 | put-bucket-policy | ❎ | ✅ | ✅ | ✅ |
 | put-bucket-tagging | ❎ | ✅ | ❎ | ✅ |
 | put-bucket-versioning | ❎ |  ⚪ |  ⚪ |  ⚪ | **As of May 3, 2024, not implemented** |
