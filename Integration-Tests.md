@@ -41,7 +41,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | get-bucket-tagging | ❎ | ✅ | ❎ | ✅ | |
 | get-bucket-versioning | ❎ |  ⚪ |  ⚪ |  ⚪ | **As of May 3, 2024, not implemented** |
 | get-object | ✅ | ✅ | ✅ | ✅ | Copy commands have been tested, move commands haven't |
-| get-object-acl | ❎ |  ⚪ |  ❗ |  ❗ |
+| get-object-acl | ❎ |  ⚪ |  ❗ |  ❗ | **As of May 13, 2024, not implemented** |
 | get-object-attributes | ❎ |  ⚪ |  ❎ |  ❎ |
 | get-object-legal-hold | ⚪ |  ⚪ |  ⚪ |  ⚪ |
 | get-object-lock-configuration | ⚪ |  ⚪ |  ⚪ |  ⚪ |
@@ -60,7 +60,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | put-bucket-tagging | ❎ | ✅ | ❎ | ✅ |
 | put-bucket-versioning | ❎ |  ⚪ |  ⚪ |  ⚪ | **As of May 3, 2024, not implemented** |
 | put-object | ✅ | ✅ | ✅ | ✅ |
-| put-object-acl | ⚪ |  ⚪ |  ⚪ |  ⚪ |
+| put-object-acl | ⚪ |  ⚪ |  ⚪ |  ⚪ | **As of May 13, 2024, not implemented** |
 | put-object-legal-hold | ⚪ |  ⚪ |  ⚪ |  ⚪ |
 | put-object-lock-configuration | ⚪ |  ⚪ |  ⚪ |  ⚪ |
 | put-object-retention | ⚪ |  ⚪ |  ⚪ |  ⚪ |
