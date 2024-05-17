@@ -39,10 +39,10 @@ The tests can be run directly if all of the dependencies are available, or can c
 | get-bucket-location | ❎ |  ✅ |  ✅ |  ✅ |
 | get-bucket-policy | ❎ | ✅ | ✅ | ✅ |
 | get-bucket-tagging | ❎ | ✅ | ❎ | ✅ | |
-| get-bucket-versioning | ❎ |  ⚪ |  ⚪ |  ⚪ | **As of May 3, 2024, not implemented** |
+| get-bucket-versioning | ❎ |  ❎ |  ❎ |  ❎ | **As of May 3, 2024, not implemented** |
 | get-object | ✅ | ✅ | ✅ | ✅ | Copy commands have been tested, move commands haven't |
-| get-object-acl | ❎ |  ⚪ |  ❗ |  ❗ | **As of May 13, 2024, not implemented** |
-| get-object-attributes | ❎ |  ⚪ |  ❎ |  ❎ |
+| get-object-acl | ❎ |  ❎ |  ❎ |  ❎ | **As of May 13, 2024, not implemented** |
+| get-object-attributes | ❎ |  ✅ |  ❎ |  ❎ |
 | get-object-legal-hold | ⚪ |  ⚪ |  ⚪ |  ⚪ |
 | get-object-lock-configuration | ⚪ |  ⚪ |  ⚪ |  ⚪ |
 | get-object-retention | ⚪ |  ⚪ |  ⚪ |  ⚪ |
@@ -55,7 +55,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | list-objects | ✅ | ✅ | ✅ | ✅ |
 | list-objects-v2 | ❎ | ✅ | ❎ | ❎ |
 | list-parts | ❎ | ✅ | ❎ | ❎ |
-| put-bucket-acl | ❎ |  ❌ |  ✅ |  ❎ | https://github.com/versity/versitygw/issues/561 **NOTE:** this command refers to changing the local bucket ACLs for versitygw users, not the remote ACLs on S3 |
+| put-bucket-acl | ❎ |  ✅ |  ❓ |  ❎ | https://github.com/versity/versitygw/issues/561 **NOTE:** this command refers to changing the local bucket ACLs for versitygw users, not the remote ACLs on S3 **ANOTHER NOTE:** awaiting changes for the underlying command before testing |
 | put-bucket-policy | ❎ | ✅ | ✅ | ✅ |
 | put-bucket-tagging | ❎ | ✅ | ❎ | ✅ |
 | put-bucket-versioning | ❎ |  ⚪ |  ⚪ |  ⚪ | **As of May 3, 2024, not implemented** |
