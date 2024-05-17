@@ -22,7 +22,8 @@ The POSIX backend stores S3 objects within a filesystem.
 ✅ Delete Bucket Tags<br>
 ✅ Get Bucket Policy<br>
 ✅ Put Bucket Policy<br>
-❌ Versioning
+❌ Put Bucket Versioning<br>
+❌ Get Bucket Versioning
 
 </td>
 <td valign="top">
@@ -38,15 +39,17 @@ The POSIX backend stores S3 objects within a filesystem.
 ✅ Get Object Tags<br>
 ✅ Delete Object Tags<br>
 ✅ Copy Object<br>
-✅ PutObjectLockConfiguration<br>
-✅ GetObjectLockConfiguration<br>
-✅ PutObjectLegalHold<br>
-✅ GetObjectLegalHold<br>
-✅ PutObjectRetention<br>
-✅ GetObjectRetention<br>
+✅ Put Object Lock Configuration<br>
+✅ Get Object Lock Configuration<br>
+✅ Put Object Legal Hold<br>
+✅ Get Object Legal Hold<br>
+✅ Put Object Retention<br>
+✅ Get Object Retention<br>
 ❌ Restore Object<br>
 ❌ Set Object ACL<br>
-❌ Get Object ACL
+❌ Get Object ACL<br>
+❌ List Object Versions<br>
+❌ Select Object Content
 
 </td>
 <td valign="top">
