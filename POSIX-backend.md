@@ -33,6 +33,7 @@ The POSIX backend stores S3 objects within a filesystem.
 ✅ Delete Objects<br>
 ✅ Get Object<br>
 ✅ Get Object Headers<br>
+✅ Get Object Attributes<br>
 ✅ List Objects<br>
 ✅ List Objects (v2)<br>
 ✅ Set Object Tags<br>
