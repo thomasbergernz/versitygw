@@ -58,9 +58,9 @@ The tests can be run directly if all of the dependencies are available, or can c
 | put-bucket-acl | ❎ |  ✅ |  ❓ |  ❎ | https://github.com/versity/versitygw/issues/561 **NOTE:** this command refers to changing the local bucket ACLs for versitygw users, not the remote ACLs on S3 **ANOTHER NOTE:** awaiting changes for the underlying command before testing |
 | put-bucket-policy | ❎ | ✅ | ✅ | ✅ |
 | put-bucket-tagging | ❎ | ✅ | ❎ | ✅ |
-| put-bucket-versioning | ❎ |  ⚪ |  ⚪ |  ⚪ | **As of May 3, 2024, not implemented** |
+| put-bucket-versioning | ❎ |  ❎ |  ❎ |  ❎ | **As of May 3, 2024, not implemented** |
 | put-object | ✅ | ✅ | ✅ | ✅ |
-| put-object-acl | ⚪ |  ⚪ |  ⚪ |  ⚪ | **As of May 13, 2024, not implemented** |
+| put-object-acl | ❎ |  ❎ |  ❎ |  ❎ | **As of May 13, 2024, not implemented** |
 | put-object-legal-hold | ⚪ |  ⚪ |  ⚪ |  ⚪ |
 | put-object-lock-configuration | ⚪ |  ⚪ |  ⚪ |  ⚪ |
 | put-object-retention | ⚪ |  ⚪ |  ⚪ |  ⚪ |
