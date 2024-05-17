@@ -14,6 +14,7 @@ The ScoutFS backend stores S3 objects within a scoutfs filesystem.
 ✅ Create Bucket<br>
 ✅ Delete Bucket<br>
 ✅ Get Bucket Headers<br>
+✅ Get Object Attributes<br>
 ✅ List Buckets<br>
 ✅ Set Bucket ACL<br>
 ✅ Get Bucket ACL<br>
