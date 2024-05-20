@@ -51,7 +51,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | head-object | ❎ | ✅ | ❓ | ❓ |
 | list-buckets | ✅ | ✅ | ✅ | ✅ |
 | list-multipart-uploads | ❎ | ✅ | ❎ | ❎ |
-| list-object-versions | ❎ |  ⚪ |  ⚪ |  ⚪ |
+| list-object-versions | ❎ |  ❎ |  ❎ |  ❎ | **As of May 20, 2024, currently not implemented, but likely to be added soon** |
 | list-objects | ✅ | ✅ | ✅ | ✅ |
 | list-objects-v2 | ❎ | ✅ | ❎ | ❎ |
 | list-parts | ❎ | ✅ | ❎ | ❎ |
