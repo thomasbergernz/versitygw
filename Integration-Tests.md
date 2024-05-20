@@ -66,7 +66,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | put-object-retention | ⚪ |  ⚪ |  ⚪ |  ⚪ |
 | put-object-tagging | ❎ | ✅ | ❎ | ✅ |
 | restore-object | ❎ |  ⚪ |  ⚪ |  ⚪ |
-| select-object-content | ❎ |  ⚪ |  ⚪ |  ⚪ |
+| select-object-content | ❎ | ❎ | ❎ | ❎ | **As of May 20, 2024, not implemented** |
 | upload-part | ❎ |  ✅ |  ❎ |  ❎ |
 | upload-part-copy | ❎ |  ✅ |  ❎ |  ❎ |
 
