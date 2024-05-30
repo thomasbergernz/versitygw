@@ -136,7 +136,7 @@ Setting metrics-statsd-servers enables sending StatsD metrics to the provided en
 ```
    --metrics-dogstatsd-servers value, --mds value  DogStatsD server urls comma separated. e.g. '127.0.0.1:8125,dogstats.example.com:8125' [$VGW_METRICS_DOGSTATS_SERVERS]
 ```
-Setting metrics-dogstatsd-servers enables sending DataDog DogStatsD StatsD metrics to the provided endpoints. The value for this option is a comma separated list of all endpoints that metrics should be sent to. The typical value for this would be the local DataDog agent listening on "127.0.0.1:8125".
+Setting metrics-dogstatsd-servers enables sending DataDog DogStatsD StatsD metrics to the provided endpoints. The value for this option is a comma separated list of all endpoints that metrics should be sent to. The typical value for this would be the local DataDog agent listening on `127.0.0.1:8125`.
 ***
 ```
    --debug                   enable debug output (default: false) [$VGW_DEBUG]
