@@ -65,13 +65,23 @@ The health options specifies a health check endpoint often used for load balance
    --event-kafka-topic value, --ekt value  kafka server pub-sub topic to send the bucket notifications to [$VGW_EVENT_KAFKA_TOPIC]
    --event-kafka-key value, --ekk value    kafka server put-sub topic key to send the bucket notifications to [$VGW_EVENT_KAFKA_KEY]
 ```
-Bucket events can be sent to a kafka message bus. When event-kafka-url, event-kafka-topic, and optionally event-kafka-key are specified, all bucket events will be sent to the kafka service. See [Events-Notifications](./Events-Notifications) for more details and format.
+Bucket events can be sent to a kafka message bus. When event-kafka-url, event-kafka-topic, and optionally event-kafka-key are specified, all configured bucket events will be sent to the kafka service. See [Events-Notifications](./Events-Notifications) for more details and format.
 ***
 ```
    --event-nats-url value, --enu value     nats server url to send the bucket notifications [$VGW_EVENT_NATS_URL]
    --event-nats-topic value, --ent value   nats server pub-sub topic to send the bucket notifications to [$VGW_EVENT_NATS_TOPIC]
 ```
-Bucket events can be sent to a NATS messaging service. When event-nats-url and event-nats-topic are specified, all bucket events will be sent to the the NATS messaging service. See [Events-Notifications](./Events-Notifications) for more details and format.
+Bucket events can be sent to a NATS messaging service. When event-nats-url and event-nats-topic are specified, all configured bucket events will be sent to the NATS messaging service. See [Events-Notifications](./Events-Notifications) for more details and format.
+***
+```
+   --event-webhook-url value, --ewu value          webhook url to send bucket notifications [$VGW_EVENT_WEBHOOK_URL]
+```
+Bucket events can be sent to a webhook URL. When event-webhook-url is specified, all configured bucket events will be sent to the NATS messaging service. See [Events-Notifications](./Events-Notifications) for more details and format.
+***
+```
+   --event-filter value, --ef value                bucket event notifications filters configuration file path [$VGW_EVENT_FILTER]
+```
+Bucket events can be filtered using the notifications filters configuration file to only send configured events to the enabled event service. This is used in conjunction with one of the service event options. See [Events-Notifications](./Events-Notifications) for more details and format.
 ***
 ```
    --iam-dir value                         if defined, run internal iam service within this directory [$VGW_IAM_DIR]
@@ -109,9 +119,29 @@ The S3 IAM service is similar to the internal IAM service, but instead stores th
 The IAM cache is intended to ease the load on the IAM service and increase the Gateway performance by caching accounts and credentials for the TTL time interval. Disabling this will cause a request to the configured IAM service for each incoming request to retrieve the corresponding account credentials. The cache is enabled by default. The TTL specifies how long to cache credentials, and the prune value determines the interval for expired entries to be removed from the cache. Increasing the TTL may lessen the load on the IAM service backend, but may have out of date account info until the next interval. Increasing the prune value may reduce memory use at the cost of added CPU to check cache expirations. See [Multi-Tenant](./Multi-Tenant#iam-cache) for more details.
 ***
 ```
+   --readonly                                      allow only read operations across all the gateway (default: false) [$VGW_READ_ONLY]
+```
+The read only option disables all write actions through the gateway. This will only allow S3 API calls that do not change any data in the backend storage system. All API calls that attempt to create, upload, or delete objects through the gateway will get AccessDenied (HTTP Forbidden/403).
+***
+```
+   --metrics-service-name value, --msn value       service name tag for metrics, hostname if blank [$VGW_METRICS_SERVICE_NAME]
+```
+Optional when enabling a metrics endpoint, setting the metrics-service-name will override the default hostname for service name metrics tag. By default all metrics are tagged with "service"=$HOSTNAME.
+***
+```
+   --metrics-statsd-servers value, --mss value     StatsD server urls comma separated. e.g. 'statsd1.example.com:8125,statsd2.example.com:8125' [$VGW_METRICS_STATSD_SERVERS]
+```
+Setting metrics-statsd-servers enables sending StatsD metrics to the provided endpoints. The StatsD metrics are sent using InfluxDB flavor StatsD tags. The value for this option is a comma separated list of all endpoints that metrics should be sent to.
+***
+```
+   --metrics-dogstatsd-servers value, --mds value  DogStatsD server urls comma separated. e.g. '127.0.0.1:8125,dogstats.example.com:8125' [$VGW_METRICS_DOGSTATS_SERVERS]
+```
+Setting metrics-dogstatsd-servers enables sending DataDog DogStatsD StatsD metrics to the provided endpoints. The value for this option is a comma separated list of all endpoints that metrics should be sent to. The typical value for this would be the local DataDog agent listening on "127.0.0.1:8125".
+***
+```
    --debug                   enable debug output (default: false) [$VGW_DEBUG]
 ```
-The debug option will print debug output like request signing information.
+The debug option will print debug output such as request signing information.
 ***
 ```
    --pprof value             enable pprof debug on specified port [$VGW_PPROF]
