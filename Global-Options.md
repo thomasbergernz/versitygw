@@ -126,17 +126,17 @@ The read only option disables all write actions through the gateway. This will o
 ```
    --metrics-service-name value, --msn value       service name tag for metrics, hostname if blank [$VGW_METRICS_SERVICE_NAME]
 ```
-Optional when enabling a metrics endpoint, setting the metrics-service-name will override the default hostname for service name metrics tag. By default all metrics are tagged with "service"=$HOSTNAME.
+Optional when enabling a metrics endpoint, setting the metrics-service-name will override the default hostname for service name metrics tag. By default all metrics are tagged with "service"=$HOSTNAME. See [Metrics](./Metrics) for more details.
 ***
 ```
    --metrics-statsd-servers value, --mss value     StatsD server urls comma separated. e.g. 'statsd1.example.com:8125,statsd2.example.com:8125' [$VGW_METRICS_STATSD_SERVERS]
 ```
-Setting metrics-statsd-servers enables sending StatsD metrics to the provided endpoints. The StatsD metrics are sent using InfluxDB flavor StatsD tags. The value for this option is a comma separated list of all endpoints that metrics should be sent to.
+Setting metrics-statsd-servers enables sending StatsD metrics to the provided endpoints. The StatsD metrics are sent using InfluxDB flavor StatsD tags. The value for this option is a comma separated list of all endpoints that metrics should be sent to. See [Metrics](./Metrics) for more details.
 ***
 ```
    --metrics-dogstatsd-servers value, --mds value  DogStatsD server urls comma separated. e.g. '127.0.0.1:8125,dogstats.example.com:8125' [$VGW_METRICS_DOGSTATS_SERVERS]
 ```
-Setting metrics-dogstatsd-servers enables sending DataDog DogStatsD StatsD metrics to the provided endpoints. The value for this option is a comma separated list of all endpoints that metrics should be sent to. The typical value for this would be the local DataDog agent listening on `127.0.0.1:8125`.
+Setting metrics-dogstatsd-servers enables sending DataDog DogStatsD StatsD metrics to the provided endpoints. The value for this option is a comma separated list of all endpoints that metrics should be sent to. The typical value for this would be the local DataDog agent listening on `127.0.0.1:8125`. See [Metrics](./Metrics) for more details.
 ***
 ```
    --debug                   enable debug output (default: false) [$VGW_DEBUG]
