@@ -63,6 +63,20 @@ The IAM cache is intended to ease the load on the IAM service and increase the G
 # User Management
 The admin and user accounts are managed through the versitygw admin API.  The easiest way to access this is with the versitygw command itself. The following commands assume the root or admin access key is `myaccess` and secret key is `mysecret`.  Adjust these and account details as needed. You can alternatively set `ADMIN_ACCESS_KEY`, `ADMIN_SECRET_KEY`, and `ADMIN_ENDPOINT_URL` environment variables instead of having to specify `--access`, `--secret`, and `--endpoint-url` respectively each time.
 
+Options for creating users:
+```
+   --access value, -a value      access key id for the new user
+   --secret value, -s value      secret access key for the new user
+   --role value, -r value        role for the new user
+   --user-id value, --ui value   userID for the new user (default: 0)
+   --group-id value, --gi value  groupID for the new user (default: 0)
+   --help, -h                    show help
+```
+
+Valid roles are: admin, user, userplus
+
+The `user-id` and `group-id` can be set for individual accounts. Specific backends can enable use of these values to map user/group ids to backend access.  For example, in the posix and scoutfs backends, the options `--chuid` and `--chgid` can be enabled to set the user/group for newly created objects.
+
 To create a new admin account with access key `myadmin` and secret key `mysecret`:
 ```
 versitygw admin --access myaccess --secret mysecret --endpoint-url http://127.0.0.1:7070 create-user --access myadmin --secret mysecret --role admin
@@ -74,6 +88,12 @@ versitygw admin --access myaccess --secret mysecret --endpoint-url http://127.0.
 ```
 
 To list accounts:
+Options for listing users:
+```
+   --help, -h                show help
+```
+
+example:
 ```
 versitygw admin --access myaccess --secret mysecret --endpoint-url http://127.0.0.1:7070 list-users
 ```
@@ -83,9 +103,16 @@ Account  Role
 myuser   user
 myadmin  admin
 ```
-note: The root account is not a permanently recorded int he IAM service, so not listed.  This account is always defined at gateway runtime.
+note: The root account is not a permanently recorded in the IAM service, so not listed.  This account is always defined at gateway runtime.
 
 Accounts can be deleted with the `delete-user` cli option.
+Options for creating users:
+```
+   --access value, -a value  access key id of the user to be deleted
+   --help, -h                show help
+```
+
+example:
 ```
 versitygw admin --access myaccess --secret mysecret --endpoint-url http://127.0.0.1:7070 delete-user --access myuser
 ```
@@ -94,6 +121,13 @@ versitygw admin --access myaccess --secret mysecret --endpoint-url http://127.0.
 A user is only allowed access to bucket assigned to them. But they are unable to create new buckets. To create a bucket for a user account, an admin or root must create the bucket and assign ownership to the user.
 
 This example extends the example above where the "myadmin" and "myuser" accounts were previously created.
+
+Options for changing bucket owner:
+```
+   --bucket value, -b value  the bucket name to change the owner
+   --owner value, -o value   the user access key id, who should be the bucket owner
+   --help, -h                show help
+```
 
 Example of creating a bucket and assigning to "myuser" (Note: aws cli running with admin credentials):
 ```
@@ -112,7 +146,14 @@ export AWS_ENDPOINT_URL=http://127.0.0.1:7070
 aws s3 ls s3://
 ```
 
-The admin API allows for listing all buckets and their current owners. This is a special API call since this is not directly supported in the S3 API.  For example:
+The admin API allows for listing all buckets and their current owners. This is a special API call since this is not directly supported in the S3 API.
+
+Options for list buckets:
+```
+   --help, -h  show help
+```
+
+example:
 ```
 versitygw admin --access myaccess --secret mysecret --endpoint-url http://127.0.0.1:7070 list-buckets
 ```
