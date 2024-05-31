@@ -10,6 +10,7 @@
     * [PreSignedURL](./PreSignedURL)
     * [Multi-Tenant/IAM](./Multi-Tenant)
     * [Example Client Configs](./S3-Client-Configuration)
+    * [Metrics](./Metrics)
     * Backends:
       * [POSIX](./POSIX-Backend)
       * [ScoutFS](./ScoutFS-Backend)
