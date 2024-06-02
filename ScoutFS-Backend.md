@@ -1,4 +1,8 @@
-The ScoutFS backend stores S3 objects within a scoutfs filesystem.
+The ScoutFS backend stores S3 objects within a scoutfs filesystem. The primary difference between this and the `posix` backend is:
+* enables complete-multipart-upload optimizations on ScoutFS filesystem
+* optional glacier mode when used with archiving ScoutFS filesystem (ScoutAM)
+
+Because of the complete-multipart-upload optimizations, it is recommended to always use `scoutfs` backend when configuring for ScoutFS filesystem even when ScoutAM is not in use.
 
 # Functional Operations
 ✅ - working<br>
@@ -90,11 +94,19 @@ Object names ending in `/` will create a directory within the filesystem instead
 ScoutFS supports an offline file mode where the metadata is resident in the filesystem, but the data is not on local filesystem block devices. To retrieve the data, a stage request is issued to ScoutAM that will copy the data from the archive system back into the local filesystem.
 
 When Glacier mode is enabled in the gateway, the following behavior is enabled:
-* The object status is reflected in the storage class. The storage class is set to STANDARD for online objects, and GLACIER for offline objects. The storage class can be queried with the HeadObject API call.
-* A GET for an offline object will return InvalidObjectState error that is compatible with Glacier API.
-* An offline object can be transitioned from GLACIER to STANDARD with the RestoreObject API.
-* Once a restore object is requested, the x-amz-restore header in HeadObject response will reflect ongoing-request=“true” until the recall is completed.
-* The object can be transitioned to offline state by setting storage class to GLACIER. 
+```
+GET object:    if file offline, return invalid object state
+
+HEAD object:   if file offline, obj storage class is GLACIER
+               if file offline and staging, header x-amz-restore: ongoing-request="true"
+               if file offline and not staging, header x-amz-restore: ongoing-request="false"
+               if file online, header x-amz-restore: ongoing-request="false", expiry-date="Fri, 2 Dec 2050 00:00:00 GMT"
+               note: this expiry-date is not used but provided for client glacier compatibility
+
+ListObjects:   if file offline, obj storage class is GLACIER
+
+RestoreObject: sets batch stage request for file
+```
 
 # Limitations
 The object listings will not traverse symlinks. An object GET on a symlink will get the file the symlink references, and an object DELETE will delete the symlink.
