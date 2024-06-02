@@ -74,6 +74,19 @@ Because of the complete-multipart-upload optimizations, it is recommended to alw
 # Args
 The gateway root directory must be specified with the scoutfs subcommand. The gateway root tells the gateway what directory to host as the S3 service.  This can be a filesystem mount point directory, but more commonly would be a sub-directory within the filesystem to store data associated with the S3 service.  For example, if there is a filesystem mounted at `/mnt/datastore`, the gateway could host the entire filesystem by specifying `/mnt/datastore` or a subdirectory such as `/mnt/datastore/gateway1`. Note that the directory must exist before starting the gateway. The specified directory arg is now considered the "gateway root".
 
+***
+```
+   --glacier, -g  enable glacier emulation mode (default: false) [$VGW_SCOUTFS_GLACIER]
+```
+Enabling `glacier` option will enable the Glacier compatibility APIs when ScoutFS archiving enabled using ScoutAM. See [Glacier Mode](./ScoutFS-Backend#glacier-mode) below.
+***
+```
+   --chuid     chown newly created files and directories to client account UID (default: false) [$VGW_CHOWN_UID]
+   --chgid     chown newly created files and directories to client account GID (default: false) [$VGW_CHOWN_GID]
+```
+When multi-tenant accounts include UID and GID, these settings will enable setting the directory/file ownership to the corresponding UID/GID when uploading objects.
+***
+
 # Object name mapping
 The buckets are mapped to top level directories under the gateway root directory. These directories do not have to be created by the gateway. Existing directories within the gateway root will be seen as buckets in the list-buckets API. Any files in the gateway root are ignored, since all objects must be within a bucket in S3.
 
