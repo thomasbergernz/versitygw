@@ -1,5 +1,7 @@
 Do you need a simple, reliable, performant, easy to deploy S3 server for your applications or test infrastructure? VersityGW combined with ZFS offers an easy to manage S3 service on top of a robust filesystem with built in software RAID protection. ZFS is a powerful file system renowned for its advanced capabilities in storage management. Pairing ZFS with the deployment of VersityGW offers a simple S3 server solution that maximizes single server performance and resilience. Follow along for a setup example.
 
+See [MultiPart Optimizations](./MultiPart-Optimizations) for consideration of other filesystems that might offer a more optimized case for multipart uploads.
+
 The test system is a virtual machine running:
 ```
 AlmaLinux release 9.3 (Shamrock Pampas Cat)
