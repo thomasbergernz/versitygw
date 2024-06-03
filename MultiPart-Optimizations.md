@@ -256,6 +256,7 @@ The output from the server side:
 
 So we can confirm copy_file_range() is being called by the gateway, and sure enough the complete-multipart-upload only took about 1 second.
 
+### Filesystem Capabilities:
 With NFS v4.2, server side copy is enabled. This means that copy_file_range() is handled server side, and forwarded to the exported filesystem. So an XFS filesystem exported via NFS 4.2+ has similar behavior for the optimized complete-multipart-upload.
 
 It is presumed that Btrfs would also show the optimized behavior, but it was not explicitly tested for this.
