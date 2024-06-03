@@ -166,6 +166,9 @@ echo "create multipart upload"
 upload_response=$(aws --endpoint-url http://127.0.0.1:7070 s3api create-multipart-upload --bucket testbucket --key testkey)
 upload_id=$(echo $upload_response | jq -r '.UploadId')
 
+# create local file to upload as part data
+truncate -s 1g part.data
+
 # Upload parts
 for i in {1..5}; do
     echo "uploading part $i"
