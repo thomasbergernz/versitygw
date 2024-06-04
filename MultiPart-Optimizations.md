@@ -33,11 +33,15 @@ This is great to allow the copy to happen completely within the kernel, but ther
 The maintainer of XFS, Darrick Wong, wrote a great blog post describing how XFS supports the shared data blocks that copy_file_range() makes use of: https://blogs.oracle.com/linux/post/xfs-data-block-sharing-reflink.
 
 ### Test setup:
+```
 AlmaLinux release 9.3 (Shamrock Pampas Cat)
 kernel version 5.14.0-362.13.1.el9_3.x86_64
+```
 
 A [previous post](./ZFS-Use-Case) examined the ZFS use case with raidz for reliability. For a comparable test with the other filesystems, a software raid5 device is configured using mdraid:
+```
 mdadm --create /dev/md0 --level=5 --raid-devices=4 /dev/vdb /dev/vdc /dev/vdd /dev/vde
+```
 
 The /dev/md0 raid5 device will be used for the block device for other filesystems while testing. This was not strictly necessary, but will hopefully give readers an idea of what is possible if looking for ZFS alternatives.
 
