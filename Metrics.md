@@ -8,7 +8,7 @@ The metrics keys are the following:
 failed_count             non-success status requests
 success_count            success status requests
 bytes_written            incremented with content-length values for all PutObject/PutPart requests
-object_created_count     incremented with each PutObject/CreateMultipartUpload rquest
+object_created_count     incremented with each PutObject/CreateMultipartUpload request
 bytes_read               incremented with payload size of each GetObject request
 object_removed_count     incremented with object count for each DeleteObject/DeleteObjects request
 ```
