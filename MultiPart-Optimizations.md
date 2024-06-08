@@ -159,7 +159,7 @@ This shows that each call to copy_file_range() is taking significantly longer th
 ### Verifying VersityGW:
 The test program is compelling, but how can we really test the performance characteristics of the gateway on these filesystems here? The following is a script that separates out the create-multipart-upload, upload-part, and complete-multipart-upload so that we can focus on the time it takes to run just the complete-multipart-upload for comparisons.
 
-```
+```sh
 #!/bin/bash
 
 # make sure bucket exists
