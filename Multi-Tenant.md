@@ -33,6 +33,20 @@ Note: The file is plan text JSON encoded fields and access is only protected wit
 
 The S3 IAM service is similar to the internal IAM service, but instead stores the account information JSON encoded in an S3 object. This should use a bucket that is not accessible to general users when using s3 backend to prevent access to account credentials. This IAM service is added for convenience, but is not considered as secure or scalable as a dedicated IAM service. This is generally useful when using s3proxy backend to not have other filesystem dependencies for the internal IAM service.
 
+## IAM Vault
+```
+   --iam-vault-endpoint-url value                  vault server url [$VGW_IAM_VAULT_ENDPOINT_URL]
+   --iam-vault-secret-storage-path value           vault server secret storage path [$VGW_IAM_VAULT_SECRET_STORAGE_PATH]
+   --iam-vault-mount-path value                    vault server mount path [$VGW_IAM_VAULT_MOUNT_PATH]
+   --iam-vault-root-token value                    vault server root token [$VGW_IAM_VAULT_ROOT_TOKEN]
+   --iam-vault-role-id value                       vault server user role id [$VGW_IAM_VAULT_ROLE_ID]
+   --iam-vault-role-secret value                   vault server user role secret [$VGW_IAM_VAULT_ROLE_SECRET]
+   --iam-vault-server_cert value                   vault server TLS certificate [$VGW_IAM_VAULT_SERVER_CERT]
+   --iam-vault-client_cert value                   vault client TLS certificate [$VGW_IAM_VAULT_CLIENT_CERT]
+   --iam-vault-client_cert_key value               vault client TLS certificate key [$VGW_IAM_VAULT_CLIENT_CERT_KEY]
+```
+The details for Vault IAM storage are documented in [IAM Vault](./IAM-Vault).
+
 ## IAM LDAP
 The LDAP IAM stores tenant accounts in an LDAP directory service. The following options are needed in order to access the LDAP service:
 ```
