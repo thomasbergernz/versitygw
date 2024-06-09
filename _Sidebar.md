@@ -9,6 +9,7 @@
     * [Docker](./Docker)
     * [PreSignedURL](./PreSignedURL)
     * [Multi-Tenant/IAM](./Multi-Tenant)
+      * [IAM Vault](./IAM-Vault)
     * [Example Client Configs](./S3-Client-Configuration)
     * [Metrics](./Metrics)
     * Backends:
