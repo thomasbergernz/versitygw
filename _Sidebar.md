@@ -26,7 +26,7 @@
     * [Integration Tests](./Integration-Tests)
     * [S3 API reference](./S3-API-reference)
     * [Debugging/Profiling](./Debugging)
-  * Articles:
+  * [Articles](./Articles):
     * [Performance](./Performance)
     * [Performance Part 2](./Performance-Part-2)
     * [ScoutAM Enhancements](./ScoutAM-Enhancements)
