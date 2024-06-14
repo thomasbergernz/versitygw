@@ -181,3 +181,6 @@ cbucket  myuser
 
 # ACLs
 The gateway currently only supports bucket level ACLs defined with the same format as [AWS ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html).
+
+# Policies
+Policies are supported for **user** and **userplus** accounts.  No policy support is available for **root** accounts at this time, and policies set for **admin** accounts are currently ignored.
