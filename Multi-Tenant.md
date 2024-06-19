@@ -185,8 +185,8 @@ The gateway currently only supports the following bucket level ACLs defined with
 | ACL     | Direct to S3 | versitygw |
 |:------:   | :------------: | :----------:|
 | private | Allows only access by bucket owner | Same |
-| public-read | Allows anyone to read from bucket using either AWS, or file retrieval tools (e.g. CURL, HTTP GET) | Allows non-owner accounts to read from the bucket, unless forbidden by a policy "Deny" |
-| public-read-write | Allows anyone to read or write to the bucket using either AWS or other tools (e.g. CURL, HTTP GET/POST) | Allows non-owner accounts to read from or write to the bucket, unless forbidden by a policy "Deny" |
+| public-read | Allows anyone to read from bucket using either AWS, or file retrieval tools (e.g. CURL, HTTP GET) | Allows non-owner users to read from the bucket, unless forbidden by a policy "Deny" |
+| public-read-write | Allows anyone to read or write to the bucket using either AWS or other tools (e.g. CURL, HTTP GET/POST) | Allows non-owner users to read from or write to the bucket, unless forbidden by a policy "Deny" |
 | authenticated-read | Allows anyone to read from the bucket with an AWS account | not supported |
 
 # Policies
