@@ -180,7 +180,14 @@ cbucket  myuser
 ```
 
 # ACLs
-The gateway currently only supports bucket level ACLs defined with the same format as [AWS ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html).
+The gateway currently only supports the following bucket level ACLs defined with the same format as [AWS ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html):  **private**, **public-read**, and **public-read-write**.  **authenticated-read** is not supported.  And the ACLs may behave differently, as described below:
+
+| ACL     | Direct to S3 | versitygw |
+|:------:   | :------------: | :----------:|
+| private | Allows only access by bucket owner | Same |
+| public-read | Allows anyone to read from bucket using either AWS, or file retrieval tools (e.g. CURL, HTTP GET) | Allows non-owner accounts to read from the bucket, unless forbidden by a policy "Deny" |
+| public-read-write | Allows anyone to read or write to the bucket using either AWS or other tools (e.g. CURL, HTTP GET/POST) | Allows non-owner accounts to read from or write to the bucket, unless forbidden by a policy "Deny" |
+| authenticated-read | Allows anyone to read from the bucket with an AWS account | not supported |
 
 # Policies
 Policies are supported for **user** and **userplus** accounts.  No policy support is available for **root** accounts at this time, and policies set for **admin** accounts are currently ignored.
