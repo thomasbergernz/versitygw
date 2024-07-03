@@ -6,3 +6,10 @@
 * The addition of the ID and password is required for user creation, and so running the `aws iam create-access-key` command isn't necessary to provide a key ID and password (or secret key) to be able to access buckets with the **aws** **s3** and **s3api** tools.  Also, in **versitygw**, there are not separate usernames and key IDs, and only a single username which corresponds to both is used.
 
 ## Policies
+
+* In **versitygw** policies, the **Principal** field can simply be the raw username, e.g. `"Principal": "<username>"`.  A format similar to the following isn't necessary:
+```
+"Principal": {
+  "AWS": "arn:aws:iam::<AWS account ID>:user/<username>"
+},
+```
