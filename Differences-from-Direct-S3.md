@@ -7,7 +7,7 @@
 
 ## Policies
 
-* In **versitygw** policies, the **Principal** field can simply be the raw username, e.g. `"Principal": "<username>"`.  A format similar to the following isn't necessary:
+* In **versitygw** policies, the **Principal** field can simply be the raw username or group of raw usernames, e.g. `"Principal": "<username>"`.  A format similar to the following isn't necessary:
 ```
 "Principal": {
   "AWS": "arn:aws:iam::<AWS account ID>:user/<username>"
