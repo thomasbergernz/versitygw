@@ -8,7 +8,7 @@
 
 ## Policies
 
-* IAM policies is not supported in the gateway.
+* IAM policies are not supported in the gateway.
 * **Condition** property is not supported in the bucket policy document.
 * As of July 3, 2024, policies do not affect **versitygw** **admin** and **root** accounts.
 * In **versitygw** policies, the Principal field must be a comma-separated list of raw usernames.
@@ -33,7 +33,7 @@ or
 ## ACLs
 
 * **versitygw** supports only bucket-level ACLs: object ACLs are not supported.
-* Bucket-level ACLs follow the structure below with a few differences:
+* Bucket-level ACLs follow the direct-to-S3 structure below with a few differences:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <AccessControlPolicy>
