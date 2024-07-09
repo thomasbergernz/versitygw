@@ -13,6 +13,7 @@
       * [Differences from Direct S3](./Differences-from-Direct-S3)
     * [Example Client Configs](./S3-Client-Configuration)
     * [Metrics](./Metrics)
+    * [Admin APIs](./Admin-APIs)
     * Backends:
       * [POSIX](./POSIX-Backend)
       * [ScoutFS](./ScoutFS-Backend)
