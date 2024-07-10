@@ -10,7 +10,7 @@
     * [PreSignedURL](./PreSignedURL)
     * [Multi-Tenant/IAM](./Multi-Tenant)
       * [IAM Vault](./IAM-Vault)
-      * [Differences from AWS S3](./Differences-from-Direct-S3)
+      * [Differences from AWS S3](./Differences-from-AWS-S3)
     * [Example Client Configs](./S3-Client-Configuration)
     * [Metrics](./Metrics)
     * [Admin APIs](./Admin-APIs)
