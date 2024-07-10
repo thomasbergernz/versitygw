@@ -26,7 +26,7 @@
     * [Adding A New Backend](./Adding-A-New-Backend)
     * [Running Tests](./Running-Test-Suite)
     * [Integration Tests](./Integration-Tests)
-        * [Users](./Integration-Tests-%u2010-Users)
+        * [Users](./Users-Integration-Tests)
     * [S3 API reference](./S3-API-reference)
     * [Debugging/Profiling](./Debugging)
   * [Articles](./Articles):
