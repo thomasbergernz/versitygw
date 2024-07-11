@@ -9,7 +9,7 @@
 | ❎ | not applicable |
 | ❓ | needs to be verified |
 
-### supported operations (NOTE:  info in process of being added, table is currently inaccurate up to create-multipart-upload)
+### supported operations (NOTE:  info in process of being added, table is currently inaccurate after delete-objects)
 | Role | root | admin | userplus | user | Notes |
 | :---: | :------: | :-------: | :-----: | :--: | ----- |
 | abort-multipart-upload | ✅ | ⚪ | ⚪ | ⚪ ||
@@ -17,12 +17,12 @@
 | copy-object | ✅ | ⚪ | ⚪ | ⚪ | Includes **aws cli**, **s3cmd**, and **mc** '**cp**' command |
 | create-bucket | ✅ | ✅ | ✅ | ❎ |
 | create-multipart-upload | ✅ | ✅ | ⚪ | ❌ | **versitygw** has no multipart upload size minimum |
-| delete-bucket | ✅ | ✅ | ✅ | ✅ |
-| delete-bucket-policy | ❎ | ✅ | ✅ | ✅ |
-| delete-bucket-tagging | ❎ |  ✅ |  ❎ |  ✅ |
-| delete-object | ✅ | ✅ | ✅ | ✅ |
-| delete-object-tagging | ❎ | ✅  |  ❎ |  ✅ |
-| delete-objects | ✅ | ✅ | ✅ | ✅ | Refers to recursive deletion for **aws-cli s3**, **s3cmd**, and **mc** |
+| delete-bucket | ✅ | ⚪ | ⚪ | ❎ |
+| delete-bucket-policy | ✅ | ⚪ | ⚪ | ⚪ |
+| delete-bucket-tagging | ✅ |  ⚪ |  ⚪ |  ⚪ |
+| delete-object | ✅ | ✅ | ❌ | ❌ |
+| delete-object-tagging | ✅ | ⚪  |  ⚪ |  ⚪ |
+| delete-objects | ✅ | ⚪ | ⚪ | ⚪ | Refers to recursive deletion for **aws-cli s3**, **s3cmd**, and **mc** |
 | get-bucket-acl | ❎ | ✅ | ❗ | ❎ | Data successfully retrieved in **s3cmd**, but needs to be parsed and verified **NOTE:** awaiting changes for the underlying command before testing |
 | get-bucket-location | ❎ |  ✅ |  ✅ |  ✅ |
 | get-bucket-policy | ❎ | ✅ | ✅ | ✅ |
