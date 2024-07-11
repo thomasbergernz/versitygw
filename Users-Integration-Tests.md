@@ -9,7 +9,7 @@
 | ❎ | not applicable |
 | ❓ | needs to be verified |
 
-### supported operations
+### supported operations (NOTE:  info in process of being added, table is currently inaccurate up to create-multipart-upload)
 | Role | root | admin | userplus | user | Notes |
 | :---: | :------: | :-------: | :-----: | :--: | ----- |
 | abort-multipart-upload | ✅ | ⚪ | ⚪ | ⚪ ||
