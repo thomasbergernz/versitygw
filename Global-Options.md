@@ -45,12 +45,12 @@ The default when these are not specified is to have the admin server listen on t
 The quiet option will silence the request info output enabled by default to stdout.
 ***
 ```
-   --access-log value                      enable server access logging to specified file [$LOGFILE]
+   --access-log value                      enable server access logging to specified file [$LOGFILE, $VGW_ACCESS_LOG]
 ```
 The access-log value is optional. When defined, the server will write s3 server access log output to the specified file. It is suggested to use absolute paths for the server log file because the server may chdir into the backend root directory and change locations for relative paths. This option can also be set through LOGFILE env var. This option can only be set if log-webhook-url is not set. See [LogFile](./S3-server-access-log) for more details and log format.
 ***
 ```
-   --admin-access-log value                enable admin server access logging to specified file [$VGW_ADMIN_ACCESS_LOG]
+   --admin-access-log value                enable admin server access logging to specified file [$LOGFILE, $VGW_ADMIN_ACCESS_LOG]
 ```
 The admin-access-log is similar to the access-log option, but is logging access to the versitygw admin API generally used for user management and bucket ownership.
 ***
