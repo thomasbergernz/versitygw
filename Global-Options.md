@@ -102,6 +102,8 @@ The iam-dir option will enable the internal IAM service with accounts stored in 
    --iam-ldap-access-atr value             ldap server user access key id attribute name [$VGW_IAM_LDAP_ACCESS_ATR]
    --iam-ldap-secret-atr value             ldap server user secret access key attribute name [$VGW_IAM_LDAP_SECRET_ATR]
    --iam-ldap-role-atr value               ldap server user role attribute name [$VGW_IAM_LDAP_ROLE_ATR]
+   --iam-ldap-user-id-atr value            ldap server user id attribute name [$VGW_IAM_LDAP_USER_ID_ATR]
+   --iam-ldap-group-id-atr value           ldap server user group id attribute name [$VGW_IAM_LDAP_GROUP_ID_ATR]
 ```
 The ldap options will enable the LDAP IAM service with accounts stored in an external LDAP service. The iam-ldap-access-atr, iam-ldap-secret-atr, and iam-ldap-role-atr define the LDAP attributes that map to access, secret credentials and role respectively. See [Multi-Tenant](./Multi-Tenant#iam-ldap) for more details.
 ***
