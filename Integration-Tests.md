@@ -37,6 +37,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | delete-objects | ✅ | ✅ | ✅ | ✅ | Refers to recursive deletion for **aws-cli s3**, **s3cmd**, and **mc** |
 | get-bucket-acl | ❎ | ✅ | ❗ | ❎ | Data successfully retrieved in **s3cmd**, but needs to be parsed and verified **NOTE:** awaiting changes for the underlying command before testing |
 | get-bucket-location | ❎ |  ✅ |  ✅ |  ✅ |
+| get-bucket-ownership-controls | ❎ |  ✅ |  ❎ |  ❎ |
 | get-bucket-policy | ❎ | ✅ | ✅ | ✅ |
 | get-bucket-tagging | ❎ | ✅ | ❎ | ✅ | |
 | get-bucket-versioning | ❎ |  ❎ |  ❎ |  ❎ | **As of May 3, 2024, not implemented** |
@@ -56,6 +57,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | list-objects-v2 | ❎ | ✅ | ❎ | ❎ |
 | list-parts | ❎ | ✅ | ❎ | ❎ |
 | put-bucket-acl | ❎ |  ✅ |  ❓ |  ❎ | https://github.com/versity/versitygw/issues/561 **NOTE:** this command refers to changing the local bucket ACLs for versitygw users, not the remote ACLs on S3 **ANOTHER NOTE:** awaiting changes for the underlying command before testing |
+| put-bucket-ownership-controls | ❎ |  ✅ |  ❎ |  ❎ |
 | put-bucket-policy | ❎ | ✅ | ✅ | ✅ |
 | put-bucket-tagging | ❎ | ✅ | ❎ | ✅ |
 | put-bucket-versioning | ❎ |  ❎ |  ❎ |  ❎ | **As of May 3, 2024, not implemented** |
@@ -108,7 +110,6 @@ The tests can be run directly if all of the dependencies are available, or can c
 | get-bucket-logging |  ⚪ |  ⚪ |  ⚪ |
 | get-bucket-metrics-configuration |  ⚪ |  ⚪ |  ⚪ |
 | get-bucket-notification-configuration |  ⚪ |  ⚪ |  ⚪ |
-| get-bucket-ownership-controls |  ⚪ |  ⚪ |  ⚪ |
 | get-bucket-policy-status |  ⚪ |  ⚪ |  ⚪ |
 | get-bucket-replication |  ⚪ |  ⚪ |  ⚪ |
 | get-bucket-request-payment |  ⚪ |  ⚪ |  ⚪ |
@@ -129,7 +130,6 @@ The tests can be run directly if all of the dependencies are available, or can c
 | put-bucket-logging |  ⚪ |  ⚪ |  ⚪ |
 | put-bucket-metrics-configuration |  ⚪ |  ⚪ |  ⚪ |
 | put-bucket-notification-configuration |  ⚪ |  ⚪ |  ⚪ |
-| put-bucket-ownership-controls |  ⚪ |  ⚪ |  ⚪ |
 | put-bucket-replication |  ⚪ |  ⚪ |  ⚪ |
 | put-bucket-request-payment |  ⚪ |  ⚪ |  ⚪ |
 | put-bucket-website |  ⚪ |  ⚪ |  ⚪ |
