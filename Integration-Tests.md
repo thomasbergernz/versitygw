@@ -49,7 +49,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | get-object-retention | ❎ |  ✅ |  ❎ |  ❎ |
 | get-object-tagging | ❎ | ✅ | ⚪ | ✅ |
 | head-bucket | ❎ | ✅ | ✅ | ✅ |
-| head-object | ❎ | ✅ | ❓ | ❓ |
+| head-object | ❎ | ✅ | ✅ | ❓ |
 | list-buckets | ✅ | ✅ | ✅ | ✅ |
 | list-multipart-uploads | ❎ | ✅ | ❎ | ❎ |
 | list-object-versions | ❎ |  ❎ |  ❎ |  ❎ | **As of May 20, 2024, currently not implemented, but likely to be added soon** |
