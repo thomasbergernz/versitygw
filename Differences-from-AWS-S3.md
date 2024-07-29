@@ -32,6 +32,7 @@ or
 
 ## ACLs
 
+* ACLs in **versitygw** are more granular.  Separate ACLs can be created for users with different ids, rather than separate AWS accounts.
 * **versitygw** supports only bucket-level ACLs: object ACLs are not supported.
 * Bucket-level ACLs follow the direct-to-S3 structure below with a few differences:
 ```xml
