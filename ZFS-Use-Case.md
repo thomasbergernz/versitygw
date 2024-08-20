@@ -27,10 +27,7 @@ zfs set mountpoint=/mnt/zfs mypool/myfilesystem
 ```
 
 ### Install VersityGW
-For RedHat and Debian based distributions, there are pre-build distro packages available in the latest release assets. At the time of this writing, v0.21 is the latest release. Replace the following URL with URL to latest version.
-```
-dnf install https://github.com/versity/versitygw/releases/download/v0.21/versitygw_0.21_linux_amd64.rpm
-```
+For RedHat and Debian based distributions, there are pre-built distro packages available in the latest release assets.  Download the appropriate package for your distro from the [Releases](https://github.com/versity/versitygw/releases) page.
 
 ### Configure and Run VersityGW
 ```
