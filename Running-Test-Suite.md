@@ -78,7 +78,7 @@ The tests in /s3api may need to be updated for any interface changes.
 
 # REST
 
-As with **s3**, **versitygw** can be communicated with with the same REST API commands.  Here's an example of the step-by-step process:
+As with **s3**, **versitygw** can be communicated with with the same REST API commands.  Below is an example of the step-by-step process.  Note that if doing something besides reproducing REST bugs, it's a very good idea to write a script that does this or find and copy the code in the versitygw codebase that does this automatically for the command needed, since it's a long process.
 
 ## Generate Payload Hash
 
@@ -104,7 +104,26 @@ host;x-amz-content-sha256;x-amz-date
 <payload hash, in this case, "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855">
 ```
 
-To get the ISO8601 date, the following bash command can be used: `date -u +"%Y%m%dT%H%M%SZ"`
+To get the ISO8601 date, the following bash command can be used: `date -u +"%Y%m%dT%H%M%SZ"`.  Also note that this date is valid for 15 minutes after it is generated.
+
+After this request is created, the hash for this request can be generated.  This can be done in a bash file, e.g.:
+
+```
+#/usr/bin/env bash
+
+canonical_request="GET
+/
+
+host:s3.amazonaws.com
+x-amz-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+x-amz-date:20240906T163800Z
+
+host;x-amz-content-sha256;x-amz-date
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
+creq_hash="$(echo -n "$canonical_request" | openssl dgst -sha256 | awk '{print $2}')"
+echo $creq_hash
+```
 
 
 
