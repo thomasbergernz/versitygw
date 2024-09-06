@@ -76,3 +76,15 @@ This will regenerate this file:
 ```
 The tests in /s3api may need to be updated for any interface changes.
 
+# REST
+
+As with **s3**, **versitygw** can be communicated with with the same REST API commands.  Here's an example of the step-by-step process:
+
+1.  Generate Payload Hash
+
+With a bash terminal, execute the following:  `echo -n "<payload>" | sha256sum | awk '{print $1}'`.  This will generate the hash payload.
+
+With larger payloads, the data can be stored in a file, and the payload can be generated with `cat <file> | sha256sum | awk '{print $1}'`.
+
+For empty payloads, this value is always `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
+
