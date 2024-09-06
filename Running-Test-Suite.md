@@ -80,11 +80,31 @@ The tests in /s3api may need to be updated for any interface changes.
 
 As with **s3**, **versitygw** can be communicated with with the same REST API commands.  Here's an example of the step-by-step process:
 
-1.  Generate Payload Hash
+## Generate Payload Hash
 
 With a bash terminal, execute the following:  `echo -n "<payload>" | sha256sum | awk '{print $1}'`.  This will generate the hash payload.
 
 With larger payloads, the data can be stored in a file, and the payload can be generated with `cat <file> | sha256sum | awk '{print $1}'`.
 
 For empty payloads, this value is always `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
+
+## Generate Canonical Request Hash
+
+S3 documentation has examples of what the canonical request should look like.  For example, for list-buckets (probably the easiest REST command to send), the format is:
+
+```
+GET
+/
+
+host:s3.amazonaws.com
+x-amz-content-sha256:<payload hash, in this case, "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855">
+x-amz-date:<current time in ISO8601 format>
+
+host;x-amz-content-sha256;x-amz-date
+<payload hash, in this case, "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855">
+```
+
+To get the ISO8601 date, the following bash command can be used: `date -u +"%Y%m%dT%H%M%SZ"`
+
+
 
