@@ -78,52 +78,73 @@ The tests in /s3api may need to be updated for any interface changes.
 
 # REST
 
-As with **s3**, **versitygw** can be communicated with with the same REST API commands.  Below is an example of the step-by-step process.  Note that if doing something besides reproducing REST bugs, it's a very good idea to write a script that does this or find and copy the code in the versitygw codebase that does this automatically for the command needed, since it's a long process.
-
-## Generate Payload Hash
-
-With a bash terminal, execute the following:  `echo -n "<payload>" | sha256sum | awk '{print $1}'`.  This will generate the hash payload.
-
-With larger payloads, the data can be stored in a file, and the payload can be generated with `cat <file> | sha256sum | awk '{print $1}'`.
-
-For empty payloads, this value is always `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
-
-## Generate Canonical Request Hash
-
-S3 documentation has examples of what the canonical request should look like.  For example, for list-buckets (probably the easiest REST command to send), the format is:
+As with **s3**, **versitygw** can be communicated with with the same REST API commands.  Below is an example of a script for the list-buckets command, probably the easiest command to send in REST format:
 
 ```
-GET
-/
+#!/usr/bin/env bash
 
-host:s3.amazonaws.com
-x-amz-content-sha256:<payload hash, in this case, "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855">
-x-amz-date:<current time in ISO8601 format>
+# sample script for s3 list-buckets REST command
 
-host;x-amz-content-sha256;x-amz-date
-<payload hash, in this case, "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855">
-```
+# Fields
 
-To get the ISO8601 date, the following bash command can be used: `date -u +"%Y%m%dT%H%M%SZ"`.  Also note that this date is valid for 15 minutes after it is generated.
+payload=""
+host="localhost:7070"
+aws_region="<AWS region>"
+aws_access_key_id="<key ID>"
+aws_secret_access_key="<access key>"
 
-After this request is created, the hash for this request can be generated.  This can be done in a bash file, e.g.:
+# Step 1:  generate payload hash
 
-```
-#/usr/bin/env bash
+payload_hash="$(echo -n "$1" | sha256sum | awk '{print $1}')"
+
+# Step 2:  generate canonical hash
+
+current_date_time=$(date -u +"%Y%m%dT%H%M%SZ")
 
 canonical_request="GET
 /
 
-host:s3.amazonaws.com
-x-amz-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-x-amz-date:20240906T163800Z
+host:$host
+x-amz-content-sha256:$payload_hash
+x-amz-date:$current_date_time
 
 host;x-amz-content-sha256;x-amz-date
-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+$payload_hash"
 
-creq_hash="$(echo -n "$canonical_request" | openssl dgst -sha256 | awk '{print $2}')"
-echo $creq_hash
+canonical_request_hash="$(echo -n "$canonical_request" | openssl dgst -sha256 | awk '{print $2}')"
+
+# Step 3:  create STS data string
+
+year_month_day="$(echo "$current_date_time" | cut -c1-8)"
+
+sts_data="AWS4-HMAC-SHA256
+$current_date_time
+$year_month_day/$aws_region/s3/aws4_request
+$canonical_request_hash"
+
+# Step 4:  generate signature
+
+date_key=$(echo -n "$year_month_day" | openssl dgst -sha256 -mac HMAC -macopt key:"AWS4${aws_secret_access_key}" | awk '{print $2}')
+date_region_key=$(echo -n "$aws_region" | openssl dgst -sha256 -mac HMAC -macopt hexkey:"$date_key" | awk '{print $2}')
+date_region_service_key=$(echo -n "s3" | openssl dgst -sha256 -mac HMAC -macopt hexkey:"$date_region_key" | awk '{print $2}')
+signing_key=$(echo -n "aws4_request" | openssl dgst -sha256 -mac HMAC -macopt hexkey:"$date_region_service_key" | awk '{print $2}')
+signature=$(echo -n "$sts_data" | openssl dgst -sha256 \
+                 -mac HMAC \
+                 -macopt hexkey:"$signing_key" | awk '{print $2}')
+
+# Step 5:  send curl command
+
+curl -ks https://$host/ \
+       -H "Authorization: AWS4-HMAC-SHA256 Credential=$aws_access_key_id/$year_month_day/$aws_region/s3/aws4_request,SignedHeaders=host;x-amz-content-sha256;x-amz-date,Signature=$signature" \
+       -H "x-amz-content-sha256: $payload_hash" \
+       -H "x-amz-date: $current_date_time"
 ```
 
-
+**NOTES**:
+* If sending a REST command with a payload, it needs to be added, and can be added to the **payload** parameter.  And as with the canonical request and STS strings, ensure that no extra space or unnecessary newlines are in the payload.
+* If sending a message direct to S3 for comparison purposes, change the **host** parameter to `s3.amazonaws.com`, or `<bucket>.s3.amazonaws.com` if sending a REST command to a specific bucket
+* Add the region, AWS user ID, and secret key
+* The canonical request string varies by command.  To find the info/params for the command, S3 has documentation, e.g. https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html.  And info on how to convert to a canonical request string:  https://docs.aws.amazon.com/AmazonS3/latest/userguide/RESTAuthentication.html.
+* If using `http` rather than `https`, change the protocol in the curl command.
+* If there's a mistake, and sending directly to S3, S3 will return the expected correct signatures for the payload and the canonical request.  These can be used to debug.
 
