@@ -39,7 +39,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | get-bucket-location | ❎ |  ✅ |  ✅ |  ✅ | ⚪ |
 | get-bucket-ownership-controls | ❎ |  ✅ |  ❎ |  ❎ | ⚪ |
 | get-bucket-policy | ❎ | ✅ | ✅ | ✅ | ⚪ |
-| get-bucket-tagging | ❎ | ✅ | ❎ | ✅ | | ⚪ |
+| get-bucket-tagging | ❎ | ✅ | ❎ | ✅ | ⚪ |
 | get-bucket-versioning | ❎ |  ❎ |  ❎ |  ❎ | ⚪ | **As of May 3, 2024, not implemented** |
 | get-object | ✅ | ✅ | ✅ | ✅ | ⚪ | Copy commands have been tested, move commands haven't |
 | get-object-acl | ❎ |  ❎ |  ❎ | ❎ | ⚪ | **As of May 13, 2024, not implemented** |
@@ -52,7 +52,7 @@ The tests can be run directly if all of the dependencies are available, or can c
 | head-object | ❎ | ✅ | ✅ | ✅ | ⚪ |
 | list-buckets | ✅ | ✅ | ✅ | ✅ | ✅ |
 | list-multipart-uploads | ❎ | ✅ | ❎ | ❎ | ⚪ |
-| list-object-versions | ❎ |  ❎ |  ❎ |  ❎ | **As of May 20, 2024, currently not implemented, but likely to be added soon** |
+| list-object-versions | ❎ |  ❎ |  ❎ |  ❎ |⚪ |  **As of May 20, 2024, currently not implemented, but likely to be added soon** |
 | list-objects | ✅ | ✅ | ✅ | ✅ | ✅ | For REST, virtual bucket URLs are not supported
 | list-objects-v2 | ❎ | ✅ | ❎ | ❎ | ⚪ |
 | list-parts | ❎ | ✅ | ❎ | ❎ | ⚪ |
@@ -67,8 +67,8 @@ The tests can be run directly if all of the dependencies are available, or can c
 | put-object-lock-configuration | ❎ |  ✅ |  ❎ |  ❎ | ⚪ |
 | put-object-retention | ❎ |  ✅ |  ❎ |  ❎ | ⚪ |
 | put-object-tagging | ❎ | ✅ | ❎ | ✅ | ⚪ |
-| restore-object | ❎ |  ❎ |  ❎ |  ❎ |  **As of May 20, 2024, not implemented** |
-| select-object-content | ❎ | ❎ | ❎ | ❎ | **As of May 20, 2024, not implemented** |
+| restore-object | ❎ |  ❎ |  ❎ |  ❎ | ❎ |  **As of May 20, 2024, not implemented** |
+| select-object-content | ❎ | ❎ | ❎ | ❎ | ❎ | **As of May 20, 2024, not implemented** |
 | upload-part | ❎ |  ✅ |  ❎ |  ❎ | ⚪ |
 | upload-part-copy | ❎ |  ✅ |  ❎ |  ❎ | ⚪ |
 
