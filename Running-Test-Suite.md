@@ -148,3 +148,74 @@ curl -ks https://$host/ \
 * If using `http` rather than `https`, change the protocol in the curl command.
 * If there's a mistake, and sending directly to S3, S3 will return the expected correct signatures for the payload and the canonical request.  These can be used to debug.
 
+# Running Tests Against Any S3 Endpoint
+The test suite has a convenient docker container with all of the client utilities installed. To run the container, docker and docker-compose must be installed. See [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/) for instructions on how to install and run docker compose on various systems.
+
+To run the tests, first clone the versitygw repo:
+```
+git clone https://github.com/versity/versitygw.git
+cd versitygw
+```
+
+The tests need two buckets within the target endpoint. This is due to some tests validating copying objects between buckets.
+
+Create the configuration file `tests/.env.direct` with the contents below. Replace <endpoint> with appropriate IP:PORT or hostname for the target endpoint. Many times, test buckets will be pre-created for running tests. If this is the case then setting `RECREATE_BUCKETS=false` will tell the test environment that the buckets already exist, and should not be removed and recreated within the tests. The `SKIP_BUCKET_OWNERSHIP_CONTROLS=true` can be set if the endpoint does not support the get/set bucket ownership controls. The `SKIP_POLICY=true` setting is needed for now since the tests run custom user management commands that are currently only supported within versitygw. We will be working to make this more generic in the future.
+
+```
+AWS_PROFILE=versity
+AWS_ENDPOINT_URL=http://<endpoint>
+AWS_REGION=us-east-1
+VERSITY_EXE=./versitygw
+RUN_VERSITYGW=false
+BUCKET_ONE_NAME=<bucket1>
+BUCKET_TWO_NAME=<bucket2>
+RECREATE_BUCKETS=false
+S3CMD_CONFIG=./tests/s3cfg.local.direct
+SECRETS_FILE=./tests/.secrets.direct
+MC_ALIAS=versity
+LOG_LEVEL=2
+DIRECT=true
+TEST_FILE_FOLDER=./versity-gwtest-files
+REMOVE_TEST_FILE_FOLDER=false
+SKIP_BUCKET_OWNERSHIP_CONTROLS=true
+SKIP_POLICY=true
+```
+
+and the s3cmd config `tests/s3cfg.local.direct`
+
+```
+# Setup endpoint
+host_base = <endpoint>
+host_bucket = <endpoint>
+bucket_location = us-east-1
+use_https = False
+signurl_use_https = False
+
+# Enable S3 v4 signature APIs
+signature_v2 = False
+```
+
+and finally the secrets file `tests/.secrets.direct`
+
+```
+AWS_ACCESS_KEY_ID=<access_key>
+AWS_SECRET_ACCESS_KEY=<secret_key>
+AWS_REGION=us-east-1
+AWS_PROFILE=versity
+```
+
+To run tests, run the following in the top level repo directory:
+
+For arm64 platforms:
+
+```
+docker-compose -f tests/docker-compose-bats.yml build direct
+docker-compose -f tests/docker-compose-bats.yml up direct
+```
+
+For x86_64 platforms:
+
+```
+docker-compose -f tests/docker-compose-bats.yml build --build-arg="AWS_CLI=awscli-exe-linux-x86_64.zip" --build-arg="MC_FOLDER=linux-amd64" direct
+docker-compose -f tests/docker-compose-bats.yml up direct
+```
