@@ -57,11 +57,13 @@ The LDAP IAM stores tenant accounts in an LDAP directory service. The following 
    --iam-ldap-object-classes value         ldap server object classes used to store the data. provide it as comma separated string, example: 'top,person'
 ```
 
-The tenant access key, secret key, and role are mapped to LDAP attributes. These attributes are specified with the following options:
+The tenant access key, secret key, role, uid, and gid are mapped to LDAP attributes. These attributes are specified with the following options:
 ```
    --iam-ldap-access-atr value             ldap server user access key id attribute name
    --iam-ldap-secret-atr value             ldap server user secret access key attribute name
    --iam-ldap-role-atr value               ldap server user role attribute name
+   --iam-ldap-user-id-atr value            ldap server user id attribute name
+   --iam-ldap-group-id-atr value           ldap server user group id attribute name
 ```
 
 Using the admin API to manage accounts is optional in the LDAP case. It is fine to manage users directly in LDAP, and only allow the gateway to have read permissions to the directory service. If the admin API is used for user management, then the gateway must have permissions to modify, add, and remove accounts within the directory service. 
