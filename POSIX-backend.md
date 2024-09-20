@@ -2,8 +2,8 @@ The POSIX backend stores S3 objects within a filesystem.
 
 # Functional Operations
 ✅ - working<br>
-❌ - not supported
-
+❌ - not supported<br>
+🧪 - experimental
 <table>
 <tr>
 <td> Bucket </td> <td> Object </td> <td> Multipart Uploads </td>
@@ -22,8 +22,8 @@ The POSIX backend stores S3 objects within a filesystem.
 ✅ Delete Bucket Tags<br>
 ✅ Get Bucket Policy<br>
 ✅ Put Bucket Policy<br>
-❌ Put Bucket Versioning<br>
-❌ Get Bucket Versioning
+🧪 Put Bucket Versioning<br>
+🧪 Get Bucket Versioning
 
 </td>
 <td valign="top">
@@ -46,10 +46,10 @@ The POSIX backend stores S3 objects within a filesystem.
 ✅ Get Object Legal Hold<br>
 ✅ Put Object Retention<br>
 ✅ Get Object Retention<br>
+🧪 List Object Versions<br>
 ❌ Restore Object<br>
 ❌ Set Object ACL<br>
 ❌ Get Object ACL<br>
-❌ List Object Versions<br>
 ❌ Select Object Content
 
 </td>
@@ -75,10 +75,20 @@ The gateway root directory must be specified with the posix subcommand. The gate
 
 ***
 ```
-   --chuid     chown newly created files and directories to client account UID (default: false) [$VGW_CHOWN_UID]
-   --chgid     chown newly created files and directories to client account GID (default: false) [$VGW_CHOWN_GID]
+   --chuid     chown newly created files and directories to client account UID (default: false)
+   --chgid     chown newly created files and directories to client account GID (default: false)
 ```
 When multi-tenant accounts include UID and GID, these settings will enable setting the directory/file ownership to the corresponding UID/GID when uploading objects.
+***
+```
+   --bucketlinks       allow symlinked directories at bucket level to be treated as buckets (default: false)
+```
+Use `--bucketlinks` option to enable symlinks to directories at the top level bucket directory level.
+***
+```
+   --versioning-dir value     the directory path to enable bucket versioning
+```
+Versioning support is currently experimental. To enable versioning, supply a top level directory separate from the posix gateway root directory with the `--versioning-dir` option. This will enable a shadow namespace to store non-current versions of objects.
 ***
 
 # Object name mapping
