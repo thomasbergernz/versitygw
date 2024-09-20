@@ -2,6 +2,10 @@ The Azure backend stores S3 objects within [Azure Blob Storage](https://azure.mi
 
 🧪 The `azure` backend is currently experimental
 
+# Command
+```
+versitygw azure [command options]
+```
 
 # Args
 The gateway uses the official Azure SDK for access to Azure Blob Storage. This allows the gateway to automatically detect authentication  credentials and service URLs when running within an Azure instance. When running outside of an Azure instance, the following options can be used to supply authentication credentials to the gateway.
