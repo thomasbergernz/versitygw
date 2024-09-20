@@ -4,7 +4,7 @@ The Azure backend stores S3 objects within [Azure Blob Storage](https://azure.mi
 
 # Command
 ```
-versitygw azure [command options]
+versitygw [global options] azure [command options]
 ```
 
 # Args
