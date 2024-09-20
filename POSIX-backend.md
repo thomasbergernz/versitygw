@@ -70,6 +70,11 @@ The POSIX backend stores S3 objects within a filesystem.
 # Filesystem compatibility
 The filesystem must have the ability to store extended attributes.
 
+# Command
+```
+versitygw [global options] posix [command options]
+```
+
 # Args
 The gateway root directory must be specified with the posix subcommand. The gateway root tells the gateway what directory to host as the S3 service.  This can be a filesystem mount point directory, but more commonly would be a sub-directory within the filesystem to store data associated with the S3 service.  For example, if there is an xfs filesystem mounted at `/mnt/datastore`, the gateway could host the entire filesystem by specifying `/mnt/datastore` or a subdirectory such as `/mnt/datastore/gateway1`. Note that the directory must exist before starting the gateway. The specified directory arg is now considered the "gateway root".
 
