@@ -12,7 +12,12 @@ The S3 API requests are validated on the frontend and then relayed to the backen
 
 Some on-premise S3 systems may not allow certain APIs such as CreateBucket, etc. These would also not be allowed through the gateway.
 
-# Configuration Args
+# Command
+```
+versitygw [global options] s3 [command options]
+```
+
+# Args
 ```
    --access value, -a value  s3 proxy server access key id
    --secret value, -s value  s3 proxy server secret access key
