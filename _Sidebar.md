@@ -18,6 +18,7 @@
       * [POSIX](./POSIX-Backend)
       * [ScoutFS](./ScoutFS-Backend)
       * [S3](./S3-Backend)
+      * [AzureBlob](./AzureBlob)
     * Logging:
       * [Logfile](./S3-server-access-log)
       * [Webhook](./Webhook-log-entries)
