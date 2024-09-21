@@ -91,6 +91,11 @@ Enabling `glacier` option will enable the Glacier compatibility APIs when ScoutF
 ```
 When multi-tenant accounts include UID and GID, these settings will enable setting the directory/file ownership to the corresponding UID/GID when uploading objects.
 ***
+```
+   --bucketlinks       allow symlinked directories at bucket level to be treated as buckets (default: false)
+```
+Use `--bucketlinks` option to enable symlinks to directories at the top level bucket directory level.
+***
 
 # Object name mapping
 The buckets are mapped to top level directories under the gateway root directory. These directories do not have to be created by the gateway. Existing directories within the gateway root will be seen as buckets in the list-buckets API. Any files in the gateway root are ignored, since all objects must be within a bucket in S3.
