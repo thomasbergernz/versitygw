@@ -205,12 +205,17 @@ AWS_PROFILE=versity
 ```
 
 To run tests, run the following in the top level repo directory:
+```
+docker-compose -f tests/docker-compose-bats.yml --project-directory . up direct
+```
+
+or
 
 For arm64 platforms:
 
 ```
 docker-compose -f tests/docker-compose-bats.yml build direct
-docker-compose -f tests/docker-compose-bats.yml up direct
+docker-compose -f tests/docker-compose-bats.yml --project-directory . up direct
 ```
 
 For x86_64 platforms:
