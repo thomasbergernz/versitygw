@@ -161,6 +161,7 @@ The tests need two buckets within the target endpoint. This is due to some tests
 
 Create the configuration file `.env.direct` with the contents below. Replace <endpoint> with appropriate IP:PORT or hostname for the target endpoint. Many times, test buckets will be pre-created for running tests. If this is the case then setting `RECREATE_BUCKETS=false` will tell the test environment that the buckets already exist, and should not be removed and recreated within the tests. The `SKIP_BUCKET_OWNERSHIP_CONTROLS=true` can be set if the endpoint does not support the get/set bucket ownership controls. The `SKIP_POLICY=true` setting is needed for now since the tests run custom user management commands that are currently only supported within versitygw. We will be working to make this more generic in the future.
 
+Example `.env.direct`:
 ```
 AWS_PROFILE=versity
 AWS_ENDPOINT_URL=http://<endpoint>
