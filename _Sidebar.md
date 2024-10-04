@@ -1,6 +1,8 @@
   * [Home](./Home)
   * User:
     * [Quickstart](./Quickstart)
+    * Install
+      * [Linux](./LinuxInstall)
     * [Workflow](./Workflow)
     * [Global Options](./Global-Options)
     * [TLS](./TLS)
