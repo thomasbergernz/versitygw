@@ -2,7 +2,7 @@
   * User:
     * [Quickstart](./Quickstart)
     * Install
-      * [Linux](./LinuxInstall)
+      * [Linux](./Linux-Install)
     * [Workflow](./Workflow)
     * [Global Options](./Global-Options)
     * [TLS](./TLS)
