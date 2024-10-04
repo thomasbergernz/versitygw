@@ -127,7 +127,7 @@ Object PUTs will overwrite files but not directories. If a directory already exi
 
 Object names are translated into directory components by splitting on "/" separator. If a directory within the object name already exists as a file instead of a directory, then the PUT will fail with ObjectParentIsFile.
 
-An object with a trailing "/" is interpreted as a directory.  So put object with trailing "/" will create a directory in the filesystem.  This means that the content length must be 0 for all directory type objects since there is no data payload for directories in the filesystem. It is also and error to create a multipart upload with a trailing "/" in the key. The create multipart upload with trailing "/" or put object with a trailing "/" and non-0 content length the error DirectoryObjectContainsData will be returned.
+An object with a trailing "/" is interpreted as a directory.  So put-object with trailing "/" will create a directory in the filesystem.  This means that the content length must be 0 for all directory type objects since there is no data payload for directories in the filesystem. It is also an error to create a multipart upload with a trailing "/" in the key. The create multipart upload with trailing "/" or put-object with a trailing "/" and non-0 content length will have the error DirectoryObjectContainsData returned.
 
 # Advanced details
 ## Temporary files
