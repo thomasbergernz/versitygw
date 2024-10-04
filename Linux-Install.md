@@ -37,6 +37,11 @@ To stop the gateway, use the following command:
 systemctl stop versitygw@mygateway
 ```
 
+To troubleshoot failures starting the service, `journalctl` can give more detailed output:
+```
+journalctl -u versitygw@mygateway.service
+```
+
 There can be multiple gateway services running on the same host. Each gateway service must have a unique service name with a unique configuration file in `/etc/versitygw.d/`. They must also listen on different ports and/or interfaces using the VGW_PORT option.
 
 The `/etc/versitygw.d/example.conf` describes all options (also documented in [Global-Options](./Global-Options)). The default values are specified in the options that are commented out. A minimal config for a `posix` backend would be:
