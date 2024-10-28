@@ -96,6 +96,11 @@ When multi-tenant accounts include UID and GID, these settings will enable setti
 ```
 Use `--bucketlinks` option to enable symlinks to directories at the top level bucket directory level.
 ***
+```
+   --dir-perms value       default directory permissions for new directories (default: 0755)
+```
+The default permissions mode when creating new directories is 0755. Use `--dir-perms` option to set a different mode for any new directory that the gateway creates. This applies to buckets created through the gateway as well as any parent directories automatically created with object uploads.
+***
 
 # Object name mapping
 The buckets are mapped to top level directories under the gateway root directory. These directories do not have to be created by the gateway. Existing directories within the gateway root will be seen as buckets in the list-buckets API. Any files in the gateway root are ignored, since all objects must be within a bucket in S3.
