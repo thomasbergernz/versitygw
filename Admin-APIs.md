@@ -1,5 +1,9 @@
 The Admin APIs facilitate administrative tasks related to IAM user management, bucket ownership modifications, and bucket listings with their respective owners. These APIs ensure robust and secure interactions by requiring requests to be authenticated using `AWS Signature Version 4 (SigV4)`. Only **admin** or **root** users, possessing the necessary AWS access key ID and secret access key, can execute these operations.
 
+The Admin APIs use XML encoding for all request and response bodies. This XML-based approach aligns with standard AWS API practices, providing a structured and consistent format for data exchange. Ensure that requests adhere to the specified XML structure to facilitate proper parsing and processing by the API.
+
+Error responses follow a structure similar to AWS S3 errors, with error codes prefixed by `XAdmin` to distinguish them as admin-specific errors. This convention aids in differentiating standard AWS errors from `VersityGW` admin-specific issues. For detailed information on the error structure, refer to the [AWS S3 Error Responses documentation](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html).
+
 ## Create user
 
 The endpoint allows to create a new IAM user account.
@@ -8,47 +12,43 @@ The endpoint allows to create a new IAM user account.
 
 * Method: PATCH
 * Endpoint: /create-user
-* Content-Type: application/json
+* Content-Type: application/xml
 
 ### Request Body
 
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Account>
+    <Access> string </Access>
+    <Secret> string </Secret>
+    <Role> role </Role>
+    <UserID> number </UserID>
+    <GroupID> number </GroupID>
+</Account>
+```
+
 | Property | Type | Description | Required |
 |:------:  | :---: | :---------:| :------: |
-| access | string | user access key id | yes |
-| secret | string | user secret access key | yes |
-| role | string(user/userplus/admin) | user role | yes |
-| userID | number | user id | no |
-| groupID | number | user group id | no |
+| Account | Account | the root level tag | yes |
+| Access | string | user access key id | yes |
+| Secret | string | user secret access key | yes |
+| Role | string(user/userplus/admin) | user role | yes |
+| UserID | number | user id | no |
+| GroupID | number | user group id | no |
 
-### Responses
+### Response Syntax
 
-**Success(201 Created)**
 ```
-The user has been created successfully
-```
-
-**Error(403 Forbidden)**
-```
-access denied: only admin users have access to this resource
+HTTP/1.1 201
 ```
 
-**Error(400 Bad Request)**
-```
-invalid parameters: user role have to be one of the followings: 'user', 'admin', 'userplus'
-```
-```
-failed to parse request body
-```
+### Error Responses
 
-**Error(409 Conflict)**
-```
-failed to create user: update iam data: user already exists
-```
-
-**Error(500 Internal Server Error)**
-```
-<any unexpected internal server error>
-```
+* `XAdminAccessDenied` - Only admin users have access to this resource.
+* `XAdminUserExists` - A user with the provided access key ID already exists.
+* `XAdminInvalidArgument` - User role has to be one of the following: 'user', 'admin', 'userplus'.
+* `MalformedXML` - The XML you provided was not well-formed or did not validate against our published schema.
+* `InternalError` - We encountered an internal error, please try again.
 
 ### Example Usage
 
@@ -65,7 +65,7 @@ import (
 	"bytes"
 	"crypto/sha256"
 	"encoding/hex"
-	"encoding/json"
+	"encoding/xml"
 	"fmt"
 	"io"
 	"log"
@@ -74,6 +74,7 @@ import (
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	v4 "github.com/aws/aws-sdk-go-v2/aws/signer/v4"
+	"github.com/aws/smithy-go"
 )
 
 const (
@@ -83,16 +84,16 @@ const (
 	serverRegion  = "us-east-1"
 )
 
-type user struct {
-	Access  string `json:"access"`
-	Secret  string `json:"secret"`
-	Role    string `json:"role"`
-	UserID  int    `json:"userID"`
-	GroupID int    `json:"groupID"`
+type Account struct {
+	Access  string `xml:"Access"`
+	Secret  string `xml:"Secret"`
+	Role    string `xml:"Role"`
+	UserID  int    `xml:"UserID"`
+	GroupID int    `xml:"GroupID"`
 }
 
 func main() {
-	u := user{
+	acc := Account{
 		Access:  "test_user_1",
 		Secret:  "test_user_1_secret",
 		Role:    "user",
@@ -100,46 +101,56 @@ func main() {
 		GroupID: 3,
 	}
 
-	userJSON, err := json.Marshal(u)
+	accxml, err := xml.Marshal(acc)
 	if err != nil {
-		log.Fatalf("failed to serialize user data: %w\n", err)
+		log.Fatalf("failed to serialize user data: %v\n", err)
 	}
 
-	req, err := http.NewRequest(http.MethodPatch, fmt.Sprintf("%v/create-user", adminEndpoint), bytes.NewBuffer(userJSON))
+	req, err := http.NewRequest(http.MethodPatch, fmt.Sprintf("%v/create-user", adminEndpoint), bytes.NewBuffer(accxml))
 	if err != nil {
-		log.Fatalf("failed to send the request: %w\n", err)
+		log.Fatalf("failed to send the request: %v\n", err)
 	}
 
 	signer := v4.NewSigner()
 
-	hashedPayload := sha256.Sum256(userJSON)
+	hashedPayload := sha256.Sum256(accxml)
 	hexPayload := hex.EncodeToString(hashedPayload[:])
 
 	req.Header.Set("X-Amz-Content-Sha256", hexPayload)
 
 	err = signer.SignHTTP(req.Context(), aws.Credentials{AccessKeyID: adminAccess, SecretAccessKey: adminSecret}, req, hexPayload, "s3", serverRegion, time.Now())
 	if err != nil {
-		log.Fatalf("failed to sign the request: %w\n", err)
+		log.Fatalf("failed to sign the request: %v\n", err)
 	}
 
 	client := &http.Client{}
 
 	resp, err := client.Do(req)
 	if err != nil {
-		log.Fatalf("failed to send the request: %w\n", err)
-	}
-	defer resp.Body.Close()
-
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		log.Fatalf("failed to read the response body: %w\n", err)
+		log.Fatalf("failed to send the request: %v\n", err)
 	}
 
 	if resp.StatusCode >= 400 {
-		log.Fatalf("request failed with message %s\n", body)
+		defer resp.Body.Close()
+
+		body, err := io.ReadAll(resp.Body)
+		if err != nil {
+			log.Fatalf("failed to read the request body: %v\n", err)
+		}
+
+		log.Fatalln(parseApiError(body))
+	}
+}
+
+func parseApiError(body []byte) error {
+	var apiErr smithy.GenericAPIError
+	err := xml.Unmarshal(body, &apiErr)
+	if err != nil {
+		apiErr.Code = "InternalServerError"
+		apiErr.Message = err.Error()
 	}
 
-	fmt.Printf("%s\n", body)
+	return &apiErr
 }
 
 ```
@@ -153,22 +164,16 @@ The endpoint allows to delete an IAM user account:
 * Method: PATCH
 * Endpoint: /delete-user?access=<user_access_key_id>
 
-### Responses
+### Response Syntax
 
-**Success(200 OK)**
 ```
-The user has been deleted successfully
-```
-
-**Error(403 Forbidden)**
-```
-access denied: only admin users have access to this resource
+HTTP/1.1 204
 ```
 
-**Error(500 Internal Server Error)**
-```
-<any unexpected internal server error>
-```
+### Error Responses
+
+* `XAdminAccessDenied` - Only admin users have access to this resource.
+* `InternalError` - We encountered an internal error, please try again.
 
 ### Example Usage
 
@@ -184,6 +189,7 @@ package main
 import (
 	"crypto/sha256"
 	"encoding/hex"
+	"encoding/xml"
 	"fmt"
 	"io"
 	"log"
@@ -192,6 +198,7 @@ import (
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	v4 "github.com/aws/aws-sdk-go-v2/aws/signer/v4"
+	"github.com/aws/smithy-go"
 )
 
 const (
@@ -206,7 +213,7 @@ func main() {
 
 	req, err := http.NewRequest(http.MethodPatch, fmt.Sprintf("%v/delete-user?access=%v", adminEndpoint, userAccess), nil)
 	if err != nil {
-		log.Fatalf("failed to send the request: %w\n", err)
+		log.Fatalf("failed to send the request: %v\n", err)
 	}
 
 	signer := v4.NewSigner()
@@ -218,28 +225,39 @@ func main() {
 
 	err = signer.SignHTTP(req.Context(), aws.Credentials{AccessKeyID: adminAccess, SecretAccessKey: adminSecret}, req, hexPayload, "s3", serverRegion, time.Now())
 	if err != nil {
-		log.Fatalf("failed to sign the request: %w\n", err)
+		log.Fatalf("failed to sign the request: %v\n", err)
 	}
 
 	client := &http.Client{}
 
 	resp, err := client.Do(req)
 	if err != nil {
-		log.Fatalf("failed to send the request: %w\n", err)
-	}
-	defer resp.Body.Close()
-
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		log.Fatalf("failed to read the response body: %w\n", err)
+		log.Fatalf("failed to send the request: %v\n", err)
 	}
 
 	if resp.StatusCode >= 400 {
-		log.Fatalf("request failed with message %s\n", body)
+		defer resp.Body.Close()
+
+		body, err := io.ReadAll(resp.Body)
+		if err != nil {
+			log.Fatalf("failed to read the request body: %v\n", err)
+		}
+
+		log.Fatalln(parseApiError(body))
+	}
+}
+
+func parseApiError(body []byte) error {
+	var apiErr smithy.GenericAPIError
+	err := xml.Unmarshal(body, &apiErr)
+	if err != nil {
+		apiErr.Code = "InternalServerError"
+		apiErr.Message = err.Error()
 	}
 
-	fmt.Printf("%s\n", body)
+	return &apiErr
 }
+
 ```
 
 ## Update User
@@ -250,45 +268,39 @@ The endpoint allows to update `secret`, `userID`, `groupID` properties in an IAM
 
 * Method: PATCH
 * Endpoint: /update-user
-* Content-Type: application/json
+* Content-Type: application/xml
 
 ### Request Body
 
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<MutableProps>
+    <Secret> string </Secret>
+    <UserID> number </UserID>
+    <GroupID> number </GroupID>
+</MutableProps>
+```
+
 | Property | Type | Description | Required |
 |:------:  | :---: | :---------:| :------: |
-| secret | string | user secret access key | no |
-| userID | number | user id | no |
-| groupID | number | user group id | no |
+| MutableProps | MutableProps | the root level tag | yes |
+| Secret | string | user secret access key | no |
+| UserID | number | user id | no |
+| GroupID | number | user group id | no |
 
-### Responses
+### Response Syntax
 
-**Success(200 OK)**
 ```
-the user has been updated successfully
-```
-
-**Error(403 Forbidden)**
-```
-access denied: only admin users have access to this resource
+HTTP/1.1 200
 ```
 
-**Error(400 Bad Request)**
-```
-missing user access parameter
-```
-```
-invalid request body
-```
+### Error Responses
 
-**Error(404 Not Found)**
-```
-failed to update user account: user not found
-```
-
-**Error(500 Internal Server Error)**
-```
-<any unexpected internal server error>
-```
+* `XAdminAccessDenied` - Only admin users have access to this resource.
+* `XAdminInvalidArgument` - User access key ID is missing.
+* `XAdminUserNotFound` - No user exists with the provided access key ID.
+* `MalformedXML` - The XML you provided was not well-formed or did not validate against our published schema.
+* `InternalError` - We encountered an internal error, please try again.
 
 ### Example Usage
 
@@ -305,7 +317,7 @@ import (
 	"bytes"
 	"crypto/sha256"
 	"encoding/hex"
-	"encoding/json"
+	"encoding/xml"
 	"fmt"
 	"io"
 	"log"
@@ -314,6 +326,7 @@ import (
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	v4 "github.com/aws/aws-sdk-go-v2/aws/signer/v4"
+	"github.com/aws/smithy-go"
 )
 
 const (
@@ -323,10 +336,10 @@ const (
 	serverRegion  = "us-east-1"
 )
 
-type props struct {
-	Secret  *string `json:"secret"`
-	UserID  *int    `json:"userID"`
-	GroupID *int    `json:"groupID"`
+type MutableProps struct {
+	Secret  *string `xml:"Secret"`
+	UserID  *int    `xml:"UserID"`
+	GroupID *int    `xml:"GroupID"`
 }
 
 func main() {
@@ -335,53 +348,63 @@ func main() {
 	userId := 5
 	groupId := 12
 
-	p := props{
+	p := MutableProps{
 		Secret:  &secret,
 		UserID:  &userId,
 		GroupID: &groupId,
 	}
 
-	propsJSON, err := json.Marshal(p)
+	propsxml, err := xml.Marshal(p)
 	if err != nil {
-		log.Fatalf("failed to parse user attributes: %w\n", err)
+		log.Fatalf("failed to parse user attributes: %v\n", err)
 	}
 
-	req, err := http.NewRequest(http.MethodPatch, fmt.Sprintf("%v/update-user?access=%v", adminEndpoint, userAccess), bytes.NewBuffer(propsJSON))
+	req, err := http.NewRequest(http.MethodPatch, fmt.Sprintf("%v/update-user?access=%v", adminEndpoint, userAccess), bytes.NewBuffer(propsxml))
 	if err != nil {
-		log.Fatalf("failed to send the request: %w\n", err)
+		log.Fatalf("failed to send the request: %v\n", err)
 	}
 
 	signer := v4.NewSigner()
 
-	hashedPayload := sha256.Sum256(propsJSON)
+	hashedPayload := sha256.Sum256(propsxml)
 	hexPayload := hex.EncodeToString(hashedPayload[:])
 
 	req.Header.Set("X-Amz-Content-Sha256", hexPayload)
 
 	err = signer.SignHTTP(req.Context(), aws.Credentials{AccessKeyID: adminAccess, SecretAccessKey: adminSecret}, req, hexPayload, "s3", serverRegion, time.Now())
 	if err != nil {
-		log.Fatalf("failed to sign the request: %w\n", err)
+		log.Fatalf("failed to sign the request: %v\n", err)
 	}
 
 	client := &http.Client{}
 
 	resp, err := client.Do(req)
 	if err != nil {
-		log.Fatalf("failed to send the request: %w\n", err)
+		log.Fatalf("failed to send the request: %v\n", err)
 	}
-	defer resp.Body.Close()
-
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		log.Fatalf("failed to read the response body: %w\n", err)
-	}
-
 	if resp.StatusCode >= 400 {
-		log.Fatalf("request failed with message %s\n", body)
+		defer resp.Body.Close()
+
+		body, err := io.ReadAll(resp.Body)
+		if err != nil {
+			log.Fatalf("failed to read the request body: %v\n", err)
+		}
+
+		log.Fatalln(parseApiError(body))
+	}
+}
+
+func parseApiError(body []byte) error {
+	var apiErr smithy.GenericAPIError
+	err := xml.Unmarshal(body, &apiErr)
+	if err != nil {
+		apiErr.Code = "InternalServerError"
+		apiErr.Message = err.Error()
 	}
 
-	fmt.Printf("%s\n", body)
+	return &apiErr
 }
+
 ```
 
 ## List Users
@@ -393,31 +416,26 @@ The endpoint allows to list all the gateway users.
 * Method: PATCH
 * Endpoint: /list-users
 
-### Responses
+### Response Syntax
 
-**Success(200 OK)**
-```json
-[
-    {
-        "access": "string",
-        "secret": "string",
-        "role": "user/userplus/admin",
-        "userID": "number",
-        "groupID": "number"
-    },
-    ...
-]
-```
-
-**Error(403 Forbidden)**
-```
-access denied: only admin users have access to this resource
+```xml
+HTTP/1.1 200
+<?xml version="1.0" encoding="UTF-8"?>
+<ListUserAccountsResult>
+    <Account>
+        <Access> string </Access>
+        <Secret> string </Secret>
+        <Role> role </Role>
+        <UserID> number </UserID>
+        <GroupID> number </GroupID>
+    </Account>
+</ListUserAccountsResult>
 ```
 
-**Error(500 Internal Server Error)**
-```
-<any unexpected internal server error>
-```
+### Error Responses
+
+* `XAdminAccessDenied` - Only admin users have access to this resource.
+* `InternalError` - We encountered an internal error, please try again.
 
 ### Example Usage
 
@@ -433,7 +451,7 @@ package main
 import (
 	"crypto/sha256"
 	"encoding/hex"
-	"encoding/json"
+	"encoding/xml"
 	"fmt"
 	"io"
 	"log"
@@ -442,6 +460,7 @@ import (
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	v4 "github.com/aws/aws-sdk-go-v2/aws/signer/v4"
+	"github.com/aws/smithy-go"
 )
 
 const (
@@ -451,18 +470,22 @@ const (
 	serverRegion  = "us-east-1"
 )
 
-type user struct {
-	Access  string `json:"access"`
-	Secret  string `json:"secret"`
-	Role    string `json:"role"`
-	UserID  int    `json:"userID"`
-	GroupID int    `json:"groupID"`
+type Account struct {
+	Access  string `xml:"Access"`
+	Secret  string `xml:"Secret"`
+	Role    string `xml:"Role"`
+	UserID  int    `xml:"UserID"`
+	GroupID int    `xml:"GroupID"`
+}
+
+type ListUserAccountsResult struct {
+	Accounts []Account
 }
 
 func main() {
 	req, err := http.NewRequest(http.MethodPatch, fmt.Sprintf("%v/list-users", adminEndpoint), nil)
 	if err != nil {
-		log.Fatalf("failed to send the request: %w\n", err)
+		log.Fatalf("failed to send the request: %v\n", err)
 	}
 
 	signer := v4.NewSigner()
@@ -474,33 +497,45 @@ func main() {
 
 	err = signer.SignHTTP(req.Context(), aws.Credentials{AccessKeyID: adminAccess, SecretAccessKey: adminSecret}, req, hexPayload, "s3", serverRegion, time.Now())
 	if err != nil {
-		log.Fatalf("failed to sign the request: %w\n", err)
+		log.Fatalf("failed to sign the request: %v\n", err)
 	}
 
 	client := &http.Client{}
 
 	resp, err := client.Do(req)
 	if err != nil {
-		log.Fatalf("failed to send the request: %w\n", err)
+		log.Fatalf("failed to send the request: %v\n", err)
 	}
 	defer resp.Body.Close()
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		log.Fatalf("failed to read the response body: %w\n", err)
+		log.Fatalf("failed to read the response body: %v\n", err)
 	}
 
 	if resp.StatusCode >= 400 {
-		log.Fatalf("request failed with message %s\n", body)
+		log.Fatalln(parseApiError(body))
 	}
 
-	var accs []user
-	if err := json.Unmarshal(body, &accs); err != nil {
-		log.Fatalf("failed to parse response body: %w\n", err)
+	var result ListUserAccountsResult
+	if err := xml.Unmarshal(body, &result); err != nil {
+		log.Fatalf("failed to parse response body: %v\n", err)
 	}
 
-	fmt.Println(accs)
+	fmt.Println(result)
 }
+
+func parseApiError(body []byte) error {
+	var apiErr smithy.GenericAPIError
+	err := xml.Unmarshal(body, &apiErr)
+	if err != nil {
+		apiErr.Code = "InternalServerError"
+		apiErr.Message = err.Error()
+	}
+
+	return &apiErr
+}
+
 ```
 
 ## Change Bucket Owner
@@ -512,27 +547,25 @@ The endpoint allows to change a bucket owner.
 * Method: PATCH
 * Endpoint: /change-bucket-owner?bucket=<bucket_name>&owner=<new_owner_access_key_id>
 
-### Responses
+### URI Request Parameters
 
-**Success(200 OK)**
-```
-Bucket owner has been updated successfully
-```
+| Parameter | Description | Required |
+|:---------:| :---------: | :------: |
+| bucket | the bucket name | yes |
+| owner | the new owner access key ID | yes |
 
-**Error(403 Forbidden)**
-```
-access denied: only admin users have access to this resource
-```
+### Response Syntax
 
-**Error(404 Not Found)**
 ```
-user specified as the new bucket owner does not exist
+HTTP/1.1 204
 ```
 
-**Error(500 Internal Server Error)**
-```
-<any unexpected internal server error>
-```
+### Error Responses
+
+* `XAdminAccessDenied` - Only admin users have access to this resource.
+* `XAdminUserNotFound` - No user exists with the provided access key ID.
+* `NoSuchBucket` - The specified bucket does not exist.
+* `InternalError` - We encountered an internal error, please try again.
 
 ### Example Usage
 
@@ -548,7 +581,7 @@ package main
 import (
 	"crypto/sha256"
 	"encoding/hex"
-	"encoding/json"
+	"encoding/xml"
 	"fmt"
 	"io"
 	"log"
@@ -557,6 +590,7 @@ import (
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	v4 "github.com/aws/aws-sdk-go-v2/aws/signer/v4"
+	"github.com/aws/smithy-go"
 )
 
 const (
@@ -572,7 +606,7 @@ func main() {
 
 	req, err := http.NewRequest(http.MethodPatch, fmt.Sprintf("%v/change-bucket-owner/?bucket=%v&owner=%v", adminEndpoint, bucket, newOwner), nil)
 	if err != nil {
-		log.Fatalf("failed to send the request: %w\n", err)
+		log.Fatalf("failed to send the request: %v\n", err)
 	}
 
 	signer := v4.NewSigner()
@@ -584,28 +618,38 @@ func main() {
 
 	err = signer.SignHTTP(req.Context(), aws.Credentials{AccessKeyID: adminAccess, SecretAccessKey: adminSecret}, req, hexPayload, "s3", serverRegion, time.Now())
 	if err != nil {
-		log.Fatalf("failed to sign the request: %w\n", err)
+		log.Fatalf("failed to sign the request: %v\n", err)
 	}
 
 	client := &http.Client{}
 
 	resp, err := client.Do(req)
 	if err != nil {
-		log.Fatalf("failed to send the request: %w\n", err)
+		log.Fatalf("failed to send the request: %v\n", err)
 	}
-	defer resp.Body.Close()
-
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		log.Fatalf("failed to read the response body: %w\n", err)
-	}
-
 	if resp.StatusCode >= 400 {
-		log.Fatalf("request failed with message %s\n", body)
+		defer resp.Body.Close()
+
+		body, err := io.ReadAll(resp.Body)
+		if err != nil {
+			log.Fatalf("failed to read the request body: %v\n", err)
+		}
+
+		log.Fatalln(parseApiError(body))
+	}
+}
+
+func parseApiError(body []byte) error {
+	var apiErr smithy.GenericAPIError
+	err := xml.Unmarshal(body, &apiErr)
+	if err != nil {
+		apiErr.Code = "InternalServerError"
+		apiErr.Message = err.Error()
 	}
 
-	fmt.Println(string(body))
+	return &apiErr
 }
+
 ```
 
 ## List Buckets and Owners
@@ -617,29 +661,23 @@ The endpoint allows to list all the buckets and their owners.
 * Method: PATCH
 * Endpoint: /list-buckets
 
-### Responses
+### Response Syntax
 
-**Success(200 OK)**
-```json
-[
-    {
-        "name": "string",
-        "owner": "string"
-    }
-    ...
-]
-
-```
-
-**Error(403 Forbidden)**
-```
-access denied: only admin users have access to this resource
+```xml
+HTTP/1.1 200
+<?xml version="1.0" encoding="UTF-8"?>
+<ListBucketsResult>
+    <Bucket>
+        <Name> string </Name>
+        <Owner> string </Owner>
+    </Bucket>
+</ListBucketsResult>
 ```
 
-**Error(500 Internal Server Error)**
-```
-<any unexpected internal server error>
-```
+### Error Responses
+
+* `XAdminAccessDenied` - Only admin users have access to this resource.
+* `InternalError` - We encountered an internal error, please try again.
 
 ### Example Usage
 
@@ -655,7 +693,7 @@ package main
 import (
 	"crypto/sha256"
 	"encoding/hex"
-	"encoding/json"
+	"encoding/xml"
 	"fmt"
 	"io"
 	"log"
@@ -664,6 +702,7 @@ import (
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	v4 "github.com/aws/aws-sdk-go-v2/aws/signer/v4"
+	"github.com/aws/smithy-go"
 )
 
 const (
@@ -673,15 +712,19 @@ const (
 	serverRegion  = "us-east-1"
 )
 
-type bucket struct {
-	Name  string `json:"name"`
-	Owner string `json:"owner"`
+type Bucket struct {
+	Name  string `xml:"Name"`
+	Owner string `xml:"Owner"`
+}
+
+type ListBucketsResult struct {
+	Buckets []Bucket `xml:"Bucket"`
 }
 
 func main() {
 	req, err := http.NewRequest(http.MethodPatch, fmt.Sprintf("%v/list-buckets", adminEndpoint), nil)
 	if err != nil {
-		log.Fatalf("failed to send the request: %w\n", err)
+		log.Fatalf("failed to send the request: %v\n", err)
 	}
 
 	signer := v4.NewSigner()
@@ -693,31 +736,43 @@ func main() {
 
 	err = signer.SignHTTP(req.Context(), aws.Credentials{AccessKeyID: adminAccess, SecretAccessKey: adminSecret}, req, hexPayload, "s3", serverRegion, time.Now())
 	if err != nil {
-		log.Fatalf("failed to sign the request: %w\n", err)
+		log.Fatalf("failed to sign the request: %v\n", err)
 	}
 
 	client := &http.Client{}
 
 	resp, err := client.Do(req)
 	if err != nil {
-		log.Fatalf("failed to send the request: %w\n", err)
+		log.Fatalf("failed to send the request: %v\n", err)
 	}
 	defer resp.Body.Close()
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		log.Fatalf("failed to read the response body: %w\n", err)
+		log.Fatalf("failed to read the response body: %v\n", err)
 	}
 
 	if resp.StatusCode >= 400 {
-		log.Fatalf("request failed with message %s\n", body)
+		log.Fatalln(parseApiError(body))
 	}
 
-	var buckets bucket
-	if err := json.Unmarshal(body, &buckets); err != nil {
-		log.Fatalf("failed to parse the response body: %w\n", err)
+	var result ListBucketsResult
+	if err := xml.Unmarshal(body, &result); err != nil {
+		log.Fatalf("failed to parse the response body: %v\n", err)
 	}
 
-	fmt.Println(buckets)
+	fmt.Println(result)
 }
+
+func parseApiError(body []byte) error {
+	var apiErr smithy.GenericAPIError
+	err := xml.Unmarshal(body, &apiErr)
+	if err != nil {
+		apiErr.Code = "InternalServerError"
+		apiErr.Message = err.Error()
+	}
+
+	return &apiErr
+}
+
 ```
