@@ -1,6 +1,7 @@
   * [Home](./Home)
   * User:
     * [Quickstart](./Quickstart)
+    * [System Requirements](./System Requirements)
     * Install
       * [Linux](./Linux-Install)
     * [Workflow](./Workflow)
