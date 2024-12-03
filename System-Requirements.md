@@ -8,9 +8,9 @@ The Versity S3 Gateway has been built and tested on Linux, Mac, and BSD platform
 
 **Memory**: Minimum 16 GB RAM (32 GB+ for larger workloads).
 
-**Storage**: At least 100 GB of local storage for system and temporary data (workload-dependent).
+**Storage**: At least a few GB of local storage for system and temporary data (workload-dependent).
 
-**Network**: 10GbE or better network interface for optimal performance.
+**Network**: 10GbE or better network interface is suggested for optimal performance, but the gateway will operate on any network provided.
 
 ## Filesystem Requirements
 
