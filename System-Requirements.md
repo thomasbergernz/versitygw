@@ -16,4 +16,6 @@ The only filesystem requirement is support for extended attributes (xattrs).
 
 ## Deployment Options
 
-The gateway supports running in Docker for easy containerized deployment, but this is optional and not a strict requirement.
+The gateway supports optionally running in Docker for easy containerized deployment.
+Systemd scripts are also provided within the Linux distro packages for running the gateway as a systemd service.
+The gateway is a built as a static binary, and does not have any dependency on system library versions.
