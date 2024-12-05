@@ -115,7 +115,7 @@ Only the following bucket canned ACLs are supported in the gateway: `private`, `
 
 The `put-bucket-acl` action from **aws s3api** works slightly differently in the gateway. The `--grant-full-control`, `--grant-read`, `--grant-read-acp`, `--grant-write` and `--grant-write-acp` flags expect comma-separated user access key IDs. For example:
 ```
-aws --endpoint-url <gateway_endpoint_url> s3api put-bucket-policy --bucket <bucket_name> --grant-read <"user1_key, user2_key..."> --grant-write <"user1_key, user2_key...">
+aws --endpoint-url <gateway_endpoint_url> s3api put-bucket-acl --bucket <bucket_name> --grant-read <"user1_key, user2_key..."> --grant-write <"user1_key, user2_key...">
 ```
 
 * In the case of the `--access-control-policy` flag, the only required field is the **Grantee ID**.
